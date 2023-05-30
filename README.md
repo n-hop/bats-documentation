@@ -4,12 +4,12 @@ This documentation describes the requirements of topologies, loss patterns and p
 
 ## Contents
 
-   [1.Introduction](#1-introduction)
-   [2.Devices](#2-devices)
-   [3.Topology](#3-topology)
-   [4.Loss pattern](#4-loss-pattern)
-   [5.Performance metrics](#5-performance-metrics)
-   [6.Transmission payload](#6-transmission-payload)
+- [1.Introduction](#1-introduction) 
+- [2.Devices](#2-devices)
+- [3.Topology](#3-topology)
+- [4.Loss pattern](#4-loss-pattern)
+- [5.Performance metrics](#5-performance-metrics)
+- [6.Transmission payload](#6-transmission-payload)
 
 ## 1 Introduction
 
