@@ -15,7 +15,7 @@ BATS Protocol is a network communication protocol based on BATS codes, designed 
 
 The BATS Protocol performace test here focus on the capablity of the communication logic for various application scenarios. We care about the relative performance gain over other technques. The gain we obtain here should be scalable with the network bandwidth. 
 
-This is NOT a software performance test. In other words, we do not test how fast the BATS Protocol software can run a device. 
+This is NOT a software performance test. In other words, we do not test how fast the BATS Protocol software can run a device, and we do not test performance for specific applications, like video streaming. 
 
 ### Network Topologies
 Three kinds of network topologies will be mainly used in the tests:
@@ -39,14 +39,14 @@ Three kinds of network topologies will be mainly used in the tests:
 - **Reliability**: the reliability of the system which is defined as the ratio of the number of successfully received(or decoded if we use BATS codes) packets to the number of sent(or encoded if we use BATS codes) packets. If we don't have restrictions on the latency of the feedback control, the reliability should be 1.0. If we have restrictions on the latency of the feedback, the reliability is less than 1.0.
 - **Residual loss rate**: the residual loss rate over the BATS protocol transmission.
 
-### Transmission payload
+### Transmission Payload
 
-we use the following payload to test the performance of BATS protocol.
+we use the following payload to test the performance of BATS protocol. 
 
 ```
 
 1. The regular files which have the size from 1MB to 1GB.
-2. The fixed video stream which has the flow rate from 1Mbps to 10Mps.
+2. The fixed data stream which has the flow rate from 1Mbps to 10Mps.
 
 ``` 
 ### Protocols to Compare with
