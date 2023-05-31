@@ -16,10 +16,8 @@ BATS Protocol is a network communication protocol based on BATS codes, designed 
   - [2. Testbed Overview](#2-testbed-overview)
     - [2.1. Testbed Setup](#21-testbed-setup)
   - [3 One-hop Network Testing](#3-one-hop-network-testing)
-    - [Scenario 1-1: Reliable Communication with Feedback](#scenario-1-1-reliable-communication-with-feedback)
-    - [Scenario 1-2: Latency and Reliability Bounded Communication](#scenario-1-2-latency-and-reliability-bounded-communication)
   - [4 Multi-hop Network Testing](#4-multi-hop-network-testing)
-  - [5 More](#5-more)
+  - [5 Multi-path Network Testing](#5-multi-path-network-testing)
 
 ## 1. Introduction
 
@@ -75,10 +73,18 @@ One OpenWRT router and servals Raspberry Pis are used to build the testbed. The 
 
 ## 3 One-hop Network Testing
 
-### Scenario 1-1: Reliable Communication with Feedback
+- **Scenario 1-1: Reliable Communication with Feedback**
 
-### Scenario 1-2: Latency and Reliability Bounded Communication
+    In this scenario, we test the performance of BATS protocol in a one-hop network. The feedback control is used to control the retransmission of the unsolvable file trunk. In other words, the protocol is reliable. we will repeat the testing with different loss patterns and different transmission payload.
+
+- **Scenario 1-2: Latency and Reliability Bounded Communication**
+
+    In this scenarios, we have restrictions on the latency of the feedback control. we can't use the feedback to do the retransmission of the unsolvable file trunk since the latency is restricted. In other words, the protocol is not 100% reliable. However, we can use the feedback to notify the sender about the link quality. The sender can adjust the coding redundancy according to the link quality. In this cases, we can ensure that a certain percentage of the file trunks can be successfully decoded at receiver side. we will repeat the testing with different loss patterns and different transmission payload.
 
 ## 4 Multi-hop Network Testing
 
-## 5 More
+In multi-hop testing, we will repeat the testing scenarios in one-hop network testing cases. The only difference is that the network topology is changed to multi-hop network and we introduce the recoding technique in the middle nodes. And the feedback is performed in hop-by-hop manner.
+
+## 5 Multi-path Network Testing
+
+In multi-path testing, we will introduce the multi-path transmission in the network.
