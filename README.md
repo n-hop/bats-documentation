@@ -1,6 +1,6 @@
 # BATS Protocol Performance Test
 
-BATS Protocol is a network communication protocol based on BATS codes, designed to provide high throughput and low latency for data transmission in lossy networks. In this project, we develop a testbed and compare the performance of BATS Protocol with other techniques/protocols. The performance metrics include throughput, latency and reliability.  
+BATS Protocol is a network communication protocol based on BATS codes, designed to provide high throughput and low latency data transmission in lossy networks. In this project, we evaluate and compare the performance of BATS Protocol with other techniques/protocols in terms of various performance metrics such as throughput, latency and reliability.  
 
 ## Contents
 
@@ -21,9 +21,9 @@ BATS Protocol is a network communication protocol based on BATS codes, designed 
 
 ## 1. Introduction
 
-The BATS Protocol performance test here focus on the capability of the communication logic for various application scenarios. We care about the relative performance gain over other techniques. The gain we obtain here should be scalable with the network bandwidth.  
+The BATS Protocol performance evaluation focuses on the capability of the communication logic, such as coding (including feedback), congestion control, routing, etc. Therefore, in the testbed, we try to reduce the effect of the implementation by limitting the network link bandwidth. The performance compared with other techniques is relative, and the gain should be scalable with the network bandwidth.
 
-This is NOT a software performance test. In other words, we do not test how fast the BATS Protocol software can run a device, and we do not test performance for specific applications, like video streaming.  
+This is NOT a software performance test. In other words, we do not test how fast the BATS Protocol software can run a device. Tough the testbed considers various practical scenarios, we do not test performance for specific applications, like video streaming.  
 
 ### Network Topologies
 
@@ -72,6 +72,12 @@ This part describes the requirements of BATS protocol system testing. Various te
 One OpenWRT router and servals Raspberry Pis are used to build the testbed. The OpenWRT router is used to simulate the lossy network and define the topology of the network. The Raspberry Pis are nodes in the networks. The OpenWRT router and the Raspberry Pis are connected by Ethernet cables.
 
 ## 3 One-hop Network Testing
+
+We begin with a one-hop network that includes two nodes, connected directly by a network link. The two nodes can directly communicate with each over the network link with a limited bandwidth. The packets transmitted through the network link suffer from both packet loss and delay.
+
+Though simple, this network enables us to study the outer code performance without worry about the inner code and congestion control. We focus on the evaluation of the end-to-end throughput, latency and reliability. 
+ 
+Feedback is allowed to assist the communication, and the feedback messages also suffer from loss and delay. 
 
 - **Scenario 1-1: Reliable Communication with Feedback**
 
