@@ -1,0 +1,31 @@
+# Let NetworkManager manage all devices on this system
+network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+    enp3s0:
+      dhcp4: no
+      addresses:
+        - 10.0.0.1/24
+    enp4s0:
+      dhcp4: no
+      addresses:
+        - 10.0.0.2/24
+      routes:
+        - to: 10.0.0.12/32
+          via: 10.0.0.12
+        - to: 10.0.0.12/32
+          via: 10.0.0.2
+        - to: 10.0.0.2/32
+          via: 10.0.0.2
+    enp5s0:
+      dhcp4: no
+      addresses:
+        - 10.0.0.3/24
+      routes:
+        - to: 10.0.0.11/32
+          via: 10.0.0.11
+        - to: 10.0.0.11/32
+          via: 10.0.0.3
+        - to: 10.0.0.3/32
+          via: 10.0.0.3

@@ -71,6 +71,10 @@ This part describes the requirements of BATS protocol system testing. Various te
 
 One OpenWRT router and servals Raspberry Pis are used to build the testbed. The OpenWRT router is used to simulate the lossy network and define the topology of the network. The Raspberry Pis are nodes in the networks. The OpenWRT router and the Raspberry Pis are connected by Ethernet cables.
 
+The detailed setup of the testbed is described in the following link:
+
+- [Testbed Setup](testbed/testbed_setup.md)
+
 ## 3 One-hop Network Testing
 
 We begin with a one-hop network that includes two nodes, connected directly by a network link. The two nodes can directly communicate with each over the network link with a limited bandwidth. The packets transmitted through the network link suffer from both packet loss and delay.
