@@ -65,9 +65,14 @@ We will compare with different existing techniques such as TCP, TCP-BBR, PEP, QU
 
 ## 2. Testbed Overview
 
-This part describes the requirements of BATS protocol system testing. Various testing cases are defined.
+One router (running openWRT) and servals computers (e.g., Raspberry Pis) are used to build the testbed. The router and the computers are connected by Ethernet cables. We call this network formed by the computers and the router our *physical network*. In contrast, the network used for the testing is called the *test network*. 
 
-One OpenWRT router and servals Raspberry Pis are used to build the testbed. The OpenWRT router is used to simulate a lossy network and define the topology of the network. The Raspberry Pis are nodes in the networks. The OpenWRT router and the Raspberry Pis are connected by Ethernet cables.
+The test network is formed by multiple network nodes simulated by the computers. Each computer can simulate one or multiple network nodes in the test network. 
+The connection between the network nodes, called the network topology, is determined by the router. All the communication 
+
+The OpenWRT router is used to simulate a lossy network and define the topology of the network. The Raspberry Pis are nodes in the networks.
+
+The communication between two 
 
 The detailed setup of the testbed is described in the following link:
 
