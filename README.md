@@ -67,9 +67,7 @@ We will compare with different existing techniques such as TCP, TCP-BBR, PEP, QU
 
 This part describes the requirements of BATS protocol system testing. Various testing cases are defined.
 
-### 2.1. Testbed Setup
-
-One OpenWRT router and servals Raspberry Pis are used to build the testbed. The OpenWRT router is used to simulate the lossy network and define the topology of the network. The Raspberry Pis are nodes in the networks. The OpenWRT router and the Raspberry Pis are connected by Ethernet cables.
+One OpenWRT router and servals Raspberry Pis are used to build the testbed. The OpenWRT router is used to simulate a lossy network and define the topology of the network. The Raspberry Pis are nodes in the networks. The OpenWRT router and the Raspberry Pis are connected by Ethernet cables.
 
 The detailed setup of the testbed is described in the following link:
 
