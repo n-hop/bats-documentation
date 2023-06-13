@@ -75,5 +75,16 @@ All the ping should be successful.
 
 #### 1.3.32. Test with BATS protocol
 
+If the bandwidth of the link between n-hop slave2 and n-hop slave1 is 100Mbps, the actual bandwidth of BATS protocol between n-hop slave2 and n-hop slave1 is 90Mbps, this is because the BATS protocol introduces 10% protocol overhead. For TCP, the overhead is 5%.
+
+On n-hop slave1, perform the following command:
+
 ```bash
+python3 -u ./bperf.py -c 10.0.0.12 -p 12345 -t 10 -i 1 -b 90
+```
+
+On n-hop slave2, perform the following command:
+
+```bash
+python3 -u ./bperf.py -s 10.0.0.12 -p 12345
 ```
