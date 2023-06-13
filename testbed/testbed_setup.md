@@ -39,6 +39,13 @@ then apply the configuration with the following command:
 sudo netplan apply
 ```
 
+Set the bandwidth of the link between n-hop router and n-hop slave1 to 100Mbps:
+
+```bash
+sudo tc qdisc add dev enp4s0 root tbf rate 100mbit burst 100kbit latency 1ms
+sudo tc qdisc add dev enp5s0 root tbf rate 100mbit burst 100kbit latency 1ms
+```
+
 ### 1.3. Test
 
 #### 1.3.1. Test with ICMP
@@ -47,12 +54,12 @@ sudo netplan apply
 # on n-hop slave1
 ping 10.0.0.3
 ping 10.0.0.2
-ping 10.0.0.12
+ping 10.0.0.12 -c 10
 
 # on n-hop slave2
 ping 10.0.0.2
 ping 10.0.0.3
-ping 10.0.0.11
+ping 10.0.0.11 -c 10
 ```
 
 All the ping should be successful.
@@ -61,6 +68,10 @@ All the ping should be successful.
 
 ```bash
 ```
+
+| ID  | throughput | latency | reliability |
+| --- | ---------- | ------- | ----------- |
+| 1   |            |         |             |
 
 #### 1.3.32. Test with BATS protocol
 
