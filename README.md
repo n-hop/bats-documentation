@@ -88,6 +88,27 @@ We set the bandwidth limit of the link to a sufficiently small value that the BA
 
     In this scenario, we test the performance of BATS protocol in a one-hop network. The feedback control is used to control the retransmission of the unsolvable file trunk. In other words, the protocol is reliable. we will repeat the testing with different loss patterns and different transmission payload.
 
+  Topology:
+  Node-1 <----Link-1----> Node-2
+
+  Configuration:
+    Link-1 bandwidth limit: 100Mbps
+
+  Data flow:
+    Flow-1: Source-1 on Node-1 transmits to Destination-1 on Node-2.
+  
+  Data source rate:
+    Flow-1: 10Mbps, 50Mbps, 95Mbps, 100Mbps, 105Mbps. The last three source rate can adjust according to the results.
+
+  Data to collect:
+    Data source rate
+    Data destination rate
+    Link loss statistics: number of packet loss of each batch.
+    Recoding number statistics: recoding number of each batch.
+    Link layer transmit rate
+    Link layer receive rate
+    
+
 - **Scenario 1-2: Latency and Reliability Bounded Communication**
 
     In this scenarios, we have restrictions on the latency of the feedback control. we can't use the feedback to do the retransmission of the unsolvable file trunk since the latency is restricted. In other words, the protocol is not 100% reliable. However, we can use the feedback to notify the sender about the link quality. The sender can adjust the coding redundancy according to the link quality. In this cases, we can ensure that a certain percentage of the file trunks can be successfully decoded at receiver side. we will repeat the testing with different loss patterns and different transmission payload.
