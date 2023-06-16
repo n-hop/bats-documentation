@@ -14,7 +14,6 @@ BATS Protocol is a network communication protocol based on BATS codes, designed 
     - [Transmission Payload](#transmission-payload)
     - [Protocols to Compare with](#protocols-to-compare-with)
   - [2. Testbed Overview](#2-testbed-overview)
-    - [2.1. Testbed Setup](#21-testbed-setup)
   - [3 One-hop Network Testing](#3-one-hop-network-testing)
   - [4 Multi-hop Network Testing](#4-multi-hop-network-testing)
   - [5 Multi-path Network Testing](#5-multi-path-network-testing)
@@ -44,6 +43,11 @@ Three kinds of network topologies will be mainly used in the tests:
 ### Performance metrics
 
 - **Throughput**: the average throughput of the whole transmission.
+
+    `Throughput` here means how many payload data can be transmitted per second. 
+    For example, for TCP transmission, the throughput is the number of TCP payload bytes transmitted per second. `Throughput` is not equal to the link bandwidth due to the overhead of the protocol.
+    So in the test, we need to measure both the throughput of the whole transmission, and the transmission rate of the link.
+    
 - **Latency**: the average latency of the whole transmission.
 - **Reliability**: the reliability of the system which is defined as the ratio of the number of successfully received(or packets after decoding if we use BATS codes) packets to the number of sent(or packets before encoding if we use BATS codes) packets. If we don't have restrictions on the latency of the feedback control, the reliability should be 1.0. If we have restrictions on the latency of the feedback, the reliability is less than 1.0.
 - **Residual loss rate**: the residual loss rate over the BATS protocol transmission.
