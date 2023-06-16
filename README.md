@@ -75,11 +75,14 @@ The detailed setup of the testbed is described in the following link:
 
 ## 3 One-hop Network Testing
 
-We begin with a one-hop network that includes two nodes, connected directly by a network link. The two nodes can directly communicate with each over the network link with a limited bandwidth. The packets transmitted through the network link suffer from both packet loss and delay.
+We begin with a one-hop network that includes two nodes, connected directly by a network link. The two nodes can directly communicate with each other over the network link with a limited bandwidth. The packets transmitted through the network link suffer from both packet loss and delay.
 
 Though simple, this network enables us to study the outer code performance without worry about the inner code and congestion control. We focus on the evaluation of the end-to-end throughput, latency and reliability. 
  
 Feedback is allowed to assist the communication, and the feedback messages also suffer from loss and delay. 
+
+Link bandwidth limit and source rate setup:
+We set the bandwidth limit of the link to a sufficiently small value that the BATS protocol can easily fullfill, so that we can eliminate the uncertainty brought by software performance. We set the data source rate to be smaller than the bandwidth limit in each test scenario, so that there is no congestion, and we can focus on the specific targets of each test scenario. Then, for each scenario, we can gradually increase the source rate towards the bandwidth limit, untill exceeds it, to see how the communication behaviour changes.
 
 - **Scenario 1-1: Reliable Communication with Feedback**
 
