@@ -45,7 +45,7 @@ Three kinds of network topologies will be mainly used in the tests:
 
 - **Throughput**: the average throughput of the whole transmission.
 - **Latency**: the average latency of the whole transmission.
-- **Reliability**: the reliability of the system which is defined as the ratio of the number of successfully received(or decoded if we use BATS codes) packets to the number of sent(or encoded if we use BATS codes) packets. If we don't have restrictions on the latency of the feedback control, the reliability should be 1.0. If we have restrictions on the latency of the feedback, the reliability is less than 1.0.
+- **Reliability**: the reliability of the system which is defined as the ratio of the number of successfully received(or packets after decoding if we use BATS codes) packets to the number of sent(or packets before encoding if we use BATS codes) packets. If we don't have restrictions on the latency of the feedback control, the reliability should be 1.0. If we have restrictions on the latency of the feedback, the reliability is less than 1.0.
 - **Residual loss rate**: the residual loss rate over the BATS protocol transmission.
 
 ### Transmission Payload
@@ -75,15 +75,39 @@ The detailed setup of the testbed is described in the following link:
 
 ## 3 One-hop Network Testing
 
-We begin with a one-hop network that includes two nodes, connected directly by a network link. The two nodes can directly communicate with each over the network link with a limited bandwidth. The packets transmitted through the network link suffer from both packet loss and delay.
+We begin with a one-hop network that includes two nodes, connected directly by a network link. The two nodes can directly communicate with each other over the network link with a limited bandwidth. The packets transmitted through the network link suffer from both packet loss and delay.
 
 Though simple, this network enables us to study the outer code performance without worry about the inner code and congestion control. We focus on the evaluation of the end-to-end throughput, latency and reliability. 
  
 Feedback is allowed to assist the communication, and the feedback messages also suffer from loss and delay. 
 
+Link bandwidth limit and source rate setup:
+We set the bandwidth limit of the link to a sufficiently small value that the BATS protocol can easily fullfill, so that we can eliminate the uncertainty brought by software performance. We set the data source rate to be smaller than the bandwidth limit in each test scenario, so that there is no congestion, and we can focus on the specific targets of each test scenario. Then, for each scenario, we can gradually increase the source rate towards the bandwidth limit, untill exceeds it, to see how the communication behaviour changes.
+
 - **Scenario 1-1: Reliable Communication with Feedback**
 
     In this scenario, we test the performance of BATS protocol in a one-hop network. The feedback control is used to control the retransmission of the unsolvable file trunk. In other words, the protocol is reliable. we will repeat the testing with different loss patterns and different transmission payload.
+
+  Topology:
+  Node-1 <----Link-1----> Node-2
+
+  Configuration:
+    Link-1 bandwidth limit: 100Mbps
+
+  Data flow:
+    Flow-1: Source-1 on Node-1 transmits to Destination-1 on Node-2.
+  
+  Data source rate:
+    Flow-1: 10Mbps, 50Mbps, 95Mbps, 100Mbps, 105Mbps. The last three source rate can adjust according to the results.
+
+  Data to collect:
+    Data source rate
+    Data destination rate
+    Link loss statistics: number of packet loss of each batch.
+    Recoding number statistics: recoding number of each batch.
+    Link layer transmit rate
+    Link layer receive rate
+    
 
 - **Scenario 1-2: Latency and Reliability Bounded Communication**
 
