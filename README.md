@@ -45,7 +45,7 @@ Three kinds of network topologies will be mainly used in the tests:
 
 - **Throughput**: the average throughput of the whole transmission.
 - **Latency**: the average latency of the whole transmission.
-- **Reliability**: the reliability of the system which is defined as the ratio of the number of successfully received(or decoded if we use BATS codes) packets to the number of sent(or encoded if we use BATS codes) packets. If we don't have restrictions on the latency of the feedback control, the reliability should be 1.0. If we have restrictions on the latency of the feedback, the reliability is less than 1.0.
+- **Reliability**: the reliability of the system which is defined as the ratio of the number of successfully received(or packets after decoding if we use BATS codes) packets to the number of sent(or packets before encoding if we use BATS codes) packets. If we don't have restrictions on the latency of the feedback control, the reliability should be 1.0. If we have restrictions on the latency of the feedback, the reliability is less than 1.0.
 - **Residual loss rate**: the residual loss rate over the BATS protocol transmission.
 
 ### Transmission Payload
