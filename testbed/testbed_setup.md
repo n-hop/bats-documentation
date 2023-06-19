@@ -111,45 +111,64 @@ python3 -u ./bperf.py -s 10.0.0.12 -p 12345
 
 **independent loss pattern**
 
-| ID  | code schema | loss rate | throughput | latency | reliability | feedback     |
-| --- | ----------- | --------- | ---------- | ------- | ----------- | ------------ |
-| 1   | systematic  | 0         |            |         |             | restricted   |
-| 2   | systematic  | 5         |            |         |             | restricted   |
-| 3   | systematic  | 10        |            |         |             | restricted   |
-| 4   | systematic  | 15        |            |         |             | restricted   |
-| 5   | systematic  | 20        |            |         |             | restricted   |
-| 6   | systematic  | 0         |            |         | 100%        | unrestricted |
-| 7   | systematic  | 5         |            |         | 100%        | unrestricted |
-| 8   | systematic  | 10        |            |         | 100%        | unrestricted |
-| 9   | systematic  | 15        |            |         | 100%        | unrestricted |
-| 10  | systematic  | 20        |            |         | 100%        | unrestricted |
+    for ordinary random codes, set `coding.coding_type` to `3`, and BATS sockets use `CodingParameters::CHUNK` as its paramters.
+    for random binary codes, set `coding.coding_type` to `2`, and BATS sockets use `CodingParameters::CHUNK` as its paramters.
+    for systematic codes, set `coding.coding_type` to `4`, and BATS sockets use `CodingParameters::CHUNK_SYSTEMATIC` as its paramters.
+
+| ID  | code schema     | loss rate | throughput | link rate | latency | reliability | feedback     |
+| --- | --------------- | --------- | ---------- | --------- | ------- | ----------- | ------------ |
+| 1   | ordinary random | 0         |            |           |         |             | restricted   |
+| 2   | ordinary random | 5         |            |           |         |             | restricted   |
+| 3   | ordinary random | 10        |            |           |         |             | restricted   |
+| 4   | ordinary random | 15        |            |           |         |             | restricted   |
+| 5   | ordinary random | 20        |            |           |         |             | restricted   |
+| 6   | ordinary random | 0         |            |           |         | 100%        | unrestricted |
+| 7   | ordinary random | 5         |            |           |         | 100%        | unrestricted |
+| 8   | ordinary random | 10        |            |           |         | 100%        | unrestricted |
+| 9   | ordinary random | 15        |            |           |         | 100%        | unrestricted |
+| 10  | ordinary random | 20        |            |           |         | 100%        | unrestricted |
 
 
-| ID  | code schema   | loss rate | throughput | latency | reliability | feedback     |
-| --- | ------------- | --------- | ---------- | ------- | ----------- | ------------ |
-| 1   | random binary | 0         |            |         |             | restricted   |
-| 2   | random binary | 5         |            |         |             | restricted   |
-| 3   | random binary | 10        |            |         |             | restricted   |
-| 4   | random binary | 15        |            |         |             | restricted   |
-| 5   | random binary | 20        |            |         |             | restricted   |
-| 6   | random binary | 0         |            |         | 100%        | unrestricted |
-| 2   | random binary | 5         |            |         | 100%        | unrestricted |
-| 3   | random binary | 10        |            |         | 100%        | unrestricted |
-| 4   | random binary | 15        |            |         | 100%        | unrestricted |
-| 5   | random binary | 20        |            |         | 100%        | unrestricted |
+
+| ID  | code schema   | loss rate | throughput | link rate | latency | reliability | feedback     |
+| --- | ------------- | --------- | ---------- | --------- | ------- | ----------- | ------------ |
+| 1   | random binary | 0         |            |           |         |             | restricted   |
+| 2   | random binary | 5         |            |           |         |             | restricted   |
+| 3   | random binary | 10        |            |           |         |             | restricted   |
+| 4   | random binary | 15        |            |           |         |             | restricted   |
+| 5   | random binary | 20        |            |           |         |             | restricted   |
+| 6   | random binary | 0         |            |           |         | 100%        | unrestricted |
+| 2   | random binary | 5         |            |           |         | 100%        | unrestricted |
+| 3   | random binary | 10        |            |           |         | 100%        | unrestricted |
+| 4   | random binary | 15        |            |           |         | 100%        | unrestricted |
+| 5   | random binary | 20        |            |           |         | 100%        | unrestricted |
+
+
+| ID  | code schema | loss rate | throughput | link rate | latency | reliability | feedback     |
+| --- | ----------- | --------- | ---------- | --------- | ------- | ----------- | ------------ |
+| 1   | systematic  | 0         |            |           |         |             | restricted   |
+| 2   | systematic  | 5         |            |           |         |             | restricted   |
+| 3   | systematic  | 10        |            |           |         |             | restricted   |
+| 4   | systematic  | 15        |            |           |         |             | restricted   |
+| 5   | systematic  | 20        |            |           |         |             | restricted   |
+| 6   | systematic  | 0         |            |           |         | 100%        | unrestricted |
+| 7   | systematic  | 5         |            |           |         | 100%        | unrestricted |
+| 8   | systematic  | 10        |            |           |         | 100%        | unrestricted |
+| 9   | systematic  | 15        |            |           |         | 100%        | unrestricted |
+| 10  | systematic  | 20        |            |           |         | 100%        | unrestricted |
 
 
 **combination of independent loss pattern and robust loss pattern**
 
-| ID  | code schema | loss rate | throughput | latency | reliability | feedback     |
-| --- | ----------- | --------- | ---------- | ------- | ----------- | ------------ |
-| 1   | systematic  | 0         |            |         |             | restricted   |
-| 2   | systematic  | 5         |            |         |             | restricted   |
-| 3   | systematic  | 10        |            |         |             | restricted   |
-| 4   | systematic  | 15        |            |         |             | restricted   |
-| 5   | systematic  | 20        |            |         |             | restricted   |
-| 6   | systematic  | 0         |            |         | 100%        | unrestricted |
-| 7   | systematic  | 5         |            |         | 100%        | unrestricted |
-| 8   | systematic  | 10        |            |         | 100%        | unrestricted |
-| 9   | systematic  | 15        |            |         | 100%        | unrestricted |
-| 10  | systematic  | 20        |            |         | 100%        | unrestricted |
+| ID  | code schema | loss rate | throughput | link rate | latency | reliability | feedback     |
+| --- | ----------- | --------- | ---------- | --------- | ------- | ----------- | ------------ |
+| 1   | systematic  | 0         |            |           |         |             | restricted   |
+| 2   | systematic  | 5         |            |           |         |             | restricted   |
+| 3   | systematic  | 10        |            |           |         |             | restricted   |
+| 4   | systematic  | 15        |            |           |         |             | restricted   |
+| 5   | systematic  | 20        |            |           |         |             | restricted   |
+| 6   | systematic  | 0         |            |           |         | 100%        | unrestricted |
+| 7   | systematic  | 5         |            |           |         | 100%        | unrestricted |
+| 8   | systematic  | 10        |            |           |         | 100%        | unrestricted |
+| 9   | systematic  | 15        |            |           |         | 100%        | unrestricted |
+| 10  | systematic  | 20        |            |           |         | 100%        | unrestricted |
