@@ -67,6 +67,14 @@ All the ping should be successful.
 #### 1.3.2. Test with TCP
 
 ```bash
+# on client side, use `CUBIC` to do the test
+iperf -c 10.0.0.12 --linux-congestion=cubic -i1 -t10
+
+# on client side, use `BBR` to do the test
+iperf -c 10.0.0.12 --linux-congestion=bbr -i1 -t10
+
+# on server side
+iperf -s -i1
 
 ```
 
