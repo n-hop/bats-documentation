@@ -43,11 +43,11 @@ sudo ovs-vsctl add-port br0 eth2
 
 将本机的网卡加入到网桥之中后机器的 ip 地址失效了，不能 ssh，不能 ping 通。这是因为当网卡加入网桥之后，网卡就是交换机上的一个端口，交换机作为二层设备，其端口是不可能有 IP 地址的，所以网卡的 IP 地址失效。
 
-此时，我们也不需要在 network layer 操作这 3 张网卡，因此可以清除这三张网卡的 ip 相关信息和相关的路由信息，避免有其他影响。
+此时，我们也不需要在 network layer 操作这 3 张网卡，因此可以清除这三张网卡的 ip 相关信息和相关的路由信息，避免有额外影响。
 
 ### 配置 3 个树莓派的 ip 地址及路由策略
 
-使用 dhcpcd 为树莓派 A、C 配置静态 ip 地址,并将树莓派 B 设定为网关。
+为树莓派 A、C 配置静态 ip 地址,并将树莓派 B 设定为网关。
 
 ```bash
 vim /etc/dhcpcd.conf
@@ -63,6 +63,8 @@ static routers=10.0.0.12/24
 
 对于树莓派 B 来说，需要对网卡配置两个 ip 地址, 同时将 A、C 设定为网关。
 
+- 配置静态 ip
+
 ```bash
 vim /etc/network/interfaces
 ```
@@ -72,19 +74,60 @@ auto eth0
 iface eth0 inet static
 address 10.0.0.12
 netmask 255.255.255.0
-gateway 10.0.0.11
-
-# up ip route add default via 10.10.1.4
 
 auto eth0:0
 iface eth0 inet static
 address 10.0.1.12
 netmask 255.255.255.0
-gateway 10.0.1.11
 
 ```
 
+- 添加路由
+
+```bash
+route add default gw 10.0.0.11
+route add default gw 10.0.1.11
+```
+
 网络配置完成。
+
+### 路由配置结果
+
+```bash
+ip route
+```
+
+A:
+
+```
+root@raspberrypi:/home/nhop/bats-protocol-framework# ip route
+default via 10.0.0.12 dev eth0 src 10.0.0.11 metric 202
+default via 10.53.1.1 dev wlan0 proto dhcp src 10.53.1.189 metric 303
+10.0.0.0/24 dev eth0 proto dhcp scope link src 10.0.0.11 metric 202
+10.53.1.0/24 dev wlan0 proto dhcp scope link src 10.53.1.189 metric 303
+```
+
+B:
+
+```
+root@raspberrypi:/home/pi# ip route
+default via 10.0.1.11 dev eth0
+default via 10.0.0.11 dev eth0
+default via 10.53.1.1 dev wlan0 proto dhcp src 10.53.1.186 metric 303
+10.0.0.0/24 dev eth0 proto kernel scope link src 10.0.0.12
+10.0.1.0/24 dev eth0 proto kernel scope link src 10.0.1.12
+10.53.1.0/24 dev wlan0 proto dhcp scope link src 10.53.1.186 metric 303
+```
+
+C:
+
+```
+root@raspberrypi:/home/nhop/bats-protocol-framework# ip route
+default via 10.0.1.12 dev eth0 src 10.0.1.11 metric 202
+default via 10.53.1.1 dev wlan0 proto dhcp src 10.53.1.39 metric 303
+10.0.1.0/24 dev eth0 proto dhcp scope link src 10.0.1.11 metric 202
+10.53.1.0/24 dev wlan0 proto dhcp scope link src 10.53.1.39 metric 303
+```
 
 #### 一跳连通性测试
 
@@ -157,13 +200,57 @@ traceroute to 10.0.1.11 (10.0.1.11), 30 hops max, 60 byte packets
 root@raspberrypi:/home/nhop#
 ```
 
-## BATS 通信测试
+# BATS 通信测试
 
-### 编译 BATS Protocol
+## 编译 BATS Protocol
 
-### 使用 IP Routing 的方式通信
+略
 
-(7)其他命令：
+## 使用 IP Routing 的方式进行两跳通信
+
+编译完成后，首先运行 bats protocol ip-routing 通信的 daemon 进程。三台树莓派都要运行。
+
+在项目根目录下：
+
+```bash
+./buildrasp/src/bats-protocol/test/end_to_end/ip_routing_protocol
+```
+
+本次测试从 A 通过 bats 通信 C。
+
+在 A,另外打开一个终端, 运行 source App, 不需等待输出：
+
+```bash
+root@raspberrypi:/home/nhop/bats-protocol-framework# ./buildrspi/src/bats-protocol/test/end_to_end/source_app 10.0.1.11
+```
+
+这之后，在 C，另外打开一个终端，运行 destination App：
+
+```bash
+root@raspberrypi:/home/nhop/bats-protocol-framework# ./buildrspi/src/bats-protocol/test/end_to_end/destination_app 10.0.1.11
+```
+
+等待一段时间后，两边获得输出如下：
+
+```bash
+root@raspberrypi:/home/nhop/bats-protocol-framework# ./buildrspi/src/bats-protocol/test/end_to_end/source_app 10.0.1.11
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I20230711 07:17:14.436903 62198 batspro_uds_bats_chunk_socket.h:88] BATS Protocol process: 58871 is running, file: bats_uds_socket_bind_point.58871
+I20230711 07:17:14.437103 62198 batspro_uds_bats_chunk_socket.h:94] uds_socket_bind_path: /tmp/bats_uds_socket_bind_point.58871
+[source] package size: 4096
+[source] Send Throughputs: 711 Mbps
+```
+
+```bash
+root@raspberrypi:/home/nhop/bats-protocol-framework# ./buildrspi/src/bats-protocol/test/end_to_end/destination_app 10.0.1.11
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I20230711 02:17:16.339803 55933 batspro_uds_bats_chunk_socket.h:88] BATS Protocol process: 52686 is running, file: bats_uds_socket_bind_point.52686
+I20230711 02:17:16.340078 55933 batspro_uds_bats_chunk_socket.h:94] uds_socket_bind_path: /tmp/bats_uds_socket_bind_point.52686
+[Destination] last package size: 4096 address: 10.0.0.11 port: 1025
+[Destination] Throughputs: 450 Mbps
+```
+
+# 其他命令：
 
 ```bash
 # openvswitch配置展示
@@ -174,11 +261,4 @@ sudo ovs-ofctl dump-flows ovs-br
 sudo ovs-vsctl del-br ovs-br
 # 网桥信息展示
 sudo brctl show
-```
-
-# 测试网络连通性
-
-```bash
-# PC1 ping PC2
-# PC2 ping PC1
 ```
