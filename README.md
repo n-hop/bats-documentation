@@ -40,6 +40,8 @@ Three kinds of network topologies will be mainly used in the tests:
 - **Loss pattern 2**: an robust loss pattern with 1% loss rate.
 - **Loss pattern 3**: an combination of independent loss pattern and robust loss pattern.
 
+And you can find all the supported loss pattern in the [tc-netem](https://www.man7.org/linux/man-pages/man8/tc-netem.8.html).
+
 ### Performance metrics
 
 - **Throughput**: the average throughput of the whole transmission.
@@ -86,7 +88,7 @@ Though simple, this network enables us to study the outer code performance witho
 Feedback is allowed to assist the communication, and the feedback messages also suffer from loss and delay. 
 
 Link bandwidth limit and source rate setup:
-We set the bandwidth limit of the link to a sufficiently small value that the BATS protocol can easily fullfill, so that we can eliminate the uncertainty brought by software performance. We set the data source rate to be smaller than the bandwidth limit in each test scenario, so that there is no congestion, and we can focus on the specific targets of each test scenario. Then, for each scenario, we can gradually increase the source rate towards the bandwidth limit, untill exceeds it, to see how the communication behaviour changes.
+We set the bandwidth limit of the link to a sufficiently small value that the BATS protocol can easily fullfil, so that we can eliminate the uncertainty brought by software performance. We set the data source rate to be smaller than the bandwidth limit in each test scenario, so that there is no congestion, and we can focus on the specific targets of each test scenario. Then, for each scenario, we can gradually increase the source rate towards the bandwidth limit, until exceeds it, to see how the communication behavior changes.
 
 - **Scenario 1-1: Reliable Communication with Feedback**
 
