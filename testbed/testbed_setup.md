@@ -1,4 +1,5 @@
 # Testbed Setup
+
 ## Setup for one-hop network testing
 
 ### 1.1. Topology
@@ -128,8 +129,6 @@ python3 -u ./bperf.py -s 10.0.0.12 -p 12345
 | 9   | ordinary random | 15        |            |           |         | 100%        | unrestricted |
 | 10  | ordinary random | 20        |            |           |         | 100%        | unrestricted |
 
-
-
 | ID  | code schema   | loss rate | throughput | link rate | latency | reliability | feedback     |
 | --- | ------------- | --------- | ---------- | --------- | ------- | ----------- | ------------ |
 | 1   | random binary | 0         |            |           |         |             | restricted   |
@@ -143,7 +142,6 @@ python3 -u ./bperf.py -s 10.0.0.12 -p 12345
 | 4   | random binary | 15        |            |           |         | 100%        | unrestricted |
 | 5   | random binary | 20        |            |           |         | 100%        | unrestricted |
 
-
 | ID  | code schema | loss rate | throughput | link rate | latency | reliability | feedback     |
 | --- | ----------- | --------- | ---------- | --------- | ------- | ----------- | ------------ |
 | 1   | systematic  | 0         |            |           |         |             | restricted   |
@@ -156,7 +154,6 @@ python3 -u ./bperf.py -s 10.0.0.12 -p 12345
 | 8   | systematic  | 10        |            |           |         | 100%        | unrestricted |
 | 9   | systematic  | 15        |            |           |         | 100%        | unrestricted |
 | 10  | systematic  | 20        |            |           |         | 100%        | unrestricted |
-
 
 **combination of independent loss pattern and robust loss pattern**
 
