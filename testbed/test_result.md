@@ -36,30 +36,20 @@ The objective of this experimental study is to investigate the impact of differe
 | 4   | random     | 15        | 0.88                  | 0.077ms | 1ms     | 100%        |
 | 5   | random     | 20        | 0.851                 | 0.129ms | 1ms     | 100%        |
 
-### 4. BATS
+### 4. BATS (collect from receiver)
 
-| ID  | Delay distribution | loss rate | throughput | link rate | latency |
-| --- | ------------------ | --------- | ---------- | --------- | ------- |
-| 1   | uniform            | 0         |            |           |         |
-| 2   | uniform            | 5         |            |           |         |
-| 3   | uniform            | 10        |            |           |         |
-| 4   | uniform            | 15        |            |           |         |
-| 5   | uniform            | 20        |            |           |         |
-| 6   | normal             | 0         |            |           |         |
-| 7   | normal             | 5         |            |           |         |
-| 8   | normal             | 10        |            |           |         |
-| 9   | normal             | 15        |            |           |         |
-| 10  | normal             | 20        |            |           |         |
-| 11  | pareto             | 0         |            |           |         |
-| 12  | pareto             | 5         |            |           |         |
-| 13  | pareto             | 10        |            |           |         |
-| 14  | pareto             | 15        |            |           |         |
-| 15  | pareto             | 20        |            |           |         |
-| 16  | paretonormal       | 0         |            |           |         |
-| 17  | paretonormal       | 5         |            |           |         |
-| 18  | paretonormal       | 10        |            |           |         |
-| 19  | paretonormal       | 15        |            |           |         |
-| 20  | paretonormal       | 20        |            |           |         |
+| ID  | code schema     | loss model | loss rate | throughput(Mbits/sec) | link rate | latency | reliability | feedback     |
+| --- | --------------- | ---------- | --------- | --------------------- | --------- | ------- | ----------- | ------------ |
+| 1   | ordinary random | random     | 0         |                       |           | 1ms     |             | restricted   |
+| 2   | ordinary random | random     | 5         |                       |           | 1ms     |             | restricted   |
+| 3   | ordinary random | random     | 10        |                       |           | 1ms     |             | restricted   |
+| 4   | ordinary random | random     | 15        |                       |           | 1ms     |             | restricted   |
+| 5   | ordinary random | random     | 20        |                       |           | 1ms     |             | restricted   |
+| 6   | ordinary random | random     | 0         | 609                   | 1000M     | 1ms     | 100%        | unrestricted |
+| 7   | ordinary random | random     | 5         | N/A                   | 1000M     | 1ms     | 100%        | unrestricted |
+| 8   | ordinary random | random     | 10        |                       | 1000M     | 1ms     | 100%        | unrestricted |
+| 9   | ordinary random | random     | 15        |                       | 1000M     | 1ms     | 100%        | unrestricted |
+| 10  | ordinary random | random     | 20        |                       | 1000M     | 1ms     | 100%        | unrestricted |
 
 ## Two-hop network testing
 
