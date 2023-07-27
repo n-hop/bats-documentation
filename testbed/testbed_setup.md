@@ -77,6 +77,7 @@ iperf -c 10.0.0.12 --linux-congestion=bbr -i1 -t10
 iperf -s -i1
 
 ```
+add link rate results to the table
 
 | ID  | cc algorithm | loss rate | throughput | latency | reliability |
 | --- | ------------ | --------- | ---------- | ------- | ----------- |
