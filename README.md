@@ -2,9 +2,15 @@
 
 BATS Protocol is a network communication protocol based on BATS codes, designed to provide high throughput and low latency data transmission in lossy networks. In this project, we evaluate and compare the performance of BATS Protocol with other techniques/protocols in terms of various performance metrics such as throughput, latency and reliability.  
 
+## Objective
+
+- To demonstrate the benefits/gain of BATS Protocol
+- To implement the automated testing for BATS Protocol in CI/CD pipeline.
+
 ## Contents
 
 - [BATS Protocol Performance Test](#bats-protocol-performance-test)
+  - [Objective](#objective)
   - [Contents](#contents)
   - [1. Introduction](#1-introduction)
     - [Network Topologies](#network-topologies)
