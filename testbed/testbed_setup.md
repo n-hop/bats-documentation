@@ -112,49 +112,36 @@ python3 -u ./bperf.py -s 10.0.0.12 -p 12345
 
 **independent loss pattern**
 
-    for ordinary random codes, set `coding.coding_type` to `3`, and BATS sockets use `CodingParameters::CHUNK` as its paramters.
-    for random binary codes, set `coding.coding_type` to `2`, and BATS sockets use `CodingParameters::CHUNK` as its paramters.
-    for systematic codes, set `coding.coding_type` to `4`, and BATS sockets use `CodingParameters::CHUNK_SYSTEMATIC` as its paramters.
+Please check in readme document of `BATS protocol` to learn how to set code schema through `BATS socket` interface.
 
 | ID  | code schema     | loss rate | throughput | link rate of each node | latency | reliability | feedback     |
-| --- | --------------- | --------- | ---------- | --------- | ------- | ----------- | ------------ |
-| 1   | ordinary random | 0         |            |           |         |             | restricted   |
-| 2   | ordinary random | 5         |            |           |         |             | restricted   |
-| 3   | ordinary random | 10        |            |           |         |             | restricted   |
-| 4   | ordinary random | 15        |            |           |         |             | restricted   |
-| 5   | ordinary random | 20        |            |           |         |             | restricted   |
-| 6   | ordinary random | 0         |            |           |         | 100%        | unrestricted |
-| 7   | ordinary random | 5         |            |           |         | 100%        | unrestricted |
-| 8   | ordinary random | 10        |            |           |         | 100%        | unrestricted |
-| 9   | ordinary random | 15        |            |           |         | 100%        | unrestricted |
-| 10  | ordinary random | 20        |            |           |         | 100%        | unrestricted |
+| --- | --------------- | --------- | ---------- | ---------------------- | ------- | ----------- | ------------ |
+| 1   | ordinary random | 0         |            |                        |         |             | restricted   |
+| 2   | ordinary random | 5         |            |                        |         |             | restricted   |
+| 3   | ordinary random | 10        |            |                        |         |             | restricted   |
+| 4   | ordinary random | 15        |            |                        |         |             | restricted   |
+| 5   | ordinary random | 20        |            |                        |         |             | restricted   |
+| 6   | ordinary random | 0         |            |                        |         | 100%        | unrestricted |
+| 7   | ordinary random | 5         |            |                        |         | 100%        | unrestricted |
+| 8   | ordinary random | 10        |            |                        |         | 100%        | unrestricted |
+| 9   | ordinary random | 15        |            |                        |         | 100%        | unrestricted |
+| 10  | ordinary random | 20        |            |                        |         | 100%        | unrestricted |
 
 
 
-| ID  | code schema   | loss rate | throughput | link rate of each node | latency | reliability | feedback     |
-| --- | ------------- | --------- | ---------- | --------- | ------- | ----------- | ------------ |
-| 1   | identity | 0         |            |           |         |             | restricted   |
-| 2   | identity | 5         |            |           |         |             | restricted   |
-| 3   | identity | 10        |            |           |         |             | restricted   |
-| 4   | identity | 15        |            |           |         |             | restricted   |
-| 5   | identity | 20        |            |           |         |             | restricted   |
-| 6   | identity | 0         |            |           |         | 100%        | unrestricted |
-| 2   | identity | 5         |            |           |         | 100%        | unrestricted |
-| 3   | identity | 10        |            |           |         | 100%        | unrestricted |
-| 4   | identity | 15        |            |           |         | 100%        | unrestricted |
-| 5   | identity | 20        |            |           |         | 100%        | unrestricted |
+| ID  | code schema | loss rate | throughput | link rate of each node | latency | reliability | feedback     |
+| --- | ----------- | --------- | ---------- | ---------------------- | ------- | ----------- | ------------ |
+| 1   | identity    | 0         |            |                        |         |             | restricted   |
+| 2   | identity    | 5         |            |                        |         |             | restricted   |
+| 3   | identity    | 10        |            |                        |         |             | restricted   |
+| 4   | identity    | 15        |            |                        |         |             | restricted   |
+| 5   | identity    | 20        |            |                        |         |             | restricted   |
+| 6   | identity    | 0         |            |                        |         | 100%        | unrestricted |
+| 2   | identity    | 5         |            |                        |         | 100%        | unrestricted |
+| 3   | identity    | 10        |            |                        |         | 100%        | unrestricted |
+| 4   | identity    | 15        |            |                        |         | 100%        | unrestricted |
+| 5   | identity    | 20        |            |                        |         | 100%        | unrestricted |
 
 **combination of independent loss pattern and robust loss pattern**
 
-| ID  | code schema | loss rate | throughput | link rate of each node | latency | reliability | feedback     |
-| --- | ----------- | --------- | ---------- | --------- | ------- | ----------- | ------------ |
-| 1   | systematic  | 0         |            |           |         |             | restricted   |
-| 2   | systematic  | 5         |            |           |         |             | restricted   |
-| 3   | systematic  | 10        |            |           |         |             | restricted   |
-| 4   | systematic  | 15        |            |           |         |             | restricted   |
-| 5   | systematic  | 20        |            |           |         |             | restricted   |
-| 6   | systematic  | 0         |            |           |         | 100%        | unrestricted |
-| 7   | systematic  | 5         |            |           |         | 100%        | unrestricted |
-| 8   | systematic  | 10        |            |           |         | 100%        | unrestricted |
-| 9   | systematic  | 15        |            |           |         | 100%        | unrestricted |
-| 10  | systematic  | 20        |            |           |         | 100%        | unrestricted |
+TODO: add the results
