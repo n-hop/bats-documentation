@@ -1,0 +1,2655 @@
+#UDP Test1
+UDP specific parameters: udp_bandwidth: 97.2m
+Link status: link_loss_rate: 0, link_delay: 0ms, link_loss_model: random
+====================================================================================================
+protocol: udp
+tc_cmd: sudo /usr/sbin/tc qdisc replace dev eth0 root netem loss random 0 delay 0ms
+server.log:iperf3 -s -i1 -p 12345 > server.log 2>&1 &
+-----------------------------------------------------------
+Server listening on 12345
+-----------------------------------------------------------
+Accepted connection from 10.0.0.11, port 35960
+[  5] local 10.0.0.12 port 12345 connected to 10.0.0.11 port 44845
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-1.00   sec  11.0 MBytes  92.3 Mbits/sec  0.177 ms  45/8014 (0.56%)  
+[  5]   1.00-2.00   sec  11.6 MBytes  97.2 Mbits/sec  0.182 ms  1/8390 (0.012%)  
+[  5]   2.00-3.00   sec  11.6 MBytes  97.2 Mbits/sec  0.173 ms  2/8392 (0.024%)  
+[  5]   3.00-4.00   sec  11.5 MBytes  96.8 Mbits/sec  0.171 ms  38/8391 (0.45%)  
+[  5]   4.00-5.00   sec  11.6 MBytes  97.2 Mbits/sec  0.168 ms  1/8390 (0.012%)  
+[  5]   5.00-6.00   sec  11.6 MBytes  97.2 Mbits/sec  0.164 ms  2/8392 (0.024%)  
+[  5]   6.00-7.00   sec  11.6 MBytes  97.2 Mbits/sec  0.169 ms  1/8390 (0.012%)  
+[  5]   7.00-8.00   sec  11.6 MBytes  97.2 Mbits/sec  0.167 ms  2/8391 (0.024%)  
+[  5]   8.00-9.00   sec  11.6 MBytes  97.2 Mbits/sec  0.161 ms  2/8392 (0.024%)  
+[  5]   9.00-10.00  sec  11.6 MBytes  97.2 Mbits/sec  0.173 ms  1/8390 (0.012%)  
+[  5]  10.00-11.00  sec  11.6 MBytes  97.2 Mbits/sec  0.168 ms  2/8391 (0.024%)  
+[  5]  11.00-12.00  sec  11.6 MBytes  97.2 Mbits/sec  0.170 ms  1/8391 (0.012%)  
+[  5]  12.00-13.00  sec  11.6 MBytes  97.2 Mbits/sec  0.171 ms  2/8391 (0.024%)  
+[  5]  13.00-14.00  sec  11.6 MBytes  97.2 Mbits/sec  0.171 ms  1/8390 (0.012%)  
+[  5]  14.00-15.00  sec  11.6 MBytes  97.2 Mbits/sec  0.167 ms  2/8392 (0.024%)  
+[  5]  15.00-16.00  sec  11.6 MBytes  97.2 Mbits/sec  0.170 ms  1/8390 (0.012%)  
+[  5]  16.00-17.00  sec  11.6 MBytes  97.2 Mbits/sec  0.169 ms  2/8392 (0.024%)  
+[  5]  17.00-18.00  sec  11.6 MBytes  97.2 Mbits/sec  0.172 ms  1/8390 (0.012%)  
+[  5]  18.00-19.00  sec  11.6 MBytes  97.2 Mbits/sec  0.171 ms  2/8391 (0.024%)  
+[  5]  19.00-20.00  sec  11.6 MBytes  97.2 Mbits/sec  0.165 ms  1/8391 (0.012%)  
+[  5]  20.00-21.00  sec  11.6 MBytes  97.2 Mbits/sec  0.175 ms  2/8391 (0.024%)  
+[  5]  21.00-22.00  sec  11.6 MBytes  97.2 Mbits/sec  0.173 ms  1/8390 (0.012%)  
+[  5]  22.00-23.00  sec  11.6 MBytes  97.2 Mbits/sec  0.165 ms  1/8391 (0.012%)  
+[  5]  23.00-24.00  sec  11.6 MBytes  97.2 Mbits/sec  0.176 ms  2/8391 (0.024%)  
+[  5]  24.00-25.00  sec  11.6 MBytes  97.2 Mbits/sec  0.184 ms  1/8390 (0.012%)  
+[  5]  25.00-26.00  sec  11.6 MBytes  97.2 Mbits/sec  0.177 ms  2/8392 (0.024%)  
+[  5]  26.00-27.00  sec  11.6 MBytes  97.2 Mbits/sec  0.174 ms  1/8390 (0.012%)  
+[  5]  27.00-28.00  sec  11.6 MBytes  97.2 Mbits/sec  0.167 ms  2/8392 (0.024%)  
+[  5]  28.00-29.00  sec  11.5 MBytes  96.8 Mbits/sec  0.167 ms  32/8391 (0.38%)  
+[  5]  29.00-30.00  sec  11.6 MBytes  97.2 Mbits/sec  0.170 ms  1/8390 (0.012%)  
+[  5]  30.00-31.00  sec  11.6 MBytes  97.2 Mbits/sec  0.175 ms  2/8391 (0.024%)  
+[  5]  31.00-32.00  sec  11.6 MBytes  97.2 Mbits/sec  0.171 ms  1/8390 (0.012%)  
+[  5]  32.00-33.00  sec  11.6 MBytes  97.2 Mbits/sec  0.176 ms  2/8392 (0.024%)  
+[  5]  33.00-34.00  sec  11.6 MBytes  97.2 Mbits/sec  0.183 ms  1/8390 (0.012%)  
+[  5]  34.00-35.00  sec  11.6 MBytes  97.2 Mbits/sec  0.179 ms  2/8391 (0.024%)  
+[  5]  35.00-36.00  sec  11.6 MBytes  97.2 Mbits/sec  0.171 ms  1/8391 (0.012%)  
+[  5]  36.00-37.00  sec  11.6 MBytes  97.2 Mbits/sec  0.172 ms  2/8391 (0.024%)  
+[  5]  37.00-38.00  sec  11.6 MBytes  97.2 Mbits/sec  0.177 ms  1/8391 (0.012%)  
+[  5]  38.00-39.00  sec  11.6 MBytes  97.2 Mbits/sec  0.176 ms  2/8391 (0.024%)  
+[  5]  39.00-40.00  sec  11.6 MBytes  97.2 Mbits/sec  0.168 ms  1/8391 (0.012%)  
+[  5]  40.00-41.00  sec  11.6 MBytes  97.2 Mbits/sec  0.171 ms  2/8391 (0.024%)  
+[  5]  41.00-42.00  sec  11.6 MBytes  97.2 Mbits/sec  0.176 ms  1/8390 (0.012%)  
+[  5]  42.00-43.00  sec  11.6 MBytes  97.2 Mbits/sec  0.168 ms  2/8392 (0.024%)  
+[  5]  43.00-44.00  sec  11.6 MBytes  97.2 Mbits/sec  0.175 ms  1/8390 (0.012%)  
+[  5]  44.00-45.00  sec  11.6 MBytes  97.2 Mbits/sec  0.180 ms  2/8391 (0.024%)  
+[  5]  45.00-46.00  sec  11.6 MBytes  97.2 Mbits/sec  0.176 ms  1/8390 (0.012%)  
+[  5]  46.00-47.00  sec  11.6 MBytes  97.2 Mbits/sec  0.175 ms  2/8392 (0.024%)  
+[  5]  47.00-48.00  sec  11.6 MBytes  97.2 Mbits/sec  0.175 ms  1/8390 (0.012%)  
+[  5]  48.00-49.00  sec  11.6 MBytes  97.1 Mbits/sec  0.176 ms  9/8391 (0.11%)  
+[  5]  49.00-50.00  sec  11.6 MBytes  97.2 Mbits/sec  0.182 ms  2/8390 (0.024%)  
+[  5]  50.00-51.00  sec  11.6 MBytes  97.2 Mbits/sec  0.176 ms  2/8392 (0.024%)  
+[  5]  51.00-52.00  sec  11.6 MBytes  97.2 Mbits/sec  0.182 ms  1/8390 (0.012%)  
+[  5]  52.00-53.00  sec  11.6 MBytes  97.2 Mbits/sec  0.176 ms  2/8392 (0.024%)  
+[  5]  53.00-54.00  sec  11.6 MBytes  97.2 Mbits/sec  0.175 ms  1/8390 (0.012%)  
+[  5]  54.00-55.00  sec  11.6 MBytes  97.2 Mbits/sec  0.170 ms  1/8391 (0.012%)  
+[  5]  55.00-56.00  sec  11.6 MBytes  97.2 Mbits/sec  0.178 ms  2/8391 (0.024%)  
+[  5]  56.00-57.00  sec  11.6 MBytes  97.2 Mbits/sec  0.180 ms  2/8391 (0.024%)  
+[  5]  57.00-58.00  sec  11.6 MBytes  97.2 Mbits/sec  0.185 ms  1/8390 (0.012%)  
+[  5]  58.00-59.00  sec  11.6 MBytes  97.2 Mbits/sec  0.180 ms  1/8391 (0.012%)  
+[  5]  59.00-60.00  sec  11.6 MBytes  97.2 Mbits/sec  0.182 ms  2/8391 (0.024%)  
+[  5]  60.00-60.04  sec   526 KBytes  97.0 Mbits/sec  0.169 ms  0/372 (0%)  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-60.04  sec   695 MBytes  97.1 Mbits/sec  0.169 ms  208/503446 (0.041%)  receiver
+----------------------------------------------------------------------------------------------------
+client.log:iperf3 -c 10.0.0.12 -i 1 -t 60 -u -V -p 12345 -b 97.2m > client.log 2>&1 &
+iperf 3.9
+Linux raspberrypi 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023 aarch64
+Control connection MSS 1448
+Setting UDP block size to 1448
+Time: Fri, 04 Aug 2023 13:46:14 GMT
+Connecting to host 10.0.0.12, port 12345
+      Cookie: cv37i7uohcm2tjt4ayvopkgbihgil3dhfe4l
+      Target Bitrate: 97200000
+[  5] local 10.0.0.11 port 44845 connected to 10.0.0.12 port 12345
+Starting Test: protocol: UDP, 1 streams, 1448 byte blocks, omitting 0 seconds, 60 second test, tos 0
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.00   sec  11.6 MBytes  97.1 Mbits/sec  8385  
+[  5]   1.00-2.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   2.00-3.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   3.00-4.00   sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]   4.00-5.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   5.00-6.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   6.00-7.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   7.00-8.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   8.00-9.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   9.00-10.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  10.00-11.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  11.00-12.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  12.00-13.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  13.00-14.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  14.00-15.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  15.00-16.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  16.00-17.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  17.00-18.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  18.00-19.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  19.00-20.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  20.00-21.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  21.00-22.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  22.00-23.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  23.00-24.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  24.00-25.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  25.00-26.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  26.00-27.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  27.00-28.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  28.00-29.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  29.00-30.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  30.00-31.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  31.00-32.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  32.00-33.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  33.00-34.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  34.00-35.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  35.00-36.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  36.00-37.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  37.00-38.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  38.00-39.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  39.00-40.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  40.00-41.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  41.00-42.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  42.00-43.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  43.00-44.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  44.00-45.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  45.00-46.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  46.00-47.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  47.00-48.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  48.00-49.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  49.00-50.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  50.00-51.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  51.00-52.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  52.00-53.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  53.00-54.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  54.00-55.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  55.00-56.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  56.00-57.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  57.00-58.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  58.00-59.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  59.00-60.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+Test Complete. Summary Results:
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-60.00  sec   695 MBytes  97.2 Mbits/sec  0.000 ms  0/503447 (0%)  sender
+[  5]   0.00-60.04  sec   695 MBytes  97.1 Mbits/sec  0.169 ms  208/503446 (0.041%)  receiver
+CPU Utilization: local/sender 14.9% (2.2%u/12.7%s), remote/receiver 21.1% (2.9%u/18.3%s)
+
+iperf Done.
+----------------------------------------------------------------------------------------------------
+traffic.log:sar -n DEV --iface=eth0 1 60 > traffic.log 2>&1 &
+Linux 6.1.21-v8+ (raspberrypi) 	04/08/23 	_aarch64_	(4 CPU)
+
+14:46:14        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:15         eth0   7659.00      5.00  11138.99      0.31      0.00      0.00      0.00      9.13
+
+14:46:15        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:16         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:16        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:17         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:17        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:18         eth0   8353.00      0.00  12154.27      0.00      0.00      0.00      0.00      9.96
+
+14:46:18        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:19         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:19        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:20         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:20        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:21         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:46:21        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:22         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:22        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:23         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:23        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:24         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:24        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:25         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:46:25        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:26         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:26        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:27         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:27        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:28         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:28        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:29         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:46:29        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:30         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:30        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:31         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:46:31        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:32         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:32        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:33         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:46:33        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:34         eth0   8391.00      0.00  12209.56      0.00      0.00      0.00      0.00     10.00
+
+14:46:34        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:35         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:46:35        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:36         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:36        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:37         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:37        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:38         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:46:38        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:39         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:39        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:40         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:40        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:41         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:41        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:42         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:46:42        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:43         eth0   8361.00      1.00  12164.51      0.04      0.00      0.00      0.00      9.97
+
+14:46:43        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:44         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:44        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:45         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:46:45        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:46         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:46        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:47         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:47        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:48         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:48        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:49         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:46:49        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:50         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:50        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:51         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:51        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:52         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:46:52        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:53         eth0   8391.00      0.00  12209.56      0.00      0.00      0.00      0.00     10.00
+
+14:46:53        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:54         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:46:54        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:55         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:55        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:56         eth0   8391.00      0.00  12209.56      0.00      0.00      0.00      0.00     10.00
+
+14:46:56        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:57         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:57        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:58         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:46:58        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:46:59         eth0   8388.00      0.00  12205.20      0.00      0.00      0.00      0.00     10.00
+
+14:46:59        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:00         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:47:00        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:01         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:47:01        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:02         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:47:02        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:03         eth0   8383.00      0.00  12197.92      0.00      0.00      0.00      0.00      9.99
+
+14:47:03        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:04         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:47:04        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:05         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:47:05        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:06         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:47:06        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:07         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:47:07        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:08         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:47:08        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:09         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:47:09        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:10         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:47:10        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:11         eth0   8391.00      1.00  12208.16      0.04      0.00      0.00      0.00     10.00
+
+14:47:11        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:12         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:47:12        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:13         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:47:13        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:14         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+Average:         eth0   8376.37      0.12  12188.13      0.01      0.00      0.00      0.00      9.98
+----------------------------------------------------------------------------------------------------
+traffic.log:sar -n DEV --iface=eth0 1 60 > traffic.log 2>&1 &
+Linux 6.1.21-v8+ (raspberrypi) 	08/04/2023 	_aarch64_	(4 CPU)
+
+09:46:14 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:15 AM      eth0      5.00   7559.00      0.32  10992.08      0.00      0.00      0.00      9.00
+
+09:46:15 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:16 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:16 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:17 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:17 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:18 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:18 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:19 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:19 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:20 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:46:20 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:21 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:21 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:22 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:22 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:23 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:23 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:24 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:24 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:25 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:25 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:26 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:26 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:27 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:27 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:28 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:46:28 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:29 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:29 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:30 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:30 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:31 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:31 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:32 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:32 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:33 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:33 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:34 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:34 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:35 AM      eth0      0.00   8394.00      0.00  12213.93      0.00      0.00      0.00     10.01
+
+09:46:35 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:36 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:46:36 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:37 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:46:37 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:38 AM      eth0      0.00   8392.00      0.00  12211.02      0.00      0.00      0.00     10.00
+
+09:46:38 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:39 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:39 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:40 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:46:40 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:41 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:41 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:42 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:42 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:43 AM      eth0      1.00   8392.00      0.06  12209.60      0.00      0.00      0.00     10.00
+
+09:46:43 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:44 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:44 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:45 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:45 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:46 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:46 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:47 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:47 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:48 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:48 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:49 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:46:49 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:50 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:50 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:51 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:51 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:52 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:52 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:53 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:53 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:54 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:54 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:55 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:55 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:56 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:56 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:57 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:46:57 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:58 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:46:58 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:46:59 AM      eth0      0.00   8394.00      0.00  12213.93      0.00      0.00      0.00     10.01
+
+09:46:59 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:00 AM      eth0      0.00   8394.00      0.00  12213.93      0.00      0.00      0.00     10.01
+
+09:47:00 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:01 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:47:01 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:02 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:02 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:03 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:03 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:04 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:04 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:05 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:05 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:06 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:06 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:07 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:07 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:08 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:08 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:09 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:09 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:10 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:47:10 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:11 AM      eth0      1.00   8392.00      0.06  12209.60      0.00      0.00      0.00     10.00
+
+09:47:11 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:12 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:12 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:13 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:13 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:14 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+Average:         eth0      0.12   8377.33      0.01  12189.51      0.00      0.00      0.00      9.99
+====================================================================================================
+#UDP Test2
+UDP specific parameters: udp_bandwidth: 97.2m
+Link status: link_loss_rate: 5, link_delay: 0ms, link_loss_model: random
+====================================================================================================
+protocol: udp
+tc_cmd: sudo /usr/sbin/tc qdisc replace dev eth0 root netem loss random 5 delay 0ms
+server.log:iperf3 -s -i1 -p 12345 > server.log 2>&1 &
+-----------------------------------------------------------
+Server listening on 12345
+-----------------------------------------------------------
+Accepted connection from 10.0.0.11, port 49486
+[  5] local 10.0.0.12 port 12345 connected to 10.0.0.11 port 45306
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-1.00   sec  10.9 MBytes  91.6 Mbits/sec  0.196 ms  48/7952 (0.6%)  
+[  5]   1.00-2.00   sec  11.6 MBytes  97.2 Mbits/sec  0.177 ms  1/8391 (0.012%)  
+[  5]   2.00-3.00   sec  11.6 MBytes  97.2 Mbits/sec  0.184 ms  2/8391 (0.024%)  
+[  5]   3.00-4.00   sec  11.6 MBytes  97.2 Mbits/sec  0.179 ms  1/8390 (0.012%)  
+[  5]   4.00-5.00   sec  11.6 MBytes  97.0 Mbits/sec  0.182 ms  21/8391 (0.25%)  
+[  5]   5.00-6.00   sec  11.6 MBytes  97.2 Mbits/sec  0.194 ms  2/8391 (0.024%)  
+[  5]   6.00-7.00   sec  11.6 MBytes  97.2 Mbits/sec  0.180 ms  1/8391 (0.012%)  
+[  5]   7.00-8.00   sec  11.6 MBytes  97.2 Mbits/sec  0.182 ms  2/8391 (0.024%)  
+[  5]   8.00-9.00   sec  11.6 MBytes  97.2 Mbits/sec  0.184 ms  1/8390 (0.012%)  
+[  5]   9.00-10.00  sec  11.6 MBytes  97.0 Mbits/sec  0.194 ms  20/8391 (0.24%)  
+[  5]  10.00-11.00  sec  11.6 MBytes  97.2 Mbits/sec  0.184 ms  2/8392 (0.024%)  
+[  5]  11.00-12.00  sec  11.6 MBytes  97.2 Mbits/sec  0.195 ms  1/8390 (0.012%)  
+[  5]  12.00-13.00  sec  11.6 MBytes  97.2 Mbits/sec  0.184 ms  2/8391 (0.024%)  
+[  5]  13.00-14.00  sec  11.6 MBytes  97.2 Mbits/sec  0.185 ms  1/8391 (0.012%)  
+[  5]  14.00-15.00  sec  11.6 MBytes  96.9 Mbits/sec  0.192 ms  23/8390 (0.27%)  
+[  5]  15.00-16.00  sec  11.6 MBytes  97.2 Mbits/sec  0.184 ms  2/8392 (0.024%)  
+[  5]  16.00-17.00  sec  11.6 MBytes  97.2 Mbits/sec  0.187 ms  2/8391 (0.024%)  
+[  5]  17.00-18.00  sec  11.6 MBytes  97.2 Mbits/sec  0.194 ms  1/8390 (0.012%)  
+[  5]  18.00-19.00  sec  11.6 MBytes  97.2 Mbits/sec  0.185 ms  2/8392 (0.024%)  
+[  5]  19.00-20.00  sec  11.6 MBytes  96.9 Mbits/sec  0.198 ms  24/8390 (0.29%)  
+[  5]  20.00-21.00  sec  11.6 MBytes  97.2 Mbits/sec  0.180 ms  2/8392 (0.024%)  
+[  5]  21.00-22.00  sec  11.6 MBytes  97.2 Mbits/sec  0.186 ms  1/8390 (0.012%)  
+[  5]  22.00-23.00  sec  11.6 MBytes  97.2 Mbits/sec  0.192 ms  2/8391 (0.024%)  
+[  5]  23.00-24.00  sec  11.6 MBytes  97.2 Mbits/sec  0.193 ms  1/8390 (0.012%)  
+[  5]  24.00-25.00  sec  11.6 MBytes  96.9 Mbits/sec  0.189 ms  25/8392 (0.3%)  
+[  5]  25.00-26.00  sec  11.6 MBytes  97.2 Mbits/sec  0.190 ms  1/8390 (0.012%)  
+[  5]  26.00-27.00  sec  11.6 MBytes  97.2 Mbits/sec  0.187 ms  2/8392 (0.024%)  
+[  5]  27.00-28.00  sec  11.6 MBytes  97.2 Mbits/sec  0.189 ms  1/8390 (0.012%)  
+[  5]  28.00-29.00  sec  11.6 MBytes  97.2 Mbits/sec  0.195 ms  2/8391 (0.024%)  
+[  5]  29.00-30.00  sec  11.5 MBytes  96.8 Mbits/sec  0.184 ms  34/8390 (0.41%)  
+[  5]  30.00-31.00  sec  11.6 MBytes  97.2 Mbits/sec  0.195 ms  2/8391 (0.024%)  
+[  5]  31.00-32.00  sec  11.6 MBytes  97.2 Mbits/sec  0.186 ms  1/8391 (0.012%)  
+[  5]  32.00-33.00  sec  11.6 MBytes  97.2 Mbits/sec  0.201 ms  2/8391 (0.024%)  
+[  5]  33.00-34.00  sec  11.6 MBytes  97.2 Mbits/sec  0.191 ms  2/8392 (0.024%)  
+[  5]  34.00-35.00  sec  11.6 MBytes  96.9 Mbits/sec  0.188 ms  23/8390 (0.27%)  
+[  5]  35.00-36.00  sec  11.6 MBytes  97.2 Mbits/sec  0.197 ms  2/8391 (0.024%)  
+[  5]  36.00-37.00  sec  11.6 MBytes  97.2 Mbits/sec  0.192 ms  1/8390 (0.012%)  
+[  5]  37.00-38.00  sec  11.6 MBytes  97.2 Mbits/sec  0.189 ms  2/8392 (0.024%)  
+[  5]  38.00-39.00  sec  11.6 MBytes  97.1 Mbits/sec  0.160 ms  1/8380 (0.012%)  
+[  5]  39.00-40.00  sec  11.5 MBytes  96.2 Mbits/sec  0.194 ms  98/8401 (1.2%)  
+[  5]  40.00-41.00  sec  11.6 MBytes  97.2 Mbits/sec  0.187 ms  1/8391 (0.012%)  
+[  5]  41.00-42.00  sec  11.6 MBytes  97.1 Mbits/sec  0.195 ms  4/8390 (0.048%)  
+[  5]  42.00-43.00  sec  11.6 MBytes  97.2 Mbits/sec  0.189 ms  2/8392 (0.024%)  
+[  5]  43.00-44.00  sec  11.6 MBytes  97.2 Mbits/sec  0.200 ms  1/8390 (0.012%)  
+[  5]  44.00-45.00  sec  11.6 MBytes  97.0 Mbits/sec  0.199 ms  21/8392 (0.25%)  
+[  5]  45.00-46.00  sec  11.6 MBytes  97.2 Mbits/sec  0.190 ms  1/8390 (0.012%)  
+[  5]  46.00-47.00  sec  11.6 MBytes  97.2 Mbits/sec  0.192 ms  1/8391 (0.012%)  
+[  5]  47.00-48.00  sec  11.6 MBytes  97.2 Mbits/sec  0.197 ms  2/8391 (0.024%)  
+[  5]  48.00-49.00  sec  11.6 MBytes  97.2 Mbits/sec  0.199 ms  2/8391 (0.024%)  
+[  5]  49.00-50.00  sec  11.6 MBytes  97.0 Mbits/sec  0.196 ms  20/8391 (0.24%)  
+[  5]  50.00-51.00  sec  11.6 MBytes  97.2 Mbits/sec  0.193 ms  2/8391 (0.024%)  
+[  5]  51.00-52.00  sec  11.6 MBytes  97.2 Mbits/sec  0.195 ms  1/8390 (0.012%)  
+[  5]  52.00-53.00  sec  11.6 MBytes  97.2 Mbits/sec  0.190 ms  2/8392 (0.024%)  
+[  5]  53.00-54.00  sec  11.6 MBytes  97.2 Mbits/sec  0.197 ms  1/8390 (0.012%)  
+[  5]  54.00-55.00  sec  11.6 MBytes  97.0 Mbits/sec  0.193 ms  21/8391 (0.25%)  
+[  5]  55.00-56.00  sec  11.6 MBytes  97.2 Mbits/sec  0.200 ms  2/8391 (0.024%)  
+[  5]  56.00-57.00  sec  11.6 MBytes  97.2 Mbits/sec  0.199 ms  1/8390 (0.012%)  
+[  5]  57.00-58.00  sec  11.6 MBytes  97.2 Mbits/sec  0.196 ms  2/8392 (0.024%)  
+[  5]  58.00-59.00  sec  11.6 MBytes  97.2 Mbits/sec  0.196 ms  1/8390 (0.012%)  
+[  5]  59.00-60.00  sec  11.6 MBytes  97.0 Mbits/sec  0.201 ms  21/8391 (0.25%)  
+[  5]  60.00-60.05  sec   614 KBytes  97.1 Mbits/sec  0.169 ms  0/434 (0%)  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-60.05  sec   695 MBytes  97.0 Mbits/sec  0.169 ms  473/503446 (0.094%)  receiver
+----------------------------------------------------------------------------------------------------
+client.log:iperf3 -c 10.0.0.12 -i 1 -t 60 -u -V -p 12345 -b 97.2m > client.log 2>&1 &
+iperf 3.9
+Linux raspberrypi 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023 aarch64
+Control connection MSS 1448
+Setting UDP block size to 1448
+Time: Fri, 04 Aug 2023 13:47:31 GMT
+Connecting to host 10.0.0.12, port 12345
+      Cookie: 3o7jtxvl2z5wyyaex6efghtd2y2qo7hucvda
+      Target Bitrate: 97200000
+[  5] local 10.0.0.11 port 45306 connected to 10.0.0.12 port 12345
+Starting Test: protocol: UDP, 1 streams, 1448 byte blocks, omitting 0 seconds, 60 second test, tos 0
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.00   sec  11.6 MBytes  97.1 Mbits/sec  8385  
+[  5]   1.00-2.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   2.00-3.00   sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]   3.00-4.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   4.00-5.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   5.00-6.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   6.00-7.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   7.00-8.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   8.00-9.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   9.00-10.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  10.00-11.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  11.00-12.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  12.00-13.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  13.00-14.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  14.00-15.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  15.00-16.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  16.00-17.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  17.00-18.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  18.00-19.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  19.00-20.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  20.00-21.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  21.00-22.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  22.00-23.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  23.00-24.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  24.00-25.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  25.00-26.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  26.00-27.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  27.00-28.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  28.00-29.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  29.00-30.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  30.00-31.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  31.00-32.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  32.00-33.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  33.00-34.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  34.00-35.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  35.00-36.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  36.00-37.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  37.00-38.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  38.00-39.00  sec  11.6 MBytes  97.2 Mbits/sec  8392  
+[  5]  39.00-40.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  40.00-41.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  41.00-42.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  42.00-43.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  43.00-44.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  44.00-45.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  45.00-46.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  46.00-47.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  47.00-48.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  48.00-49.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  49.00-50.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  50.00-51.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  51.00-52.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  52.00-53.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  53.00-54.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  54.00-55.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  55.00-56.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  56.00-57.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  57.00-58.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  58.00-59.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  59.00-60.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+Test Complete. Summary Results:
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-60.00  sec   695 MBytes  97.2 Mbits/sec  0.000 ms  0/503447 (0%)  sender
+[  5]   0.00-60.05  sec   695 MBytes  97.0 Mbits/sec  0.169 ms  473/503446 (0.094%)  receiver
+CPU Utilization: local/sender 14.9% (1.9%u/13.0%s), remote/receiver 21.6% (2.7%u/18.9%s)
+
+iperf Done.
+----------------------------------------------------------------------------------------------------
+traffic.log:sar -n DEV --iface=eth0 1 60 > traffic.log 2>&1 &
+Linux 6.1.21-v8+ (raspberrypi) 	04/08/23 	_aarch64_	(4 CPU)
+
+14:47:31        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:32         eth0   7691.00      5.00  11184.16      0.31      0.00      0.00      0.00      9.16
+
+14:47:32        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:33         eth0   8391.00      0.00  12208.16      0.00      0.00      0.00      0.00     10.00
+
+14:47:33        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:34         eth0   8390.00      0.00  12206.71      0.00      0.00      0.00      0.00     10.00
+
+14:47:34        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:35         eth0   8392.00      0.00  12208.22      0.00      0.00      0.00      0.00     10.00
+
+14:47:35        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:36         eth0   8373.00      0.00  12180.58      0.00      0.00      0.00      0.00      9.98
+
+14:47:36        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:37         eth0   8391.00      0.00  12206.77      0.00      0.00      0.00      0.00     10.00
+
+14:47:37        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:38         eth0   8392.00      0.00  12208.22      0.00      0.00      0.00      0.00     10.00
+
+14:47:38        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:39         eth0   8392.00      0.00  12208.22      0.00      0.00      0.00      0.00     10.00
+
+14:47:39        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:40         eth0   8392.00      0.00  12208.22      0.00      0.00      0.00      0.00     10.00
+
+14:47:40        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:41         eth0   8373.00      0.00  12180.58      0.00      0.00      0.00      0.00      9.98
+
+14:47:41        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:42         eth0   8392.00      0.00  12208.22      0.00      0.00      0.00      0.00     10.00
+
+14:47:42        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:43         eth0   8392.00      0.00  12208.22      0.00      0.00      0.00      0.00     10.00
+
+14:47:43        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:44         eth0   8392.00      0.00  12208.22      0.00      0.00      0.00      0.00     10.00
+
+14:47:44        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:45         eth0   8392.00      0.00  12208.22      0.00      0.00      0.00      0.00     10.00
+
+14:47:45        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:46         eth0   8371.00      0.00  12177.67      0.00      0.00      0.00      0.00      9.98
+
+14:47:46        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:47         eth0   8392.00      0.00  12208.22      0.00      0.00      0.00      0.00     10.00
+
+14:47:47        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:48         eth0   8391.00      0.00  12206.77      0.00      0.00      0.00      0.00     10.00
+
+14:47:48        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:49         eth0   8392.00      0.00  12208.22      0.00      0.00      0.00      0.00     10.00
+
+14:47:49        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:50         eth0   8392.00      0.00  12208.22      0.00      0.00      0.00      0.00     10.00
+
+14:47:50        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:51         eth0   8369.00      0.00  12174.76      0.00      0.00      0.00      0.00      9.97
+
+14:47:51        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:52         eth0   8391.00      0.00  12206.77      0.00      0.00      0.00      0.00     10.00
+
+14:47:52        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:53         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:47:53        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:54         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:47:54        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:55         eth0   8391.00      0.00  12209.56      0.00      0.00      0.00      0.00     10.00
+
+14:47:55        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:56         eth0   8366.00      0.00  12173.18      0.00      0.00      0.00      0.00      9.97
+
+14:47:56        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:57         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:47:57        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:58         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:47:58        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:47:59         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:47:59        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:00         eth0   8391.00      1.00  12208.16      0.04      0.00      0.00      0.00     10.00
+
+14:48:00        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:01         eth0   8356.00      0.00  12158.63      0.00      0.00      0.00      0.00      9.96
+
+14:48:01        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:02         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:02        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:03         eth0   8391.00      0.00  12209.56      0.00      0.00      0.00      0.00     10.00
+
+14:48:03        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:04         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:04        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:05         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:48:05        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:06         eth0   8367.00      0.00  12174.64      0.00      0.00      0.00      0.00      9.97
+
+14:48:06        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:07         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:07        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:08         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:08        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:09         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:48:09        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:10         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:10        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:11         eth0   8294.00      0.00  12068.42      0.00      0.00      0.00      0.00      9.89
+
+14:48:11        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:12         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:12        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:13         eth0   8387.00      0.00  12203.74      0.00      0.00      0.00      0.00     10.00
+
+14:48:13        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:14         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:14        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:15         eth0   8391.00      0.00  12209.56      0.00      0.00      0.00      0.00     10.00
+
+14:48:15        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:16         eth0   8370.00      0.00  12179.00      0.00      0.00      0.00      0.00      9.98
+
+14:48:16        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:17         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:48:17        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:18         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:18        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:19         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:19        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:20         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:20        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:21         eth0   8370.00      0.00  12179.00      0.00      0.00      0.00      0.00      9.98
+
+14:48:21        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:22         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:22        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:23         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:23        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:24         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:24        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:25         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:48:25        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:26         eth0   8371.00      0.00  12180.46      0.00      0.00      0.00      0.00      9.98
+
+14:48:26        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:27         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:48:27        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:28         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:28        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:29         eth0   8391.00      1.00  12208.16      0.04      0.00      0.00      0.00     10.00
+
+14:48:29        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:30         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:48:30        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:31         eth0   8372.00      0.00  12181.91      0.00      0.00      0.00      0.00      9.98
+
+Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+Average:         eth0   8373.23      0.12  12182.66      0.01      0.00      0.00      0.00      9.98
+----------------------------------------------------------------------------------------------------
+traffic.log:sar -n DEV --iface=eth0 1 60 > traffic.log 2>&1 &
+Linux 6.1.21-v8+ (raspberrypi) 	08/04/2023 	_aarch64_	(4 CPU)
+
+09:47:31 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:32 AM      eth0      8.00   7479.00      0.52  10870.16      0.00      0.00      0.00      8.90
+
+09:47:32 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:33 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:33 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:34 AM      eth0      0.00   8392.00      0.00  12211.02      0.00      0.00      0.00     10.00
+
+09:47:34 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:35 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:47:35 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:36 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:47:36 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:37 AM      eth0      0.00   8394.00      0.00  12213.93      0.00      0.00      0.00     10.01
+
+09:47:37 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:38 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:38 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:39 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:39 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:40 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:40 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:41 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:47:41 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:42 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:42 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:43 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:43 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:44 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:44 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:45 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:45 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:46 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:46 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:47 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:47 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:48 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:48 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:49 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:49 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:50 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:47:50 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:51 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:51 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:52 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:52 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:53 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:53 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:54 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:54 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:55 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:55 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:56 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:56 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:57 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:57 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:58 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:47:58 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:47:59 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:47:59 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:00 AM      eth0      1.00   8394.00      0.06  12212.51      0.00      0.00      0.00     10.00
+
+09:48:00 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:01 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:48:01 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:02 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:48:02 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:03 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:48:03 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:04 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:04 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:05 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:05 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:06 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:06 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:07 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:07 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:08 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:08 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:09 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:09 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:10 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:48:10 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:11 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:11 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:12 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:12 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:13 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:13 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:14 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:14 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:15 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:15 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:16 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:16 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:17 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:17 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:18 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:18 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:19 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:48:19 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:20 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:20 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:21 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:21 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:22 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:22 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:23 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:23 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:24 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:24 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:25 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:25 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:26 AM      eth0      0.00   8394.00      0.00  12213.93      0.00      0.00      0.00     10.01
+
+09:48:26 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:27 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:27 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:28 AM      eth0      0.00   8395.00      0.00  12215.38      0.00      0.00      0.00     10.01
+
+09:48:28 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:29 AM      eth0      1.00   8393.00      0.06  12211.06      0.00      0.00      0.00     10.00
+
+09:48:29 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:30 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:30 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:31 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+Average:         eth0      0.17   8376.13      0.01  12187.68      0.00      0.00      0.00      9.98
+====================================================================================================
+#UDP Test3
+UDP specific parameters: udp_bandwidth: 97.2m
+Link status: link_loss_rate: 10, link_delay: 0ms, link_loss_model: random
+====================================================================================================
+protocol: udp
+tc_cmd: sudo /usr/sbin/tc qdisc replace dev eth0 root netem loss random 10 delay 0ms
+server.log:iperf3 -s -i1 -p 12345 > server.log 2>&1 &
+-----------------------------------------------------------
+Server listening on 12345
+-----------------------------------------------------------
+Accepted connection from 10.0.0.11, port 41820
+[  5] local 10.0.0.12 port 12345 connected to 10.0.0.11 port 53420
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-1.00   sec  10.9 MBytes  91.5 Mbits/sec  0.195 ms  52/7951 (0.65%)  
+[  5]   1.00-2.00   sec  11.6 MBytes  97.2 Mbits/sec  0.193 ms  1/8391 (0.012%)  
+[  5]   2.00-3.00   sec  11.6 MBytes  97.2 Mbits/sec  0.197 ms  2/8390 (0.024%)  
+[  5]   3.00-4.00   sec  11.6 MBytes  97.2 Mbits/sec  0.185 ms  2/8391 (0.024%)  
+[  5]   4.00-5.00   sec  11.6 MBytes  97.2 Mbits/sec  0.195 ms  2/8392 (0.024%)  
+[  5]   5.00-6.00   sec  11.6 MBytes  97.2 Mbits/sec  0.197 ms  1/8390 (0.012%)  
+[  5]   6.00-7.00   sec  11.6 MBytes  97.2 Mbits/sec  0.196 ms  2/8391 (0.024%)  
+[  5]   7.00-8.00   sec  11.6 MBytes  97.2 Mbits/sec  0.193 ms  1/8391 (0.012%)  
+[  5]   8.00-9.00   sec  11.6 MBytes  97.2 Mbits/sec  0.191 ms  2/8391 (0.024%)  
+[  5]   9.00-10.00  sec  11.6 MBytes  97.2 Mbits/sec  0.192 ms  1/8391 (0.012%)  
+[  5]  10.00-11.00  sec  11.6 MBytes  97.2 Mbits/sec  0.190 ms  2/8391 (0.024%)  
+[  5]  11.00-12.00  sec  11.6 MBytes  97.2 Mbits/sec  0.194 ms  1/8390 (0.012%)  
+[  5]  12.00-13.00  sec  11.6 MBytes  97.2 Mbits/sec  0.199 ms  2/8391 (0.024%)  
+[  5]  13.00-14.00  sec  11.6 MBytes  97.2 Mbits/sec  0.184 ms  1/8391 (0.012%)  
+[  5]  14.00-15.00  sec  11.6 MBytes  97.2 Mbits/sec  0.194 ms  2/8391 (0.024%)  
+[  5]  15.00-16.00  sec  11.6 MBytes  97.2 Mbits/sec  0.197 ms  1/8391 (0.012%)  
+[  5]  16.00-17.00  sec  11.6 MBytes  97.2 Mbits/sec  0.186 ms  2/8391 (0.024%)  
+[  5]  17.00-18.00  sec  11.6 MBytes  97.2 Mbits/sec  0.195 ms  2/8391 (0.024%)  
+[  5]  18.00-19.00  sec  11.5 MBytes  96.6 Mbits/sec  0.199 ms  51/8390 (0.61%)  
+[  5]  19.00-20.00  sec  11.6 MBytes  97.2 Mbits/sec  0.194 ms  2/8391 (0.024%)  
+[  5]  20.00-21.00  sec  11.6 MBytes  97.2 Mbits/sec  0.193 ms  1/8391 (0.012%)  
+[  5]  21.00-22.00  sec  11.6 MBytes  97.2 Mbits/sec  0.195 ms  2/8391 (0.024%)  
+[  5]  22.00-23.00  sec  11.6 MBytes  97.2 Mbits/sec  0.196 ms  1/8390 (0.012%)  
+[  5]  23.00-24.00  sec  11.6 MBytes  97.2 Mbits/sec  0.192 ms  2/8392 (0.024%)  
+[  5]  24.00-25.00  sec  11.6 MBytes  97.2 Mbits/sec  0.196 ms  1/8390 (0.012%)  
+[  5]  25.00-26.00  sec  11.6 MBytes  97.2 Mbits/sec  0.195 ms  2/8391 (0.024%)  
+[  5]  26.00-27.00  sec  11.6 MBytes  97.2 Mbits/sec  0.192 ms  1/8391 (0.012%)  
+[  5]  27.00-28.00  sec  11.6 MBytes  97.2 Mbits/sec  0.195 ms  2/8391 (0.024%)  
+[  5]  28.00-29.00  sec  11.6 MBytes  97.2 Mbits/sec  0.199 ms  2/8391 (0.024%)  
+[  5]  29.00-30.00  sec  11.6 MBytes  97.2 Mbits/sec  0.188 ms  1/8391 (0.012%)  
+[  5]  30.00-31.00  sec  11.6 MBytes  97.2 Mbits/sec  0.197 ms  2/8391 (0.024%)  
+[  5]  31.00-32.00  sec  11.6 MBytes  97.2 Mbits/sec  0.200 ms  1/8390 (0.012%)  
+[  5]  32.00-33.00  sec  11.6 MBytes  97.2 Mbits/sec  0.191 ms  2/8392 (0.024%)  
+[  5]  33.00-34.00  sec  11.6 MBytes  97.2 Mbits/sec  0.193 ms  1/8390 (0.012%)  
+[  5]  34.00-35.00  sec  11.6 MBytes  97.2 Mbits/sec  0.192 ms  2/8391 (0.024%)  
+[  5]  35.00-36.00  sec  11.6 MBytes  97.2 Mbits/sec  0.191 ms  1/8391 (0.012%)  
+[  5]  36.00-37.00  sec  11.6 MBytes  97.2 Mbits/sec  0.203 ms  2/8391 (0.024%)  
+[  5]  37.00-38.00  sec  11.6 MBytes  97.2 Mbits/sec  0.198 ms  1/8390 (0.012%)  
+[  5]  38.00-39.00  sec  11.6 MBytes  97.2 Mbits/sec  0.190 ms  2/8392 (0.024%)  
+[  5]  39.00-40.00  sec  11.6 MBytes  97.2 Mbits/sec  0.205 ms  1/8390 (0.012%)  
+[  5]  40.00-41.00  sec  11.6 MBytes  97.2 Mbits/sec  0.194 ms  2/8391 (0.024%)  
+[  5]  41.00-42.00  sec  11.6 MBytes  97.2 Mbits/sec  0.160 ms  1/8390 (0.012%)  
+[  5]  42.00-43.00  sec  11.6 MBytes  97.2 Mbits/sec  0.185 ms  2/8392 (0.024%)  
+[  5]  43.00-44.00  sec  11.6 MBytes  97.2 Mbits/sec  0.201 ms  2/8391 (0.024%)  
+[  5]  44.00-45.00  sec  11.6 MBytes  97.2 Mbits/sec  0.203 ms  1/8390 (0.012%)  
+[  5]  45.00-46.00  sec  11.6 MBytes  97.2 Mbits/sec  0.207 ms  2/8391 (0.024%)  
+[  5]  46.00-47.00  sec  11.6 MBytes  97.2 Mbits/sec  0.197 ms  1/8391 (0.012%)  
+[  5]  47.00-48.00  sec  11.6 MBytes  97.2 Mbits/sec  0.202 ms  2/8391 (0.024%)  
+[  5]  48.00-49.00  sec  11.6 MBytes  97.2 Mbits/sec  0.201 ms  2/8391 (0.024%)  
+[  5]  49.00-50.00  sec  11.6 MBytes  97.2 Mbits/sec  0.200 ms  1/8391 (0.012%)  
+[  5]  50.00-51.00  sec  11.6 MBytes  97.2 Mbits/sec  0.157 ms  1/8390 (0.012%)  
+[  5]  51.00-52.00  sec  11.6 MBytes  97.2 Mbits/sec  0.210 ms  2/8391 (0.024%)  
+[  5]  52.00-53.00  sec  11.6 MBytes  97.2 Mbits/sec  0.200 ms  2/8392 (0.024%)  
+[  5]  53.00-54.00  sec  11.6 MBytes  97.2 Mbits/sec  0.203 ms  1/8390 (0.012%)  
+[  5]  54.00-55.00  sec  11.6 MBytes  97.2 Mbits/sec  0.203 ms  2/8391 (0.024%)  
+[  5]  55.00-56.00  sec  11.6 MBytes  97.2 Mbits/sec  0.196 ms  1/8391 (0.012%)  
+[  5]  56.00-57.00  sec  11.6 MBytes  97.2 Mbits/sec  0.199 ms  2/8391 (0.024%)  
+[  5]  57.00-58.00  sec  11.6 MBytes  97.2 Mbits/sec  0.159 ms  1/8390 (0.012%)  
+[  5]  58.00-59.00  sec  11.6 MBytes  97.2 Mbits/sec  0.199 ms  2/8392 (0.024%)  
+[  5]  59.00-60.00  sec  11.6 MBytes  97.2 Mbits/sec  0.201 ms  2/8391 (0.024%)  
+[  5]  60.00-60.05  sec   614 KBytes  96.8 Mbits/sec  0.171 ms  0/434 (0%)  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-60.05  sec   695 MBytes  97.1 Mbits/sec  0.171 ms  194/503446 (0.039%)  receiver
+----------------------------------------------------------------------------------------------------
+client.log:iperf3 -c 10.0.0.12 -i 1 -t 60 -u -V -p 12345 -b 97.2m > client.log 2>&1 &
+iperf 3.9
+Linux raspberrypi 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023 aarch64
+Control connection MSS 1448
+Setting UDP block size to 1448
+Time: Fri, 04 Aug 2023 13:48:48 GMT
+Connecting to host 10.0.0.12, port 12345
+      Cookie: 4grbwzllpok3cw3rgmjhgaf54ebg2rldvwof
+      Target Bitrate: 97200000
+[  5] local 10.0.0.11 port 53420 connected to 10.0.0.12 port 12345
+Starting Test: protocol: UDP, 1 streams, 1448 byte blocks, omitting 0 seconds, 60 second test, tos 0
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.00   sec  11.6 MBytes  97.1 Mbits/sec  8385  
+[  5]   1.00-2.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   2.00-3.00   sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]   3.00-4.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   4.00-5.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   5.00-6.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   6.00-7.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   7.00-8.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   8.00-9.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   9.00-10.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  10.00-11.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  11.00-12.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  12.00-13.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  13.00-14.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  14.00-15.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  15.00-16.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  16.00-17.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  17.00-18.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  18.00-19.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  19.00-20.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  20.00-21.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  21.00-22.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  22.00-23.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  23.00-24.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  24.00-25.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  25.00-26.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  26.00-27.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  27.00-28.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  28.00-29.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  29.00-30.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  30.00-31.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  31.00-32.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  32.00-33.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  33.00-34.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  34.00-35.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  35.00-36.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  36.00-37.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  37.00-38.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  38.00-39.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  39.00-40.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  40.00-41.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  41.00-42.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  42.00-43.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  43.00-44.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  44.00-45.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  45.00-46.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  46.00-47.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  47.00-48.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  48.00-49.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  49.00-50.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  50.00-51.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  51.00-52.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  52.00-53.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  53.00-54.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  54.00-55.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  55.00-56.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  56.00-57.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  57.00-58.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  58.00-59.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  59.00-60.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+Test Complete. Summary Results:
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-60.00  sec   695 MBytes  97.2 Mbits/sec  0.000 ms  0/503447 (0%)  sender
+[  5]   0.00-60.05  sec   695 MBytes  97.1 Mbits/sec  0.171 ms  194/503446 (0.039%)  receiver
+CPU Utilization: local/sender 14.6% (6.3%u/8.4%s), remote/receiver 20.7% (2.7%u/18.1%s)
+
+iperf Done.
+----------------------------------------------------------------------------------------------------
+traffic.log:sar -n DEV --iface=eth0 1 60 > traffic.log 2>&1 &
+Linux 6.1.21-v8+ (raspberrypi) 	04/08/23 	_aarch64_	(4 CPU)
+
+14:48:48        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:49         eth0   6309.00      4.00   9174.64      0.24      0.00      0.00      0.00      7.52
+
+14:48:49        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:50         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:48:50        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:51         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:48:51        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:52         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:52        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:53         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:53        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:54         eth0   8388.00      0.00  12205.20      0.00      0.00      0.00      0.00     10.00
+
+14:48:54        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:55         eth0   8391.00      0.00  12209.56      0.00      0.00      0.00      0.00     10.00
+
+14:48:55        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:56         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:56        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:57         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:48:57        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:58         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:58        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:48:59         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:48:59        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:00         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:00        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:01         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:01        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:02         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:02        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:03         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:03        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:04         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:04        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:05         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:49:05        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:06         eth0   8391.00      0.00  12209.56      0.00      0.00      0.00      0.00     10.00
+
+14:49:06        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:07         eth0   8339.00      0.00  12133.90      0.00      0.00      0.00      0.00      9.94
+
+14:49:07        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:08         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:08        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:09         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:49:09        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:10         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:10        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:11         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:11        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:12         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:49:12        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:13         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:13        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:14         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:14        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:15         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:49:15        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:16         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:16        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:17         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:17        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:18         eth0   8390.00      1.00  12206.71      0.04      0.00      0.00      0.00     10.00
+
+14:49:18        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:19         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:19        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:20         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:20        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:21         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:49:21        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:22         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:22        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:23         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:23        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:24         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:49:24        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:25         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:25        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:26         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:49:26        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:27         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:27        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:28         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:28        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:29         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:49:29        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:30         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:30        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:31         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:31        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:32         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:49:32        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:33         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:33        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:34         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:49:34        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:35         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:35        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:36         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:36        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:37         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:49:37        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:38         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:38        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:39         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:39        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:40         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:49:40        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:41         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:41        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:42         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:42        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:43         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:43        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:44         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:49:44        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:45         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:49:45        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:46         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:49:46        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:47         eth0   8391.00      1.00  12208.16      0.04      0.00      0.00      0.00     10.00
+
+14:49:47        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:49:48         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+Average:         eth0   8354.18      0.10  12155.85      0.01      0.00      0.00      0.00      9.96
+----------------------------------------------------------------------------------------------------
+traffic.log:sar -n DEV --iface=eth0 1 60 > traffic.log 2>&1 &
+Linux 6.1.21-v8+ (raspberrypi) 	08/04/2023 	_aarch64_	(4 CPU)
+
+09:48:48 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:49 AM      eth0      4.00   6232.00      0.25   9062.58      0.00      0.00      0.00      7.42
+
+09:48:49 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:50 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:50 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:51 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:51 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:52 AM      eth0      0.00   8384.00      0.00  12199.38      0.00      0.00      0.00      9.99
+
+09:48:52 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:53 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:48:53 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:54 AM      eth0      0.00   8395.00      0.00  12215.38      0.00      0.00      0.00     10.01
+
+09:48:54 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:55 AM      eth0      0.00   8392.00      0.00  12211.02      0.00      0.00      0.00     10.00
+
+09:48:55 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:56 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:48:56 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:57 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:57 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:58 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:58 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:48:59 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:48:59 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:00 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:00 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:01 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:01 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:02 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:02 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:03 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:03 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:04 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:49:04 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:05 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:05 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:06 AM      eth0      1.00   8391.00      0.06  12209.56      0.00      0.00      0.00     10.00
+
+09:49:06 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:07 AM      eth0      1.00   8391.00      0.06  12209.56      0.00      0.00      0.00     10.00
+
+09:49:07 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:08 AM      eth0      1.00   8391.00      0.06  12209.56      0.00      0.00      0.00     10.00
+
+09:49:08 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:09 AM      eth0      2.00   8391.00      0.12  12209.56      0.00      0.00      0.00     10.00
+
+09:49:09 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:10 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:10 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:11 AM      eth0      2.00   8391.00      0.12  12209.56      0.00      0.00      0.00     10.00
+
+09:49:11 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:12 AM      eth0      2.00   8393.00      0.12  12212.47      0.00      0.00      0.00     10.00
+
+09:49:12 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:13 AM      eth0      2.00   8396.00      0.12  12216.84      0.00      0.00      0.00     10.01
+
+09:49:13 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:14 AM      eth0      2.00   8392.00      0.12  12211.02      0.00      0.00      0.00     10.00
+
+09:49:14 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:15 AM      eth0      2.00   8391.00      0.12  12209.56      0.00      0.00      0.00     10.00
+
+09:49:15 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:16 AM      eth0      2.00   8390.00      0.12  12208.11      0.00      0.00      0.00     10.00
+
+09:49:16 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:17 AM      eth0      2.00   8387.00      0.12  12203.74      0.00      0.00      0.00     10.00
+
+09:49:17 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:18 AM      eth0      3.00   8395.00      0.18  12213.97      0.00      0.00      0.00     10.01
+
+09:49:18 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:19 AM      eth0      2.00   8392.00      0.12  12211.02      0.00      0.00      0.00     10.00
+
+09:49:19 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:20 AM      eth0      2.00   8391.00      0.12  12209.56      0.00      0.00      0.00     10.00
+
+09:49:20 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:21 AM      eth0      2.00   8391.00      0.12  12209.56      0.00      0.00      0.00     10.00
+
+09:49:21 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:22 AM      eth0      2.00   8391.00      0.12  12209.56      0.00      0.00      0.00     10.00
+
+09:49:22 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:23 AM      eth0      2.00   8391.00      0.12  12209.56      0.00      0.00      0.00     10.00
+
+09:49:23 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:24 AM      eth0      2.00   8391.00      0.12  12209.56      0.00      0.00      0.00     10.00
+
+09:49:24 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:25 AM      eth0      2.00   8390.00      0.12  12208.11      0.00      0.00      0.00     10.00
+
+09:49:25 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:26 AM      eth0      2.00   8391.00      0.12  12209.56      0.00      0.00      0.00     10.00
+
+09:49:26 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:27 AM      eth0      2.00   8391.00      0.12  12209.56      0.00      0.00      0.00     10.00
+
+09:49:27 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:28 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:28 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:29 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:29 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:30 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:30 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:31 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:31 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:32 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:32 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:33 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:33 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:34 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:49:34 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:35 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:35 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:36 AM      eth0      0.00   8394.00      0.00  12213.93      0.00      0.00      0.00     10.01
+
+09:49:36 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:37 AM      eth0      0.00   8396.00      0.00  12216.84      0.00      0.00      0.00     10.01
+
+09:49:37 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:38 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:38 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:39 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:39 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:40 AM      eth0      0.00   8384.00      0.00  12199.38      0.00      0.00      0.00      9.99
+
+09:49:40 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:41 AM      eth0      0.00   8394.00      0.00  12213.93      0.00      0.00      0.00     10.01
+
+09:49:41 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:42 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:49:42 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:43 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:49:43 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:44 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:44 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:45 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:49:45 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:46 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:49:46 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:47 AM      eth0      1.00   8392.00      0.06  12209.60      0.00      0.00      0.00     10.00
+
+09:49:47 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:49:48 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+Average:         eth0      0.75   8355.22      0.04  12157.35      0.00      0.00      0.00      9.96
+====================================================================================================
+#UDP Test4
+UDP specific parameters: udp_bandwidth: 97.2m
+Link status: link_loss_rate: 15, link_delay: 0ms, link_loss_model: random
+====================================================================================================
+protocol: udp
+tc_cmd: sudo /usr/sbin/tc qdisc replace dev eth0 root netem loss random 15 delay 0ms
+server.log:iperf3 -s -i1 -p 12345 > server.log 2>&1 &
+-----------------------------------------------------------
+Server listening on 12345
+-----------------------------------------------------------
+Accepted connection from 10.0.0.11, port 48988
+[  5] local 10.0.0.12 port 12345 connected to 10.0.0.11 port 33291
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-1.00   sec  6.04 MBytes  50.7 Mbits/sec  0.162 ms  50/4423 (1.1%)  
+[  5]   1.00-2.00   sec  11.6 MBytes  97.2 Mbits/sec  0.160 ms  2/8391 (0.024%)  
+[  5]   2.00-3.00   sec  11.6 MBytes  97.2 Mbits/sec  0.170 ms  2/8391 (0.024%)  
+[  5]   3.00-4.00   sec  11.6 MBytes  97.2 Mbits/sec  0.163 ms  2/8392 (0.024%)  
+[  5]   4.00-5.00   sec  11.5 MBytes  96.2 Mbits/sec  0.163 ms  83/8390 (0.99%)  
+[  5]   5.00-6.00   sec  11.6 MBytes  97.0 Mbits/sec  0.161 ms  20/8391 (0.24%)  
+[  5]   6.00-7.00   sec  11.6 MBytes  97.2 Mbits/sec  0.172 ms  2/8391 (0.024%)  
+[  5]   7.00-8.00   sec  11.6 MBytes  97.2 Mbits/sec  0.198 ms  2/8392 (0.024%)  
+[  5]   8.00-9.00   sec  11.6 MBytes  97.2 Mbits/sec  0.166 ms  1/8390 (0.012%)  
+[  5]   9.00-10.00  sec  11.6 MBytes  97.2 Mbits/sec  0.168 ms  1/8390 (0.012%)  
+[  5]  10.00-11.00  sec  11.6 MBytes  97.0 Mbits/sec  0.166 ms  21/8392 (0.25%)  
+[  5]  11.00-12.00  sec  11.6 MBytes  97.2 Mbits/sec  0.164 ms  1/8390 (0.012%)  
+[  5]  12.00-13.00  sec  11.6 MBytes  97.2 Mbits/sec  0.164 ms  2/8391 (0.024%)  
+[  5]  13.00-14.00  sec  11.6 MBytes  97.2 Mbits/sec  0.174 ms  1/8390 (0.012%)  
+[  5]  14.00-15.00  sec  11.6 MBytes  97.2 Mbits/sec  0.158 ms  2/8391 (0.024%)  
+[  5]  15.00-16.00  sec  11.6 MBytes  97.0 Mbits/sec  0.217 ms  20/8391 (0.24%)  
+[  5]  16.00-17.00  sec  11.6 MBytes  97.2 Mbits/sec  0.168 ms  2/8392 (0.024%)  
+[  5]  17.00-18.00  sec  11.6 MBytes  97.2 Mbits/sec  0.164 ms  1/8390 (0.012%)  
+[  5]  18.00-19.00  sec  11.6 MBytes  97.2 Mbits/sec  0.167 ms  2/8391 (0.024%)  
+[  5]  19.00-20.00  sec  11.6 MBytes  97.2 Mbits/sec  0.166 ms  2/8391 (0.024%)  
+[  5]  20.00-21.00  sec  11.6 MBytes  97.0 Mbits/sec  0.168 ms  21/8391 (0.25%)  
+[  5]  21.00-22.00  sec  11.6 MBytes  97.2 Mbits/sec  0.171 ms  1/8390 (0.012%)  
+[  5]  22.00-23.00  sec  11.6 MBytes  97.2 Mbits/sec  0.170 ms  2/8392 (0.024%)  
+[  5]  23.00-24.00  sec  11.6 MBytes  97.2 Mbits/sec  0.170 ms  3/8390 (0.036%)  
+[  5]  24.00-25.00  sec  11.6 MBytes  97.2 Mbits/sec  0.173 ms  2/8391 (0.024%)  
+[  5]  25.00-26.00  sec  11.6 MBytes  96.9 Mbits/sec  0.174 ms  22/8391 (0.26%)  
+[  5]  26.00-27.00  sec  11.6 MBytes  97.2 Mbits/sec  0.176 ms  2/8391 (0.024%)  
+[  5]  27.00-28.00  sec  11.6 MBytes  97.2 Mbits/sec  0.164 ms  1/8391 (0.012%)  
+[  5]  28.00-29.00  sec  11.4 MBytes  96.0 Mbits/sec  0.168 ms  100/8390 (1.2%)  
+[  5]  29.00-30.00  sec  11.6 MBytes  97.2 Mbits/sec  0.170 ms  2/8392 (0.024%)  
+[  5]  30.00-31.00  sec  11.6 MBytes  97.0 Mbits/sec  0.168 ms  17/8390 (0.2%)  
+[  5]  31.00-32.00  sec  11.6 MBytes  97.2 Mbits/sec  0.173 ms  2/8391 (0.024%)  
+[  5]  32.00-33.00  sec  11.6 MBytes  97.2 Mbits/sec  0.168 ms  1/8391 (0.012%)  
+[  5]  33.00-34.00  sec  11.6 MBytes  97.2 Mbits/sec  0.174 ms  2/8391 (0.024%)  
+[  5]  34.00-35.00  sec  11.6 MBytes  97.2 Mbits/sec  0.173 ms  1/8390 (0.012%)  
+[  5]  35.00-36.00  sec  11.6 MBytes  97.0 Mbits/sec  0.169 ms  17/8392 (0.2%)  
+[  5]  36.00-37.00  sec  11.6 MBytes  97.2 Mbits/sec  0.170 ms  1/8390 (0.012%)  
+[  5]  37.00-38.00  sec  11.6 MBytes  97.2 Mbits/sec  0.172 ms  2/8391 (0.024%)  
+[  5]  38.00-39.00  sec  11.6 MBytes  97.2 Mbits/sec  0.176 ms  2/8391 (0.024%)  
+[  5]  39.00-40.00  sec  11.6 MBytes  97.2 Mbits/sec  0.171 ms  1/8391 (0.012%)  
+[  5]  40.00-41.00  sec  11.6 MBytes  97.0 Mbits/sec  0.178 ms  17/8390 (0.2%)  
+[  5]  41.00-42.00  sec  11.6 MBytes  97.2 Mbits/sec  0.174 ms  2/8392 (0.024%)  
+[  5]  42.00-43.00  sec  11.6 MBytes  97.2 Mbits/sec  0.175 ms  1/8390 (0.012%)  
+[  5]  43.00-44.00  sec  11.6 MBytes  97.2 Mbits/sec  0.172 ms  2/8392 (0.024%)  
+[  5]  44.00-45.00  sec  11.6 MBytes  97.2 Mbits/sec  0.177 ms  1/8390 (0.012%)  
+[  5]  45.00-46.00  sec  11.6 MBytes  97.0 Mbits/sec  0.175 ms  19/8391 (0.23%)  
+[  5]  46.00-47.00  sec  11.6 MBytes  97.1 Mbits/sec  0.175 ms  9/8391 (0.11%)  
+[  5]  47.00-48.00  sec  11.6 MBytes  97.2 Mbits/sec  0.169 ms  1/8390 (0.012%)  
+[  5]  48.00-49.00  sec  11.6 MBytes  97.2 Mbits/sec  0.173 ms  2/8392 (0.024%)  
+[  5]  49.00-50.00  sec  11.6 MBytes  97.2 Mbits/sec  0.174 ms  1/8390 (0.012%)  
+[  5]  50.00-51.00  sec  11.6 MBytes  97.0 Mbits/sec  0.163 ms  18/8392 (0.21%)  
+[  5]  51.00-52.00  sec  11.6 MBytes  97.2 Mbits/sec  0.172 ms  2/8391 (0.024%)  
+[  5]  52.00-53.00  sec  11.6 MBytes  97.2 Mbits/sec  0.170 ms  1/8390 (0.012%)  
+[  5]  53.00-54.00  sec  11.6 MBytes  97.2 Mbits/sec  0.174 ms  2/8391 (0.024%)  
+[  5]  54.00-55.00  sec  11.6 MBytes  97.2 Mbits/sec  0.179 ms  1/8391 (0.012%)  
+[  5]  55.00-56.00  sec  11.5 MBytes  96.8 Mbits/sec  0.171 ms  32/8390 (0.38%)  
+[  5]  56.00-57.00  sec  11.6 MBytes  97.2 Mbits/sec  0.172 ms  2/8392 (0.024%)  
+[  5]  57.00-58.00  sec  11.6 MBytes  97.2 Mbits/sec  0.172 ms  2/8391 (0.024%)  
+[  5]  58.00-59.00  sec  11.6 MBytes  97.2 Mbits/sec  0.178 ms  1/8390 (0.012%)  
+[  5]  59.00-60.00  sec  11.6 MBytes  97.2 Mbits/sec  0.181 ms  2/8391 (0.024%)  
+[  5]  60.00-60.47  sec  5.45 MBytes  96.8 Mbits/sec  0.169 ms  16/3962 (0.4%)  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-60.47  sec   694 MBytes  96.3 Mbits/sec  0.169 ms  555/503446 (0.11%)  receiver
+----------------------------------------------------------------------------------------------------
+client.log:iperf3 -c 10.0.0.12 -i 1 -t 60 -u -V -p 12345 -b 97.2m > client.log 2>&1 &
+iperf 3.9
+Linux raspberrypi 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023 aarch64
+Control connection MSS 1448
+Setting UDP block size to 1448
+Time: Fri, 04 Aug 2023 13:50:05 GMT
+Connecting to host 10.0.0.12, port 12345
+      Cookie: oarhycipkr4iig4mlwxccvp4qj5cgerhixea
+      Target Bitrate: 97200000
+[  5] local 10.0.0.11 port 33291 connected to 10.0.0.12 port 12345
+Starting Test: protocol: UDP, 1 streams, 1448 byte blocks, omitting 0 seconds, 60 second test, tos 0
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.00   sec  11.6 MBytes  97.1 Mbits/sec  8385  
+[  5]   1.00-2.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   2.00-3.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   3.00-4.00   sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]   4.00-5.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   5.00-6.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   6.00-7.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   7.00-8.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   8.00-9.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   9.00-10.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  10.00-11.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  11.00-12.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  12.00-13.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  13.00-14.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  14.00-15.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  15.00-16.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  16.00-17.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  17.00-18.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  18.00-19.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  19.00-20.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  20.00-21.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  21.00-22.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  22.00-23.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  23.00-24.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  24.00-25.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  25.00-26.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  26.00-27.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  27.00-28.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  28.00-29.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  29.00-30.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  30.00-31.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  31.00-32.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  32.00-33.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  33.00-34.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  34.00-35.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  35.00-36.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  36.00-37.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  37.00-38.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  38.00-39.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  39.00-40.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  40.00-41.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  41.00-42.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  42.00-43.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  43.00-44.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  44.00-45.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  45.00-46.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  46.00-47.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  47.00-48.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  48.00-49.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  49.00-50.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  50.00-51.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  51.00-52.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  52.00-53.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  53.00-54.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  54.00-55.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  55.00-56.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  56.00-57.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  57.00-58.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  58.00-59.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  59.00-60.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+Test Complete. Summary Results:
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-60.00  sec   695 MBytes  97.2 Mbits/sec  0.000 ms  0/503447 (0%)  sender
+[  5]   0.00-60.47  sec   694 MBytes  96.3 Mbits/sec  0.169 ms  555/503446 (0.11%)  receiver
+CPU Utilization: local/sender 14.7% (3.1%u/11.6%s), remote/receiver 21.9% (2.7%u/19.3%s)
+
+iperf Done.
+----------------------------------------------------------------------------------------------------
+traffic.log:sar -n DEV --iface=eth0 1 60 > traffic.log 2>&1 &
+Linux 6.1.21-v8+ (raspberrypi) 	04/08/23 	_aarch64_	(4 CPU)
+
+14:50:05        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:06         eth0   4290.00      5.00   6236.83      0.31      0.00      0.00      0.00      5.11
+
+14:50:06        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:07         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:50:07        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:08         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:08        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:09         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:50:09        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:10         eth0   8308.00      0.00  12088.79      0.00      0.00      0.00      0.00      9.90
+
+14:50:10        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:11         eth0   8371.00      0.00  12180.46      0.00      0.00      0.00      0.00      9.98
+
+14:50:11        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:12         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:12        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:13         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:13        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:14         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:14        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:15         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:50:15        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:16         eth0   8372.00      0.00  12181.91      0.00      0.00      0.00      0.00      9.98
+
+14:50:16        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:17         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:17        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:18         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:50:18        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:19         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:19        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:20         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:50:20        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:21         eth0   8372.00      0.00  12181.91      0.00      0.00      0.00      0.00      9.98
+
+14:50:21        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:22         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:50:22        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:23         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:23        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:24         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:24        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:25         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:25        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:26         eth0   8369.00      0.00  12177.55      0.00      0.00      0.00      0.00      9.98
+
+14:50:26        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:27         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:27        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:28         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:28        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:29         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:50:29        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:30         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:50:30        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:31         eth0   8369.00      0.00  12177.55      0.00      0.00      0.00      0.00      9.98
+
+14:50:31        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:32         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:32        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:33         eth0   8390.00      1.00  12206.71      0.04      0.00      0.00      0.00     10.00
+
+14:50:33        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:34         eth0   8291.00      0.00  12064.05      0.00      0.00      0.00      0.00      9.88
+
+14:50:34        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:35         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:35        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:36         eth0   8374.00      0.00  12184.82      0.00      0.00      0.00      0.00      9.98
+
+14:50:36        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:37         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:37        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:38         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:50:38        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:39         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:39        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:40         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:40        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:41         eth0   8375.00      0.00  12186.28      0.00      0.00      0.00      0.00      9.98
+
+14:50:41        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:42         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:42        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:43         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:50:43        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:44         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:44        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:45         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:50:45        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:46         eth0   8375.00      0.00  12186.28      0.00      0.00      0.00      0.00      9.98
+
+14:50:46        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:47         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:50:47        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:48         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:48        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:49         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:49        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:50         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:50        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:51         eth0   8372.00      0.00  12181.91      0.00      0.00      0.00      0.00      9.98
+
+14:50:51        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:52         eth0   8383.00      0.00  12197.92      0.00      0.00      0.00      0.00      9.99
+
+14:50:52        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:53         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:50:53        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:54         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:54        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:55         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:55        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:56         eth0   8374.00      0.00  12184.82      0.00      0.00      0.00      0.00      9.98
+
+14:50:56        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:57         eth0   8305.94      0.00  12085.79      0.00      0.00      0.00      0.00      9.90
+
+14:50:57        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:58         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:50:58        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:50:59         eth0   8391.00      0.00  12209.56      0.00      0.00      0.00      0.00     10.00
+
+14:50:59        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:00         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:00        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:01         eth0   8359.00      0.00  12163.00      0.00      0.00      0.00      0.00      9.96
+
+14:51:01        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:02         eth0   8391.00      1.00  12208.16      0.04      0.00      0.00      0.00     10.00
+
+14:51:02        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:03         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:03        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:04         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:04        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:05         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+Average:         eth0   8313.48      0.12  12096.63      0.01      0.00      0.00      0.00      9.91
+----------------------------------------------------------------------------------------------------
+traffic.log:sar -n DEV --iface=eth0 1 60 > traffic.log 2>&1 &
+Linux 6.1.21-v8+ (raspberrypi) 	08/04/2023 	_aarch64_	(4 CPU)
+
+09:50:05 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:06 AM      eth0      5.00   4153.00      0.32   6037.47      0.00      0.00      0.00      4.95
+
+09:50:06 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:07 AM      eth0      0.00   8394.00      0.00  12213.93      0.00      0.00      0.00     10.01
+
+09:50:07 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:08 AM      eth0      0.00   8394.00      0.00  12213.93      0.00      0.00      0.00     10.01
+
+09:50:08 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:09 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:09 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:10 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:10 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:11 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:11 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:12 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:12 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:13 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:13 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:14 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:14 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:15 AM      eth0      0.00   8389.00      0.00  12206.65      0.00      0.00      0.00     10.00
+
+09:50:15 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:16 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:50:16 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:17 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:50:17 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:18 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:18 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:19 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:19 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:20 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:20 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:21 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:21 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:22 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:22 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:23 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:23 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:24 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:24 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:25 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:25 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:26 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:50:26 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:27 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:27 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:28 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:28 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:29 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:29 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:30 AM      eth0      0.00   8392.00      0.00  12211.02      0.00      0.00      0.00     10.00
+
+09:50:30 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:31 AM      eth0      0.00   8394.00      0.00  12213.93      0.00      0.00      0.00     10.01
+
+09:50:31 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:32 AM      eth0      0.00   8394.00      0.00  12213.93      0.00      0.00      0.00     10.01
+
+09:50:32 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:33 AM      eth0      1.00   8393.00      0.06  12211.06      0.00      0.00      0.00     10.00
+
+09:50:33 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:34 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:34 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:35 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:35 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:36 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:36 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:37 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:37 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:38 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:50:38 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:39 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:39 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:40 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:40 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:41 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:41 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:42 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:42 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:43 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:43 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:44 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:44 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:45 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:45 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:46 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:46 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:47 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:50:47 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:48 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:48 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:49 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:49 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:50 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:50 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:51 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:51 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:52 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:52 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:53 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:53 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:54 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:54 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:55 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:50:55 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:56 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:50:56 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:57 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:50:57 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:58 AM      eth0      0.00   8395.00      0.00  12215.38      0.00      0.00      0.00     10.01
+
+09:50:58 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:50:59 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:50:59 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:00 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:00 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:01 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:01 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:02 AM      eth0      1.00   8392.00      0.06  12209.60      0.00      0.00      0.00     10.00
+
+09:51:02 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:03 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:03 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:04 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:04 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:05 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+Average:         eth0      0.12   8320.68      0.01  12107.11      0.00      0.00      0.00      9.92
+====================================================================================================
+#UDP Test5
+UDP specific parameters: udp_bandwidth: 97.2m
+Link status: link_loss_rate: 20, link_delay: 0ms, link_loss_model: random
+====================================================================================================
+protocol: udp
+tc_cmd: sudo /usr/sbin/tc qdisc replace dev eth0 root netem loss random 20 delay 0ms
+server.log:iperf3 -s -i1 -p 12345 > server.log 2>&1 &
+-----------------------------------------------------------
+Server listening on 12345
+-----------------------------------------------------------
+Accepted connection from 10.0.0.11, port 34394
+[  5] local 10.0.0.12 port 12345 connected to 10.0.0.11 port 33246
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-1.00   sec  11.0 MBytes  92.2 Mbits/sec  0.087 ms  0/7956 (0%)  
+[  5]   1.00-2.00   sec  11.6 MBytes  97.2 Mbits/sec  0.141 ms  0/8389 (0%)  
+[  5]   2.00-3.00   sec  11.6 MBytes  97.2 Mbits/sec  0.181 ms  0/8389 (0%)  
+[  5]   3.00-4.00   sec  11.6 MBytes  97.2 Mbits/sec  0.185 ms  0/8389 (0%)  
+[  5]   4.00-5.00   sec  11.6 MBytes  97.2 Mbits/sec  0.165 ms  0/8389 (0%)  
+[  5]   5.00-6.00   sec  11.6 MBytes  97.2 Mbits/sec  0.165 ms  0/8390 (0%)  
+[  5]   6.00-7.00   sec  11.6 MBytes  97.2 Mbits/sec  0.177 ms  0/8389 (0%)  
+[  5]   7.00-8.00   sec  11.6 MBytes  97.2 Mbits/sec  0.189 ms  0/8389 (0%)  
+[  5]   8.00-9.00   sec  11.5 MBytes  96.6 Mbits/sec  0.185 ms  50/8390 (0.6%)  
+[  5]   9.00-10.00  sec  11.6 MBytes  97.2 Mbits/sec  0.191 ms  2/8391 (0.024%)  
+[  5]  10.00-11.00  sec  11.6 MBytes  97.2 Mbits/sec  0.184 ms  1/8390 (0.012%)  
+[  5]  11.00-12.00  sec  11.6 MBytes  97.2 Mbits/sec  0.191 ms  2/8391 (0.024%)  
+[  5]  12.00-13.00  sec  11.6 MBytes  97.2 Mbits/sec  0.188 ms  2/8392 (0.024%)  
+[  5]  13.00-14.00  sec  11.6 MBytes  97.2 Mbits/sec  0.202 ms  1/8390 (0.012%)  
+[  5]  14.00-15.00  sec  11.6 MBytes  97.2 Mbits/sec  0.196 ms  2/8391 (0.024%)  
+[  5]  15.00-16.00  sec  11.6 MBytes  97.2 Mbits/sec  0.187 ms  1/8391 (0.012%)  
+[  5]  16.00-17.00  sec  11.6 MBytes  97.2 Mbits/sec  0.199 ms  2/8391 (0.024%)  
+[  5]  17.00-18.00  sec  11.6 MBytes  97.2 Mbits/sec  0.188 ms  1/8390 (0.012%)  
+[  5]  18.00-19.00  sec  11.6 MBytes  97.2 Mbits/sec  0.183 ms  2/8392 (0.024%)  
+[  5]  19.00-20.00  sec  11.6 MBytes  97.2 Mbits/sec  0.190 ms  1/8390 (0.012%)  
+[  5]  20.00-21.00  sec  11.6 MBytes  97.2 Mbits/sec  0.195 ms  2/8391 (0.024%)  
+[  5]  21.00-22.00  sec  11.6 MBytes  97.2 Mbits/sec  0.189 ms  1/8390 (0.012%)  
+[  5]  22.00-23.00  sec  11.6 MBytes  97.2 Mbits/sec  0.188 ms  4/8394 (0.048%)  
+[  5]  23.00-24.00  sec  11.6 MBytes  97.2 Mbits/sec  0.201 ms  0/8389 (0%)  
+[  5]  24.00-25.00  sec  11.6 MBytes  97.2 Mbits/sec  0.193 ms  1/8390 (0.012%)  
+[  5]  25.00-26.00  sec  11.6 MBytes  97.2 Mbits/sec  0.191 ms  2/8392 (0.024%)  
+[  5]  26.00-27.00  sec  11.6 MBytes  97.2 Mbits/sec  0.188 ms  1/8390 (0.012%)  
+[  5]  27.00-28.00  sec  11.6 MBytes  97.2 Mbits/sec  0.189 ms  2/8391 (0.024%)  
+[  5]  28.00-29.00  sec  11.6 MBytes  97.2 Mbits/sec  0.198 ms  2/8391 (0.024%)  
+[  5]  29.00-30.00  sec  11.6 MBytes  97.2 Mbits/sec  0.200 ms  1/8390 (0.012%)  
+[  5]  30.00-31.00  sec  11.6 MBytes  97.2 Mbits/sec  0.197 ms  2/8392 (0.024%)  
+[  5]  31.00-32.00  sec  11.6 MBytes  97.2 Mbits/sec  0.194 ms  1/8390 (0.012%)  
+[  5]  32.00-33.00  sec  11.6 MBytes  97.2 Mbits/sec  0.187 ms  2/8392 (0.024%)  
+[  5]  33.00-34.00  sec  11.6 MBytes  97.2 Mbits/sec  0.195 ms  2/8391 (0.024%)  
+[  5]  34.00-35.00  sec  11.6 MBytes  97.2 Mbits/sec  0.195 ms  1/8390 (0.012%)  
+[  5]  35.00-36.00  sec  11.6 MBytes  97.2 Mbits/sec  0.198 ms  2/8391 (0.024%)  
+[  5]  36.00-37.00  sec  11.6 MBytes  97.2 Mbits/sec  0.191 ms  1/8390 (0.012%)  
+[  5]  37.00-38.00  sec  11.6 MBytes  97.2 Mbits/sec  0.194 ms  2/8392 (0.024%)  
+[  5]  38.00-39.00  sec  11.6 MBytes  97.2 Mbits/sec  0.195 ms  2/8391 (0.024%)  
+[  5]  39.00-40.00  sec  11.6 MBytes  97.2 Mbits/sec  0.199 ms  1/8390 (0.012%)  
+[  5]  40.00-41.00  sec  11.6 MBytes  97.2 Mbits/sec  0.202 ms  2/8391 (0.024%)  
+[  5]  41.00-42.00  sec  11.6 MBytes  97.2 Mbits/sec  0.195 ms  2/8392 (0.024%)  
+[  5]  42.00-43.00  sec  11.6 MBytes  97.2 Mbits/sec  0.197 ms  1/8390 (0.012%)  
+[  5]  43.00-44.00  sec  11.6 MBytes  97.2 Mbits/sec  0.191 ms  2/8392 (0.024%)  
+[  5]  44.00-45.00  sec  11.6 MBytes  97.2 Mbits/sec  0.185 ms  1/8390 (0.012%)  
+[  5]  45.00-46.00  sec  11.6 MBytes  97.2 Mbits/sec  0.195 ms  2/8391 (0.024%)  
+[  5]  46.00-47.00  sec  11.6 MBytes  97.2 Mbits/sec  0.194 ms  1/8390 (0.012%)  
+[  5]  47.00-48.00  sec  11.6 MBytes  97.2 Mbits/sec  0.191 ms  2/8392 (0.024%)  
+[  5]  48.00-49.00  sec  11.6 MBytes  97.2 Mbits/sec  0.198 ms  2/8391 (0.024%)  
+[  5]  49.00-50.00  sec  11.6 MBytes  97.2 Mbits/sec  0.189 ms  1/8390 (0.012%)  
+[  5]  50.00-51.00  sec  11.6 MBytes  97.2 Mbits/sec  0.203 ms  2/8391 (0.024%)  
+[  5]  51.00-52.00  sec  11.6 MBytes  97.2 Mbits/sec  0.191 ms  1/8391 (0.012%)  
+[  5]  52.00-53.00  sec  11.6 MBytes  97.2 Mbits/sec  0.187 ms  2/8391 (0.024%)  
+[  5]  53.00-54.00  sec  11.6 MBytes  97.2 Mbits/sec  0.193 ms  1/8390 (0.012%)  
+[  5]  54.00-55.00  sec  11.6 MBytes  97.2 Mbits/sec  0.194 ms  2/8392 (0.024%)  
+[  5]  55.00-56.00  sec  11.6 MBytes  97.2 Mbits/sec  0.197 ms  2/8391 (0.024%)  
+[  5]  56.00-57.00  sec  11.6 MBytes  97.2 Mbits/sec  0.205 ms  1/8390 (0.012%)  
+[  5]  57.00-58.00  sec  11.6 MBytes  97.2 Mbits/sec  0.191 ms  2/8392 (0.024%)  
+[  5]  58.00-59.00  sec  11.6 MBytes  97.2 Mbits/sec  0.189 ms  1/8390 (0.012%)  
+[  5]  59.00-60.00  sec  11.6 MBytes  97.2 Mbits/sec  0.198 ms  2/8391 (0.024%)  
+[  5]  60.00-60.05  sec   625 KBytes  96.9 Mbits/sec  0.168 ms  0/442 (0%)  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-60.05  sec   695 MBytes  97.1 Mbits/sec  0.168 ms  131/503446 (0.026%)  receiver
+----------------------------------------------------------------------------------------------------
+client.log:iperf3 -c 10.0.0.12 -i 1 -t 60 -u -V -p 12345 -b 97.2m > client.log 2>&1 &
+iperf 3.9
+Linux raspberrypi 6.1.21-v8+ #1642 SMP PREEMPT Mon Apr  3 17:24:16 BST 2023 aarch64
+Control connection MSS 1448
+Setting UDP block size to 1448
+Time: Fri, 04 Aug 2023 13:51:22 GMT
+Connecting to host 10.0.0.12, port 12345
+      Cookie: me5pfzlvhxlk4y3bk6b6b75eaxdtvlrmwpkc
+      Target Bitrate: 97200000
+[  5] local 10.0.0.11 port 33246 connected to 10.0.0.12 port 12345
+Starting Test: protocol: UDP, 1 streams, 1448 byte blocks, omitting 0 seconds, 60 second test, tos 0
+[ ID] Interval           Transfer     Bitrate         Total Datagrams
+[  5]   0.00-1.00   sec  11.6 MBytes  97.1 Mbits/sec  8385  
+[  5]   1.00-2.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   2.00-3.00   sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]   3.00-4.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   4.00-5.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   5.00-6.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   6.00-7.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   7.00-8.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   8.00-9.00   sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]   9.00-10.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  10.00-11.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  11.00-12.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  12.00-13.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  13.00-14.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  14.00-15.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  15.00-16.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  16.00-17.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  17.00-18.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  18.00-19.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  19.00-20.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  20.00-21.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  21.00-22.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  22.00-23.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  23.00-24.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  24.00-25.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  25.00-26.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  26.00-27.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  27.00-28.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  28.00-29.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  29.00-30.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  30.00-31.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  31.00-32.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  32.00-33.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  33.00-34.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  34.00-35.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  35.00-36.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  36.00-37.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  37.00-38.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  38.00-39.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  39.00-40.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  40.00-41.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  41.00-42.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  42.00-43.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  43.00-44.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  44.00-45.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  45.00-46.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  46.00-47.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  47.00-48.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  48.00-49.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  49.00-50.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  50.00-51.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  51.00-52.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  52.00-53.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  53.00-54.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  54.00-55.00  sec  11.6 MBytes  97.2 Mbits/sec  8390  
+[  5]  55.00-56.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  56.00-57.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  57.00-58.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  58.00-59.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+[  5]  59.00-60.00  sec  11.6 MBytes  97.2 Mbits/sec  8391  
+- - - - - - - - - - - - - - - - - - - - - - - - -
+Test Complete. Summary Results:
+[ ID] Interval           Transfer     Bitrate         Jitter    Lost/Total Datagrams
+[  5]   0.00-60.00  sec   695 MBytes  97.2 Mbits/sec  0.000 ms  0/503447 (0%)  sender
+[  5]   0.00-60.05  sec   695 MBytes  97.1 Mbits/sec  0.168 ms  131/503446 (0.026%)  receiver
+CPU Utilization: local/sender 14.7% (2.4%u/12.2%s), remote/receiver 21.9% (2.8%u/19.1%s)
+
+iperf Done.
+----------------------------------------------------------------------------------------------------
+traffic.log:sar -n DEV --iface=eth0 1 60 > traffic.log 2>&1 &
+Linux 6.1.21-v8+ (raspberrypi) 	04/08/23 	_aarch64_	(4 CPU)
+
+14:51:22        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:23         eth0   7634.00      5.00  11102.61      0.31      0.00      0.00      0.00      9.10
+
+14:51:23        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:24         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:24        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:25         eth0   8392.00      0.00  12211.02      0.00      0.00      0.00      0.00     10.00
+
+14:51:25        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:26         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:51:26        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:27         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:27        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:28         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:51:28        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:29         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:29        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:30         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:30        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:31         eth0   8339.00      0.00  12133.90      0.00      0.00      0.00      0.00      9.94
+
+14:51:31        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:32         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:51:32        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:33         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:33        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:34         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:34        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:35         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:51:35        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:36         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:36        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:37         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:37        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:38         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:51:38        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:39         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:39        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:40         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:40        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:41         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:51:41        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:42         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:42        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:43         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:43        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:44         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:51:44        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:45         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:45        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:46         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:51:46        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:47         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:47        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:48         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:48        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:49         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:51:49        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:50         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:50        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:51         eth0   8391.00      1.00  12208.16      0.04      0.00      0.00      0.00     10.00
+
+14:51:51        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:52         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:51:52        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:53         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:53        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:54         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:54        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:55         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:51:55        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:56         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:56        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:57         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:57        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:58         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:51:58        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:51:59         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:51:59        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:00         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:52:00        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:01         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:52:01        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:02         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:52:02        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:03         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:52:03        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:04         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:52:04        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:05         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:52:05        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:06         eth0   8391.00      0.00  12209.56      0.00      0.00      0.00      0.00     10.00
+
+14:52:06        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:07         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:52:07        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:08         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:52:08        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:09         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:52:09        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:10         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:52:10        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:11         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:52:11        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:12         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:52:12        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:13         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:52:13        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:14         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:52:14        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:15         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:52:15        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:16         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:52:16        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:17         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:52:17        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:18         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:52:18        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:19         eth0   8389.00      0.00  12206.65      0.00      0.00      0.00      0.00     10.00
+
+14:52:19        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:20         eth0   8391.00      1.00  12208.16      0.04      0.00      0.00      0.00     10.00
+
+14:52:20        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:21         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+14:52:21        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+14:52:22         eth0   8390.00      0.00  12208.11      0.00      0.00      0.00      0.00     10.00
+
+Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+Average:         eth0   8376.30      0.12  12188.03      0.01      0.00      0.00      0.00      9.98
+----------------------------------------------------------------------------------------------------
+traffic.log:sar -n DEV --iface=eth0 1 60 > traffic.log 2>&1 &
+Linux 6.1.21-v8+ (raspberrypi) 	08/04/2023 	_aarch64_	(4 CPU)
+
+09:51:22 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:23 AM      eth0      5.00   7542.00      0.32  10967.35      0.00      0.00      0.00      8.98
+
+09:51:23 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:24 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:24 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:25 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:25 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:26 AM      eth0      0.00   8397.00      0.00  12218.29      0.00      0.00      0.00     10.01
+
+09:51:26 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:27 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:51:27 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:28 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:28 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:29 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:29 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:30 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:30 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:31 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:31 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:32 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:32 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:33 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:51:33 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:34 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:34 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:35 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:35 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:36 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:36 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:37 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:37 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:38 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:38 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:39 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:39 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:40 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:40 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:41 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:41 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:42 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:51:42 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:43 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:43 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:44 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:44 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:45 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:45 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:46 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:46 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:47 AM      eth0      0.00   8394.00      0.00  12213.93      0.00      0.00      0.00     10.01
+
+09:51:47 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:48 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:51:48 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:49 AM      eth0      0.00   8394.00      0.00  12213.93      0.00      0.00      0.00     10.01
+
+09:51:49 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:50 AM      eth0      0.00   8392.00      0.00  12211.02      0.00      0.00      0.00     10.00
+
+09:51:50 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:51 AM      eth0      1.00   8394.00      0.06  12212.51      0.00      0.00      0.00     10.00
+
+09:51:51 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:52 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:52 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:53 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:53 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:54 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:51:54 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:55 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:55 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:56 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:56 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:57 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:57 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:58 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:58 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:51:59 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:51:59 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:00 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:52:00 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:01 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:52:01 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:02 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:52:02 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:03 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:52:03 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:04 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:52:04 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:05 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:52:05 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:06 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:52:06 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:07 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:52:07 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:08 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:52:08 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:09 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:52:09 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:10 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:52:10 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:11 AM      eth0      0.00   8390.00      0.00  12208.11      0.00      0.00      0.00     10.00
+
+09:52:11 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:12 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:52:12 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:13 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:52:13 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:14 AM      eth0      0.00   8394.00      0.00  12213.93      0.00      0.00      0.00     10.01
+
+09:52:14 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:15 AM      eth0      0.00   8393.00      0.00  12212.47      0.00      0.00      0.00     10.00
+
+09:52:15 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:16 AM      eth0      0.00   8392.00      0.00  12211.02      0.00      0.00      0.00     10.00
+
+09:52:16 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:17 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:52:17 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:18 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:52:18 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:19 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:52:19 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:20 AM      eth0      1.00   8392.00      0.06  12209.60      0.00      0.00      0.00     10.00
+
+09:52:20 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:21 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+09:52:21 AM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+09:52:22 AM      eth0      0.00   8391.00      0.00  12209.56      0.00      0.00      0.00     10.00
+
+Average:        IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s   %ifutil
+Average:         eth0      0.12   8377.20      0.01  12189.32      0.00      0.00      0.00      9.99
+====================================================================================================
