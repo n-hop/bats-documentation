@@ -249,7 +249,9 @@ In order to improve the performance of TCP over BATS protocol, BATS protocol has
 
 #### 9.2.1 Multi-hop Network Testing with BTP
 
-Iperf3 throughput&reliability evaluation:
+<div align="center" style="text-align:center">
+<img src="imgs/iperf_tcp_throughput_test.svg" alt=""></div>
+<div align="center">Fig 9.1 Iperf3 throughput&reliability evaluation</div>
 
 Customized application latency evaluation:
 
