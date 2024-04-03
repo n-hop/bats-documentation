@@ -246,12 +246,21 @@ In order to improve the performance of TCP over BATS protocol, BATS protocol has
   - Hop number: 6
   - Link latency: <1ms
   - Link loss rate: 0% to 10%
+- **Accumulated loss rate**: When the length of the network path is long, the accumulated loss rate will be high. The following diagram shows the accumulated loss rate of a 6-hop network with different link loss rates.
+<div align="center" style="text-align:center">
+<img src="imgs/6-hops-loss.png" alt="" style="zoom:60%;"></div>
+<div align="center">Fig 9.1 Accumulated loss rate of a 6-hop network</div>
+
+- **Topology**:
+<div align="center" style="text-align:center">
+<img src="imgs/6-hops.svg" alt=""></div>
+<div align="center">Fig 9.2 Test network topology</div>
 
 #### 9.2.1 Multi-hop Network Testing with BTP
 
 <div align="center" style="text-align:center">
 <img src="imgs/iperf_tcp_throughput_test.svg" alt=""></div>
-<div align="center">Fig 9.1 Iperf3 throughput&reliability evaluation</div>
+<div align="center">Fig 9.3 Iperf3 throughput&reliability evaluation</div>
 
 Customized application latency evaluation:
 
