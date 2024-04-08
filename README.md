@@ -30,8 +30,7 @@ For further contact, please visit [n-hop technologies Limited](https://www.n-hop
     - [9.1 Overall Setup](#91-overall-setup)
     - [9.1 One-hop Network Testing](#91-one-hop-network-testing)
     - [9.2 Multi-hop Network Testing](#92-multi-hop-network-testing)
-      - [9.2.1 Multi-hop Network Testing with BTP](#921-multi-hop-network-testing-with-btp)
-      - [9.2.2 Multi-hop Network Testing with BRTP](#922-multi-hop-network-testing-with-brtp)
+      - [9.2.1 Multi-hop Network Testing with BTP, BRTP](#921-multi-hop-network-testing-with-btp-brtp)
 
 ## 1.Introduction
 
@@ -242,30 +241,27 @@ In order to improve the performance of TCP over BATS protocol, BATS protocol has
 
 - **Purpose**: Study the inner code performance and the congestion control mechanism. We focus on the evaluation of the throughput, latency and reliability of different BATS protocols/mode in a multi-hop network.
 - **Scenery**: A multi-hop chain network that includes multiple nodes, connected by network links. The packets transmitted through the network links suffer from both packet loss, delay and congestion.
-- **Setup**:
-  - Hop number: 6
-  - Link latency: <1ms
-  - Link loss rate: 0% to 10%
 - **Accumulated loss rate**: When the length of the network path is long, the accumulated loss rate will be high. The following diagram shows the accumulated loss rate of a 6-hop network with different link loss rates.
+
 <div align="center" style="text-align:center">
 <img src="imgs/6-hops-loss.png" alt="" style="zoom:60%;"></div>
 <div align="center">Fig 9.1 Accumulated loss rate of a 6-hop network</div>
 
 - **Topology**:
+
 <div align="center" style="text-align:center">
 <img src="imgs/6-hops.svg" alt=""></div>
 <div align="center">Fig 9.2 Test network topology</div>
 
-#### 9.2.1 Multi-hop Network Testing with BTP
+- **Parameters**:
+  - Hop number: 6
+  - Link latency: < 1ms
+  - Link loss rate: 0% to 10%
+
+#### 9.2.1 Multi-hop Network Testing with BTP, BRTP
 
 <div align="center" style="text-align:center">
 <img src="imgs/iperf_tcp_throughput_test.svg" alt=""></div>
 <div align="center">Fig 9.3 Iperf3 throughput&reliability evaluation</div>
-
-Customized application latency evaluation:
-
-#### 9.2.2 Multi-hop Network Testing with BRTP
-
-Iperf3 throughput&reliability evaluation:
 
 Customized application latency evaluation:
