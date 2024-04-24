@@ -280,7 +280,7 @@ In order to improve the performance of TCP over BATS protocol, BATS protocol has
 <div align="center">Fig 9.4 User Message RTT measurement based on TCP</div>
 
 <div align="center" style="text-align:center">
-<img src="imgs/latency_evaluation0.svg" alt=""></div>
+<img src="imgs/latency_evaluation2.svg" alt=""></div>
 <div align="center">Fig 9.5 User Message RTT measurement based on TCP</div>
 
 In the diagram, "BATS" is the BRTP protocol, "TCP" is the traditional TCP protocol, "KCP" is the KCP protocol. We measure the RTT of the user message from the source to the destination, and user messages are transmitted at a fixed rate of 1000/s, and the message length is 1000 bytes, and the message is sent by using TCP socket.
