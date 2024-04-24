@@ -30,7 +30,8 @@ For further contact, please visit [n-hop technologies Limited](https://www.n-hop
     - [9.1 Overall Setup](#91-overall-setup)
     - [9.1 One-hop Network Testing](#91-one-hop-network-testing)
     - [9.2 Multi-hop Network Testing](#92-multi-hop-network-testing)
-      - [9.2.1 Multi-hop Network Testing with BTP, BRTP](#921-multi-hop-network-testing-with-btp-brtp)
+      - [9.2.1 Multi-hop Throughput Testing with BTP, BRTP](#921-multi-hop-throughput-testing-with-btp-brtp)
+      - [9.2.2 Multi-hop Latency Testing with BRTP, TCP, KCP](#922-multi-hop-latency-testing-with-brtp-tcp-kcp)
 
 ## 1.Introduction
 
@@ -247,6 +248,9 @@ In order to improve the performance of TCP over BATS protocol, BATS protocol has
 <img src="imgs/6-hops-loss.png" alt="" style="zoom:60%;"></div>
 <div align="center">Fig 9.1 Accumulated loss rate of a 6-hop network</div>
 
+
+#### 9.2.1 Multi-hop Throughput Testing with BTP, BRTP
+
 - **Topology**:
 
 <div align="center" style="text-align:center">
@@ -257,11 +261,26 @@ In order to improve the performance of TCP over BATS protocol, BATS protocol has
   - Hop number: 6
   - Link latency: < 1ms
   - Link loss rate: 0% to 10%
-
-#### 9.2.1 Multi-hop Network Testing with BTP, BRTP
-
+  - 
 <div align="center" style="text-align:center">
 <img src="imgs/iperf_tcp_throughput_test.svg" alt=""></div>
 <div align="center">Fig 9.3 Iperf3 throughput&reliability evaluation</div>
 
-Customized application latency evaluation:
+#### 9.2.2 Multi-hop Latency Testing with BRTP, TCP, KCP
+
+- **Topology**:
+
+- **Parameters**:
+  - Hop number: 5
+  - Link latency: = 5ms
+  - Link loss rate: 0% to 2%
+
+<div align="center" style="text-align:center">
+<img src="imgs/latency_evaluation0.svg" alt=""></div>
+<div align="center">Fig 9.4 User Message RTT measurement based on TCP</div>
+
+<div align="center" style="text-align:center">
+<img src="imgs/latency_evaluation0.svg" alt=""></div>
+<div align="center">Fig 9.5 User Message RTT measurement based on TCP</div>
+
+In the diagram, "BATS" is the BRTP protocol, "TCP" is the traditional TCP protocol, "KCP" is the KCP protocol. We measure the RTT of the user message from the source to the destination, and user messages are transmitted at a fixed rate of 1000/s, and the message length is 1000 bytes, and the message is sent by using TCP socket.
