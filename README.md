@@ -271,7 +271,7 @@ In order to improve the performance of TCP over BATS protocol, BATS protocol has
 - **Topology**:
 
 - **Parameters**:
-  - Hop number: 5
+  - Hop number: 3
   - Link latency: = 5ms
   - Link loss rate: 0% to 2%
 
