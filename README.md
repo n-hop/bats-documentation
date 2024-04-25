@@ -1,6 +1,6 @@
 # BATS Protocol Performance Test
 
-BATS Protocol is a network communication protocol based on [BATS codes](https://shhyang.github.io/research/bats/), designed to provide high throughput and low latency data transmission in lossy networks. In this project, we evaluate and compare the performance of BATS Protocol with other techniques/protocols in terms of various performance metrics such as throughput, latency and reliability.
+BATS Protocol is a network communication protocol based on [BATS codes](https://n-hop.com/wp-content/uploads/2022/12/BATS.pdf), designed to provide high throughput and low latency data transmission in lossy networks. In this project, we evaluate and compare the performance of BATS Protocol with other techniques/protocols in terms of various performance metrics such as throughput, latency and reliability.
 
 To see performance test results directly, please jump to the section [BTP performance](#921-multi-hop-network-testing-with-btp), [BRTP performance](#922-multi-hop-network-testing-with-brtp).
 
@@ -204,7 +204,7 @@ All the nodes in the network which run the BATS protocol are called BATS nodes. 
 
 ### 8.1 BATS Transmission Protocol (BTP)
 
-BTP is a none reliable transmission protocol based on [BATS codes](https://shhyang.github.io/research/bats/). It is designed to provide high throughput and low latency data transmission in lossy networks. The BTP employed restricted feedback, utilizing link loss rate and coding statistics to adjust the coding redundancy.
+BTP is a none reliable transmission protocol based on [BATS codes](https://n-hop.com/wp-content/uploads/2022/12/BATS.pdf). It is designed to provide high throughput and low latency data transmission in lossy networks. The BTP employed restricted feedback, utilizing link loss rate and coding statistics to adjust the coding redundancy.
 
 This enabled acceptable reliability while not relying on exhaustive feedback mechanisms. The BTP is suitable for scenarios where the feedback latency is high, and the reliability is not the primary concern.
 
@@ -212,7 +212,7 @@ Even though BTP is not a reliable protocol, but it can still provide a high reli
 
 ### 8.2 BATS Reliable Transmission Protocol (BRTP)
 
-BRTP is a reliable transmission protocol based on [BATS codes](https://shhyang.github.io/research/bats/). As an enhancement of BTP, BRTP ensures 100% reliable data transmission by utilizing feedback to control the retransmission of unsolvable file trunks. Here retransmission is performed in network coding way, which is more efficient than transmitting the original data.
+BRTP is a reliable transmission protocol based on [BATS codes](https://n-hop.com/wp-content/uploads/2022/12/BATS.pdf). As an enhancement of BTP, BRTP ensures 100% reliable data transmission by utilizing feedback to control the retransmission of unsolvable file trunks. Here retransmission is performed in network coding way, which is more efficient than transmitting the original data.
 
 BRTP is suitable for scenarios where the reliability is the primary concern, and can endure increased latency.
 
