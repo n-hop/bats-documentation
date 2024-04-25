@@ -270,17 +270,31 @@ In order to improve the performance of TCP over BATS protocol, BATS protocol has
 
 - **Topology**:
 
+```text
+H0 --> H1 --> H2 --> H3
+```
+
 - **Parameters**:
   - Hop number: 3
   - Link latency: = 5ms
   - Link loss rate: 0% to 2%
 
+- **Test Method**:
+  - We measure the RTT of the TCP message from the source to the destination, and TCP messages are transmitted at a fixed rate, the length of each messages is 1024 bytes;
+  - In the following diagram, "BATS" is the BRTP protocol, "TCP" is the traditional TCP protocol, "KCP" is the KCP protocol.
+
+The following diagram shows the latency of fixed messages sending rate at 1000 packets/s:
+
 <div align="center" style="text-align:center">
 <img src="imgs/latency_evaluation0.svg" alt=""></div>
-<div align="center">Fig 9.4 User Message RTT measurement based on TCP</div>
+<div align="center">Fig 9.4 TCP Message RTT measurement</div>
 
 <div align="center" style="text-align:center">
 <img src="imgs/latency_evaluation2.svg" alt=""></div>
-<div align="center">Fig 9.5 User Message RTT measurement based on TCP</div>
+<div align="center">Fig 9.5  TCP Message RTT measurement</div>
 
-In the diagram, "BATS" is the BRTP protocol, "TCP" is the traditional TCP protocol, "KCP" is the KCP protocol. We measure the RTT of the user message from the source to the destination, and user messages are transmitted at a fixed rate of 1000/s, and the message length is 1000 bytes, and the message is sent by using TCP socket.
+ The following diagram shows the latency of fixed messages sending rate at 100 packets/s:
+
+ <div align="center" style="text-align:center">
+<img src="imgs/latency_evaluation3.svg" alt=""></div>
+<div align="center">Fig 9.6  TCP Message RTT measurement</div>
