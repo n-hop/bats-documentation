@@ -202,6 +202,8 @@ All the nodes in the network which run the BATS protocol are called BATS nodes. 
 <img src="imgs/bats-networking.svg" alt=""></div>
 <div align="center">Fig 1.2 BATS networking</div>
 
+To see design considerations and the architecture of the BATS protocol, please refer to [BATS Protocol](https://n-hop.com/wp-content/uploads/2022/09/BATS4IAB_v2.4.3_2-RY.pdf).
+
 ### 8.1 BATS Transmission Protocol (BTP)
 
 BTP is a none reliable transmission protocol based on [BATS codes](https://n-hop.com/wp-content/uploads/2022/12/BATS.pdf). It is designed to provide high throughput and low latency data transmission in lossy networks. The BTP employed restricted feedback, utilizing link loss rate and coding statistics to adjust the coding redundancy.
