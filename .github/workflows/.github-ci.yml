@@ -1,0 +1,82 @@
+name: pvp_game_endpoint pipelines
+on:
+  push:
+    branches: ["main"]
+    tags:
+      - v**
+    paths-ignore:
+      - "**.md"
+      - "**.jpg"
+      - "**.png"
+      - "**.svg"
+  pull_request:
+    branches: ["main"]
+    types:
+      - opened
+      - synchronize
+      - ready_for_review
+    paths-ignore:
+      - "**.md"
+      - "**.jpg"
+      - "**.png"
+      - "**.svg"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref}}
+  cancel-in-progress: true
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  compile:
+    needs: diagnostics
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Configure CMake
+        run: |
+          cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+
+      - name: Cache dependencies
+        id: cache-deps
+        uses: actions/cache@v4
+        with:
+          path: ${{github.workspace}}/build/_deps
+          key: ${{ runner.os }}-deps-${{ hashFiles('**/CMakeLists.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-deps-
+
+      - name: Build
+        run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+
+      - name: Upload pvp_game_endpoint
+        uses: actions/upload-artifact@v4
+        continue-on-error: true
+        with:
+          name: pvp_game_endpoint-artifact
+          path: |
+            ${{github.workspace}}/build/bin/pvp_game_endpoint
+          retention-days: 1
+
+  test:
+    needs: compile
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+
+    steps:
+      - name: Download pvp_game_endpoint
+        uses: actions/download-artifact@v4
+        with:
+          name: pvp_game_endpoint-artifact
+          path: ${{github.workspace}}/
+
+      - name: Run tests
+        run: |
+          ${{github.workspace}}/pvp_game_endpoint -p 10011 &
+          ${{github.workspace}}/pvp_game_endpoint -c 127.0.0.1 -p 10011 -i 0.001 -w 100 -l 324
