@@ -233,7 +233,6 @@ In order to improve the performance of TCP over BATS protocol, BATS protocol has
 - **Testing Platform**: Ubuntu 22.04 LTS, Linux kernel 6.5.0-14-generic.
 - **Fixed parameters in the test**:
   - Link bandwidth: 300Mbps
-  - Link jitter: 0
 
 ### 9.1 One-hop Network Testing
 
@@ -263,7 +262,7 @@ In order to improve the performance of TCP over BATS protocol, BATS protocol has
   - Hop number: 6
   - Link latency: < 1ms
   - Random Link loss rate: 0%, 5%
-  - 
+
 <div align="center" style="text-align:center">
 <img src="imgs/iperf_tcp_throughput_test.svg" alt=""></div>
 <div align="center">Fig 9.3 Iperf3 throughput&reliability evaluation</div>
