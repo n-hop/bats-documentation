@@ -291,7 +291,8 @@ H0 --> H1 --> H2 --> H3
   - For KCP, we use the KCP instance from [kcptun](https://github.com/xtaci/kcptun), the following is the command to start the KCPTUN client:
   
     ```bash
-    kcptun/client_linux_amd64 -r "{dst_host.IP()}:4000" -l ":{forwarding_port}" -mode fast3 -nocomp -autoexpire 900 -sockbuf 16777217 -dscp 46 --crypt=none
+    kcptun/client_linux_amd64 -r "{dst_host.IP()}:4000" -l ":{forwarding_port}" \ 
+        -mode fast3 -nocomp -autoexpire 900 -sockbuf 16777217 -dscp 46 --crypt=none
     ```
 
 The following diagram shows the latency of fixed messages sending rate at 200 packets/s:
