@@ -287,7 +287,12 @@ H0 --> H1 --> H2 --> H3
   - In the following diagram, "BATS" is the BRTP protocol, "TCP" is the traditional TCP protocol, "KCP" is the KCP protocol.
 
 - **Test Tools**:
-  - We use the customized application from [pvp_game_endpoint](src/README.md#quick-start) to measure the RTT of the TCP message from the source to the destination.
+  - For TCP message RTT measurement, We use the customized application from [pvp_game_endpoint](src/README.md#quick-start) to measure the RTT of the TCP message from the source to the destination.
+  - For KCP, we use the KCP instance from [kcptun](https://github.com/xtaci/kcptun), the following is the command to start the KCPTUN client:
+  
+    ```bash
+    kcptun/client_linux_amd64 -r "{dst_host.IP()}:4000" -l ":{forwarding_port}" -mode fast3 -nocomp -autoexpire 900 -sockbuf 16777217 -dscp 46 --crypt=none
+    ```
 
 The following diagram shows the latency of fixed messages sending rate at 200 packets/s:
 
