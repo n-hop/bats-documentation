@@ -77,5 +77,6 @@ jobs:
 
       - name: Run tests
         run: |
+          chmod +x ${{github.workspace}}/pvp_game_endpoint
           ${{github.workspace}}/pvp_game_endpoint -p 10011 &
           ${{github.workspace}}/pvp_game_endpoint -c 127.0.0.1 -p 10011 -i 0.001 -w 100 -l 324
