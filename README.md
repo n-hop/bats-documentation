@@ -57,7 +57,7 @@ In this section, we will introduce the network tools used in the test framework.
 
 - **Linux Traffic Control** is a powerful framework built into the Linux kernel that offers advanced traffic management and Quality of Service (QoS) capabilities. It allows administrators to shape and control network traffic by configuring various parameters like bandwidth, latency, packet scheduling, and prioritization. With tc, you can implement policies that prioritize certain types of traffic, limit bandwidth for specific applications, and manage congestion to ensure fair allocation of network resources.
 
-- **Customized application** is used to measure the end-to-end latency by sending messages of any fixed length at a given rate, and the source code is under the directory `src/app`. 
+- **Customized application** is used to measure the end-to-end latency by sending messages of any fixed length at a given rate, and the source code is in the file `src/pvp_game_endpoint.cc`. For HOWTO, please refer to [pvp_game_endpoint](src/README.md#quick-start).
 
 ## 4.Networking Parameters
 
