@@ -260,7 +260,7 @@ In order to improve the performance of TCP over BATS protocol, BATS protocol has
 - **Parameters**:
   - Hop number: 6
   - Link latency: < 1ms
-  - Link loss rate: 0% to 10%
+  - Random Link loss rate: 0%, 5%
   - 
 <div align="center" style="text-align:center">
 <img src="imgs/iperf_tcp_throughput_test.svg" alt=""></div>
@@ -277,7 +277,8 @@ H0 --> H1 --> H2 --> H3
 - **Parameters**:
   - Hop number: 3
   - Link latency: = 5ms
-  - Link loss rate: 0% to 2%
+  - Link latency jitter: 1ms
+  - Random Link loss rate: 0%, 2%
 
 - **Test Method**:
   - We measure the RTT of the TCP message from the source to the destination, and TCP messages are transmitted at a fixed rate, the length of each messages is 1024 bytes;
