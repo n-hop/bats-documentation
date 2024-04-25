@@ -283,6 +283,9 @@ H0 --> H1 --> H2 --> H3
   - We measure the RTT of the TCP message from the source to the destination, and TCP messages are transmitted at a fixed rate, the length of each messages is 1024 bytes;
   - In the following diagram, "BATS" is the BRTP protocol, "TCP" is the traditional TCP protocol, "KCP" is the KCP protocol.
 
+- **Test Tools**:
+  - We use the customized application from [pvp_game_endpoint](src/README.md#quick-start) to measure the RTT of the TCP message from the source to the destination.
+
 The following diagram shows the latency of fixed messages sending rate at 200 packets/s:
 
 <div align="center" style="text-align:center">
