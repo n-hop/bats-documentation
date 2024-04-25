@@ -283,7 +283,7 @@ H0 --> H1 --> H2 --> H3
   - We measure the RTT of the TCP message from the source to the destination, and TCP messages are transmitted at a fixed rate, the length of each messages is 1024 bytes;
   - In the following diagram, "BATS" is the BRTP protocol, "TCP" is the traditional TCP protocol, "KCP" is the KCP protocol.
 
-The following diagram shows the latency of fixed messages sending rate at 1000 packets/s:
+The following diagram shows the latency of fixed messages sending rate at 200 packets/s:
 
 <div align="center" style="text-align:center">
 <img src="imgs/latency_evaluation0.svg" alt=""></div>
