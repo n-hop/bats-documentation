@@ -302,19 +302,19 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
 
 - **Test Cases**:
 
-    In order to simulate different scenarios, we had tested the latency in three groups with the following changes:
+    In order to simulate different scenarios, we had tested the latency in three cases with the following changes:
 
   - **Case 1**: No packet loss on each link; the PvP game endpoint send messages at a rate of 100Hz, each message size is 1024 bytes;
   - **Case 2**: 2% packet loss on each link; the PvP game endpoint send messages at a rate of 100Hz, each message size is 1024 bytes;
   - **Case 3**: 2% packet loss on each link; the PvP game endpoint send messages at a rate of 100Hz, each message size is 128 bytes;
 
-  `Group 1` shows performance of protocols under perfect network conditions, and `Group 2` and `Group 3` show performance of protocols in a lossy network.
+  `Case 1` shows performance of protocols under perfect network conditions, and `Case 2` and `Case 3` show performance of protocols in a lossy network.
 
-  The difference between `Group 2` and `Group 3` is that:
+  The difference between `Case 2` and `Case 3` is that:
 
-  `Group 2` simulates the scenario of video streaming at fixed rate;
+  `Case 2` simulates the scenario of video streaming at fixed rate;
 
-  `Group 3` simulates the scenario of signaling messages in a real-time communication system;
+  `Case 3` simulates the scenario of signaling messages in a real-time communication system;
 
 
 - **Basic End-to-End Throughput Measurement**:
