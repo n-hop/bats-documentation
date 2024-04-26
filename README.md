@@ -2,7 +2,7 @@
 
 BATS Protocol is a network communication protocol based on [BATS codes](https://n-hop.com/wp-content/uploads/2022/12/BATS.pdf), designed to provide high throughput and low latency data transmission in lossy networks. In this project, we evaluate and compare the performance of BATS Protocol with other techniques/protocols in terms of various performance metrics such as throughput, latency and reliability.
 
-To see performance test results directly, please jump to the section [BTP/BRTP throughput performance](#921-multi-hop-throughput-testing-with-btp-brtp), [BRTP Latency performance](#922-multi-hop-latency-testing-with-brtp-tcp-kcp).
+To see performance test results directly, please jump to the section [BTP/BRTP throughput performance](#921-multi-hop-throughput-evaluation-with-btp-brtp), [BRTP Latency performance](#922-multi-hop-latency-evaluation-with-brtp-tcp-kcp).
 
 For further contact, please visit [n-hop technologies Limited](https://www.n-hop.com/). Or email to **peng.lei@n-hop.com**.
 
@@ -30,8 +30,8 @@ For further contact, please visit [n-hop technologies Limited](https://www.n-hop
     - [9.1 Overall Setup](#91-overall-setup)
     - [9.1 One-hop Network Testing](#91-one-hop-network-testing)
     - [9.2 Multi-hop Network Testing](#92-multi-hop-network-testing)
-      - [9.2.1 Multi-hop Throughput Testing with BTP, BRTP](#921-multi-hop-throughput-testing-with-btp-brtp)
-      - [9.2.2 Multi-hop Latency Testing with BRTP, TCP, KCP](#922-multi-hop-latency-testing-with-brtp-tcp-kcp)
+      - [9.2.1 Multi-hop Throughput Evaluation with BTP, BRTP](#921-multi-hop-throughput-evaluation-with-btp-brtp)
+      - [9.2.2 Multi-hop Latency Evaluation with BRTP, TCP, KCP](#922-multi-hop-latency-evaluation-with-brtp-tcp-kcp)
 
 ## 1.Introduction
 
@@ -311,7 +311,7 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
   `Group 1` shows performance of protocols under perfect network conditions, and `Group 2` and `Group 3` show performance of protocols in a lossy network.
 
   The difference between `Group 2` and `Group 3` is that:
-  
+
   `Group 2` simulates the scenario of video streaming at fixed rate;
 
   `Group 3` simulates the scenario of signaling messages in a real-time communication system;
