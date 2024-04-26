@@ -309,8 +309,11 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
   - **Case 3**: 2% packet loss on each link; the PvP game endpoint send messages at a rate of 100Hz, each message size is 128 bytes;
 
   `Group 1` shows performance of protocols under perfect network conditions, and `Group 2` and `Group 3` show performance of protocols in a lossy network.
+
   The difference between `Group 2` and `Group 3` is that:
+  
   `Group 2` simulates the scenario of video streaming at fixed rate;
+
   `Group 3` simulates the scenario of signaling messages in a real-time communication system;
 
 
