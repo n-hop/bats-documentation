@@ -249,7 +249,7 @@ In order to improve the performance of TCP over BATS protocol, BATS protocol has
 <img src="imgs/6-hops-loss.png" alt="" style="zoom:60%;"></div>
 <div align="center">Fig 9.1 Accumulated loss rate of a 6-hop network</div>
 
-#### 9.2.1 Multi-hop Throughput Testing with BTP, BRTP
+#### 9.2.1 Multi-hop Throughput Evaluation with BTP, BRTP
 
 - **Topology**:
 
@@ -268,12 +268,12 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
 <img src="imgs/iperf_tcp_throughput_test.svg" alt=""></div>
 <div align="center">Fig 9.3 TCP/BTP/BRTP throughput evaluation</div>
 
-#### 9.2.2 Multi-hop Latency Testing with BRTP, TCP, KCP
+#### 9.2.2 Multi-hop Latency Evaluation with BRTP, TCP, KCP
 
 - **Topology**:
 
 ```text
-H0 --> H1 --> H2 --> H3
+  H0 --> H1 --> H2 --> H3
 ```
 
 - **Parameters**:
@@ -283,30 +283,65 @@ H0 --> H1 --> H2 --> H3
   - Random Link loss rate: 0%, 2%
 
 - **Test Method**:
-  - We measure the RTT of the TCP message from the source to the destination, and TCP messages are transmitted at a fixed rate, the length of each messages is 1024 bytes;
-  - In the following diagram, "BATS" is the BRTP protocol, "TCP" is the traditional TCP protocol, "KCP" is the KCP protocol.
+  - We uses a PvP game endpoint to simulate sending messages over TCP at fixed rate, and the receiver will echo the message back to the sender, then sender will calculate the average `RTT` for each consecutive 10 packets.
 
-- **Test Tools**:
-  - For TCP message RTT measurement, We use the customized application from [pvp_game_endpoint](src/README.md#quick-start) to measure the RTT of the TCP message from the source to the destination.
-  - For KCP, we use the KCP instance from [kcptun](https://github.com/xtaci/kcptun), the following is the command to start the KCPTUN client:
+- **Test Protocol**:
+
+  - **BATS**: BATS protocol is running in TCP proxy mode with BRTP(BATS Reliable transmission protocol), and all congestion/feed-back mechanism are enabled.
+  - **TCP**: TCP with default configurations, and default congestion control algorithm `cubic`;
+  - **KCP**: Using the KCP instance from https://github.com/xtaci/kcptun, this `kcptun` implement high-efficient reliable transmission over UDP; and it has the Reed-Solomon codes for error correction. The following is the command to start the KCPTUN client:
   
     ```bash
     kcptun/client_linux_amd64 -r "{dst_host.IP()}:4000" -l ":{forwarding_port}" \ 
         -mode fast3 -nocomp -autoexpire 900 -sockbuf 16777217 -dscp 46 --crypt=none
     ```
 
-The following diagram shows the latency of fixed messages sending rate at 200 packets/s:
+- **Test Application**:
+  - We use the PvP game endpoint to send/receive messages over TCP, and the source code is in the file `src/pvp_game_endpoint.cc`.
+  - For HOWTO of the PvP game endpoint, please refer to [pvp_game_endpoint](src/README.md#quick-start).
 
-<div align="center" style="text-align:center">
-<img src="imgs/latency_evaluation0.svg" alt=""></div>
-<div align="center">Fig 9.4 TCP Message RTT measurement</div>
+- **Test Cases**:
 
-<div align="center" style="text-align:center">
-<img src="imgs/latency_evaluation2.svg" alt=""></div>
-<div align="center">Fig 9.5  TCP Message RTT measurement</div>
+    In order to simulate different scenarios, we had tested the latency in three groups with the following changes:
 
- The following diagram shows the latency of fixed messages sending rate at 100 packets/s:
+  - **Case 1**: No packet loss on each link; the PvP game endpoint send messages at a rate of 100Hz, each message size is 1024 bytes;
+  - **Case 2**: 2% packet loss on each link; the PvP game endpoint send messages at a rate of 100Hz, each message size is 1024 bytes;
+  - **Case 3**: 2% packet loss on each link; the PvP game endpoint send messages at a rate of 100Hz, each message size is 128 bytes;
 
- <div align="center" style="text-align:center">
-<img src="imgs/latency_evaluation3.svg" alt=""></div>
-<div align="center">Fig 9.6  TCP Message RTT measurement</div>
+  `Group 1` shows performance of protocols under perfect network conditions, and `Group 2` and `Group 3` show performance of protocols in a lossy network.
+  The difference between `Group 2` and `Group 3` is that:
+  `Group 2` simulates the scenario of video streaming at fixed rate;
+  `Group 3` simulates the scenario of signaling messages in a real-time communication system;
+
+
+- **Basic End-to-End Throughput Measurement**:
+
+  Before latency test, we had measured the end-to-end throughput of each protocol from `H0` to `H2` with link loss rate 2%:
+
+    | Protocol | End-to-End throughput |
+    | -------- | --------------------- |
+    | BATS     | 42.4 Mb/s             |
+    | TCP      | 1.96 Mb/s             |
+    | KCP      | 1.64 Mb/s             |
+
+- **Latency test result**:
+
+  The latency test results are shown as follows:
+
+  <div align="center" style="text-align:center">
+  <img src="imgs/latency_evaluation1.svg" alt=""></div>
+  <div align="center">Fig 1.3 Latency test result of case 1</div>
+
+  <div align="center" style="text-align:center">
+  <img src="imgs/latency_evaluation0.svg" alt=""></div>
+  <div align="center">Fig 1.4 Latency test result of case 2</div>
+
+  <div align="center" style="text-align:center">
+  <img src="imgs/latency_evaluation2.svg" alt=""></div>
+  <div align="center">Fig 1.5 Latency test result of case 3</div>
+
+- **Conclusion of latency evaluation**:
+
+  - 1. at no packet loss scenario, BATS protocol has slightly higher latency than TCP and KCP since BATS protocol has data caching mechanism for chunked data encoding/decoding;
+  - 2. at 2% packet loss scenario and large message size, BATS protocol has the lowest latency and stable latency; it can solve network issues of video streaming;
+  - 3. at 2% packet loss scenario and small message size, BATS protocol still performs far better than others;
