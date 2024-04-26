@@ -284,6 +284,7 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
 
 - **Test Method**:
   - We uses a PvP game endpoint to simulate sending messages over TCP at fixed rate, and the receiver will echo the message back to the sender, then sender will calculate the average `RTT` for each consecutive 10 packets.
+  - Source code of the PvP game endpoint is in the file `src/pvp_game_endpoint.cc`; For HOWTO of the PvP game endpoint, please refer to [pvp_game_endpoint](src/README.md#quick-start).
 
 - **Test Protocol**:
 
@@ -295,10 +296,6 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
     kcptun/client_linux_amd64 -r "{dst_host.IP()}:4000" -l ":{forwarding_port}" \ 
         -mode fast3 -nocomp -autoexpire 900 -sockbuf 16777217 -dscp 46 --crypt=none
     ```
-
-- **Test Application**:
-  - We use the PvP game endpoint to send/receive messages over TCP, and the source code is in the file `src/pvp_game_endpoint.cc`.
-  - For HOWTO of the PvP game endpoint, please refer to [pvp_game_endpoint](src/README.md#quick-start).
 
 - **Test Cases**:
 
@@ -345,6 +342,6 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
 
 - **Conclusion of latency evaluation**:
 
-  - 1. At no packet loss scenario, BATS protocol has slightly higher latency than TCP and KCP, this can be optimized in the future version of the BATS protocol;
-  - 2. At 2% packet loss scenario and large message size, BATS protocol has the lowest latency and stable latency; it can improve the quality of the real-time video streaming;
-  - 3. At 2% packet loss scenario and small message size, BATS protocol still performs far better than others.
+  - 1. In no packet loss scenario, BATS protocol has slightly higher latency than TCP and KCP, this can be optimized in the future version of the BATS protocol;
+  - 2. In 2% packet loss scenario and large message size, BATS protocol has the lowest latency and stable latency; it can improve the quality of the real-time video streaming;
+  - 3. In 2% packet loss scenario and small message size, BATS protocol still performs far better than others.
