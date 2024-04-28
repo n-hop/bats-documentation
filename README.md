@@ -283,12 +283,13 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
   - Random Link loss rate: 0%, 2%
 
 - **Test Method**:
-  - We uses a PvP game endpoint to simulate sending messages over TCP at fixed rate, and the receiver will echo the message back to the sender, then sender will calculate the average `RTT` for each consecutive 10 packets.
+  - We uses a PvP game endpoint to simulate sending messages over TCP at fixed rate, fixed message size. The receiver will echo back the messages it received.
   - Source code of the PvP game endpoint is in the file `src/pvp_game_endpoint.cc`; For HOWTO of the PvP game endpoint, please refer to [pvp_game_endpoint](src/README.md#quick-start).
+  - In the above topology, the PvP game endpoint is running on `H0` and `H3`, `H0` send messages to `H3`, and `H3` echo the message back to `H0`; then `H0` calculate the average `RTT` for each consecutive 10 packets.
 
 - **Test Protocol**:
 
-  - **BATS**: BATS protocol is running in TCP proxy mode with BRTP(BATS Reliable transmission protocol), and all congestion/feed-back mechanism are enabled.
+  - **BATS**: BATS protocol is running in TCP proxy mode with BRTP(BATS Reliable transmission protocol), and all congestion/feedback mechanism are enabled.
   - **TCP**: TCP with default configurations, and default congestion control algorithm `cubic`;
   - **KCP**: Using the KCP instance from https://github.com/xtaci/kcptun, this `kcptun` implement high-efficient reliable transmission over UDP; and it has the Reed-Solomon codes for error correction. The following is the command to start the KCPTUN client:
   
@@ -301,9 +302,9 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
 
     In order to simulate different scenarios, we had tested the latency in three cases with the following changes:
 
-  - **Case 1**: No packet loss on each link; the PvP game endpoint send messages at a rate of 100Hz, each message size is 1024 bytes;
-  - **Case 2**: 2% packet loss on each link; the PvP game endpoint send messages at a rate of 100Hz, each message size is 1024 bytes;
-  - **Case 3**: 2% packet loss on each link; the PvP game endpoint send messages at a rate of 100Hz, each message size is 128 bytes;
+  - **Case 1**: No packet loss on each link; the PvP game endpoint send messages at a rate of 100 packets/s, each message size is 1024 bytes;
+  - **Case 2**: 2% packet loss on each link; the PvP game endpoint send messages at a rate of packets/s, each message size is 1024 bytes;
+  - **Case 3**: 2% packet loss on each link; the PvP game endpoint send messages at a rate of packets/s, each message size is 128 bytes;
 
   `Case 1` shows performance of protocols under perfect network conditions, and `Case 2` and `Case 3` show performance of protocols in a lossy network.
 
@@ -344,4 +345,4 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
 
   - 1. In no packet loss scenario, BATS protocol has slightly higher latency than TCP and KCP, this can be optimized in the future version of the BATS protocol;
   - 2. In 2% packet loss scenario and large message size, BATS protocol has the lowest latency and stable latency; it can improve the quality of the real-time video streaming;
-  - 3. In 2% packet loss scenario and small message size, BATS protocol still performs far better than others.
+  - 3. In 2% packet loss scenario and small message size, BATS protocol still performs far better than others, it also can bring a lot of benefits to  real-time signaling system.
