@@ -291,7 +291,7 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
 
   - **BATS**: BATS protocol is running in TCP proxy mode with BRTP(BATS Reliable transmission protocol), and all congestion/feedback mechanism are enabled.
   - **TCP**: TCP with default configurations, and default congestion control algorithm `cubic`;
-  - **KCP**: Using the KCP instance from https://github.com/xtaci/kcptun, this `kcptun` implement high-efficient reliable transmission over UDP; and it has the Reed-Solomon codes for error correction. The following is the command to start the KCPTUN client:
+  - **KCP**: Using the KCP instance from https://github.com/xtaci/kcptun, this `kcptun` implement high-efficient reliable transmission over UDP; and it has the Reed-Solomon codes for error correction. We used the following command to start then KCPTUN client:
   
     ```bash
     kcptun/client_linux_amd64 -r "{dst_host.IP()}:4000" -l ":{forwarding_port}" \ 
@@ -317,7 +317,7 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
 
 - **Basic End-to-End Throughput Measurement**:
 
-  Before latency test, we had measured the end-to-end throughput of each protocol from `H0` to `H2` with link loss rate 2%:
+  Before latency test, we had measured the end-to-end throughput of each protocol from `H0` to `H3` with link loss rate 2%:
 
     | Protocol | End-to-End throughput |
     | -------- | --------------------- |
@@ -346,3 +346,5 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
   - 1. In no packet loss scenario, BATS protocol has slightly higher latency than TCP and KCP, this can be optimized in the future version of the BATS protocol;
   - 2. In 2% packet loss scenario and large message size, BATS protocol has the lowest latency and stable latency; it can improve the quality of the real-time video streaming;
   - 3. In 2% packet loss scenario and small message size, BATS protocol still performs far better than others, it also can bring a lot of benefits to  real-time signaling system.
+
+- improve usability
