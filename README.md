@@ -261,6 +261,9 @@ In order to improve the performance of TCP over BATS protocol, BATS protocol has
   - Hop number: 6
   - Link latency: < 1ms
   - Random Link loss rate: 0%, 5%
+  
+- **Test Method**:
+  - Running Iperf3 on the source node and the destination node, and measure the end-to-end throughput of the TCP, BTP and BRTP protocol, respectively. Six seconds after the start of the test, the system begins to simulate packet loss. The entire test lasts for 60 seconds.
 
 In the following diagram, the item `TCP over BATS proxy` is the testing for `BRTP`.
 
