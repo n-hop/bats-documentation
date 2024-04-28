@@ -349,5 +349,3 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
   - 1. In no packet loss scenario, BATS protocol has slightly higher latency than TCP and KCP, this can be optimized in the future version of the BATS protocol;
   - 2. In 2% packet loss scenario and large message size, BATS protocol has the lowest latency and stable latency; it can improve the quality of the real-time video streaming;
   - 3. In 2% packet loss scenario and small message size, BATS protocol still performs far better than others, it also can bring a lot of benefits to  real-time signaling system.
-
-- improve usability
