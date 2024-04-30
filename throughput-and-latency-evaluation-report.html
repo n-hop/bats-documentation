@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            page-break-inside: avoid;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-size: 12px;
+        }
+
+        td {
+            font-size: 12px;
+        }
+
+        caption {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+
+        .image-container {
+            text-align: center;
+            page-break-inside: avoid
+        }
+
+        .image-container img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .image-title {
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding: 0;
+        }
+
+        @media print {
+            body {
+                font-size: 14px;
+                margin: 1.5cm;
+                line-height: 1.3;
+            }
+
+            @page {
+                size: A4;
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            padding: 50px;
+        }
+    </style>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+</head>
+
+<body>
+    <center>
+        <h1>Throughput Evaluation of the BATS Protocol</h1>
+    </center><br>
+    <p>We conducted multi-hop tests with link capacities of 300 Mbps between each hop for BATS, TCP, and UDP under
+        varying loss conditions.
+        Below, you will find a comparison of the 6-hop throughput and reliability results for BATS, TCP, and UDP under
+        random loss models.</p>
+
+    <div class="image-container">
+        <img src="./imgs/throughput_random_6-hop.svg" alt="Image" style="width: 80%;">
+        <div class="image-title">Figure. 6-hop throughput under different loss model (random)</div>
+    </div>
+
+    <em>Note: We reserved 5 seconds for <strong>iperf</strong> handshake, after that, initiating
+        packet dropping by configuring the packet loss rate for each hop in the link. The average throughput is
+        calculated thereafter.</em>
+    <table>
+        <caption>Table.Testing methodologies </caption>
+        <colgroup>
+            <col style="width: 17%;">
+            <col style="width: 35%;">
+            <col style="width: 8%;">
+            <col style="width: 40%;">
+        </colgroup>
+        <tr>
+            <th>Testing models</th>
+            <th>Description</th>
+            <th>Tools</th>
+            <th>Specific Parameters</th>
+        </tr>
+        <tr>
+            <td>Original UDP</td>
+            <td>The original UDP flow without BATS.</td>
+            <td>iperf3</td>
+            <td>Default UDP send rate is set as link_capacity * 0.92 since there are ip/udp header consumption. </td>
+        </tr>
+        <tr>
+            <td>Original TCP</td>
+            <td>The original TCP flow without BATS.</td>
+            <td>iperf3</td>
+            <td>TCP congestion algorithm, e.g. cubic, reno and bbr. <strong><i>cubic</i></strong> is chosen as default
+                in this report. </td>
+        </tr>
+        <tr>
+            <td>TCP over <strong>BTP</strong><i> (BATS Transmission Protocol)</i></td>
+            <td>The TCP flows are redirected by tun interface and then managed by BATS protocol. In this case, the
+                IP/TCP header is encoded as part of the payload. </td>
+            <td>iperf3</td>
+            <td>
+                TCP congestion algorithm: <strong><i>cubic</i></strong>.
+            </td>
+        </tr>
+        <tr>
+            <td>TCP over <strong>BATS Proxy</strong></td>
+            <td>The TCP flow will be redirected by iptables and all TCP sessions will be managed by tcp session hubs of
+                BATS protocol. The BATS proxy adds TCP proxy functionality based on BRTP. In this case, the IP/TCP
+                header is removed, the TCP session is completely taken over by BATS protocol, and only the TCP payload
+                is encoded</td>
+            <td>iperf3</td>
+            <td>
+                TCP congestion algorithm: <strong><i>cubic</i></strong>.
+            </td>
+        </tr>
+    </table>
+    <br>
+    <br>
+
+    <div class="image-container">
+        <img src="./imgs/reliability_random_6-hop.svg" alt="Image" style="width: 60%;">
+        <div class="image-title">Figure. 6-hop reliability under different loss model (random)</div>
+    </div>
+
+    <em>Note: Reliability is calculated as:<strong><i>Reliability = Average Receive Rate / Average Send
+                Rate</i></strong>.The theoretical reliability of BATS code is 100%. However, since the BTP does not
+        provide unrestricted feedback and iperf/bperf transmission and reception are not entirely synchronized, the
+        results indicate that the reliability of original BATS is less than 100%.
+        Due to the near-zero transmission of TCP in a multi-hop environment with packet loss, calculating the
+        reliability of TCP is not meaningful.</em>
+    <div>
+        <table>
+            <caption>Average (6-hop) Throughput of Original UDP under different loss conditions.</caption>
+            <thead>
+                <tr>
+                    <th>Link Loss Parameters</th>
+                    <th>Throughput</th>
+                    <th>NIC Send Rate</th>
+                    <th>NIC Recv Rate</th>
+                    <th>Reliability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>random 0%</td>
+                    <td>291.96 Mbps</td>
+                    <td>291.79 Mbps</td>
+                    <td>291.78 Mbps</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>random 5%</td>
+                    <td>214.39 Mbps</td>
+                    <td>291.92 Mbps</td>
+                    <td>225.97 Mbps</td>
+                    <td>73.43%</td>
+                </tr>
+                <tr>
+                    <td>random 10%</td>
+                    <td>154.98 Mbps</td>
+                    <td>291.7 Mbps</td>
+                    <td>172.29 Mbps</td>
+                    <td>53.08%</td>
+                </tr>
+                <tr>
+                    <td>random 15%</td>
+                    <td>109.76 Mbps</td>
+                    <td>291.97 Mbps</td>
+                    <td>129.39 Mbps</td>
+                    <td>37.59%</td>
+                </tr>
+                <tr>
+                    <td>random 20%</td>
+                    <td>76.49 Mbps</td>
+                    <td>291.99 Mbps</td>
+                    <td>95.68 Mbps</td>
+                    <td>26.2%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table>
+            <caption>Average (6-hop) Throughput of Original TCP under different loss conditions.</caption>
+            <thead>
+                <tr>
+                    <th>Link Loss Parameters</th>
+                    <th>Congestion</th>
+                    <th>Throughput</th>
+                    <th>NIC Send Rate</th>
+                    <th>NIC Recv Rate</th>
+                    <th>Reliability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>random 0%</td>
+                    <td>cubic</td>
+                    <td>286.43 Mbps</td>
+                    <td>278.64 Mbps</td>
+                    <td>278.69 Mbps</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>random 5%</td>
+                    <td>cubic</td>
+                    <td>0.05 Mbps</td>
+                    <td>0.07 Mbps</td>
+                    <td>0.05 Mbps</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>random 10%</td>
+                    <td>cubic</td>
+                    <td>0.0 Mbps</td>
+                    <td>0.02 Mbps</td>
+                    <td>0.01 Mbps</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>random 15%</td>
+                    <td>cubic</td>
+                    <td>0.0 Mbps</td>
+                    <td>0.0 Mbps</td>
+                    <td>0.0 Mbps</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>random 20%</td>
+                    <td>cubic</td>
+                    <td>0.0 Mbps</td>
+                    <td>0.0 Mbps</td>
+                    <td>0.0 Mbps</td>
+                    <td>100%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table>
+            <caption>Average (6-hop) Throughput of TCP over BTP under different loss conditions.</caption>
+            <thead>
+                <tr>
+                    <th>Link Loss Parameters</th>
+                    <th>Congestion</th>
+                    <th>Throughput</th>
+                    <th>NIC Send Rate</th>
+                    <th>NIC Recv Rate</th>
+                    <th>Reliability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>random 0%</td>
+                    <td>cubic</td>
+                    <td>262.89 Mbps</td>
+                    <td>292.84 Mbps</td>
+                    <td>292.83 Mbps</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>random 5%</td>
+                    <td>cubic</td>
+                    <td>216.81 Mbps</td>
+                    <td>286.84 Mbps</td>
+                    <td>289.19 Mbps</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>random 10%</td>
+                    <td>cubic</td>
+                    <td>186.3 Mbps</td>
+                    <td>281.17 Mbps</td>
+                    <td>284.53 Mbps</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>random 15%</td>
+                    <td>cubic</td>
+                    <td>169.94 Mbps</td>
+                    <td>276.49 Mbps</td>
+                    <td>283.32 Mbps</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>random 20%</td>
+                    <td>cubic</td>
+                    <td>159.17 Mbps</td>
+                    <td>288.61 Mbps</td>
+                    <td>290.38 Mbps</td>
+                    <td>100%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table>
+            <caption>Average (6-hop) Throughput of TCP over BATS Proxy under different loss conditions.</caption>
+            <thead>
+                <tr>
+                    <th>Link Loss Parameters</th>
+                    <th>Congestion</th>
+                    <th>Throughput</th>
+                    <th>NIC Send Rate</th>
+                    <th>NIC Recv Rate</th>
+                    <th>Reliability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>random 0%</td>
+                    <td>cubic</td>
+                    <td>276.72 Mbps</td>
+                    <td>292.98 Mbps</td>
+                    <td>292.95 Mbps</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>random 5%</td>
+                    <td>cubic</td>
+                    <td>213.09 Mbps</td>
+                    <td>268.26 Mbps</td>
+                    <td>286.07 Mbps</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>random 10%</td>
+                    <td>cubic</td>
+                    <td>191.63 Mbps</td>
+                    <td>275.65 Mbps</td>
+                    <td>289.16 Mbps</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>random 15%</td>
+                    <td>cubic</td>
+                    <td>174.31 Mbps</td>
+                    <td>270.24 Mbps</td>
+                    <td>281.63 Mbps</td>
+                    <td>100%</td>
+                </tr>
+                <tr>
+                    <td>random 20%</td>
+                    <td>cubic</td>
+                    <td>163.3 Mbps</td>
+                    <td>281.15 Mbps</td>
+                    <td>287.23 Mbps</td>
+                    <td>100%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br><br><br>
+    <center>
+        <h1>Latency Evaluation of the BATS Protocol</h1>
+    </center><br>
+
+    <p>We had added transmission latency evaluation on a set of protocols, including BATS, TCP, KCP:
+    </p>
+    <ul>
+        <li><strong>TCP:</strong> TCP with default configurations, and default congestion control algorithm
+            <strong><i>cubic</i></strong>
+        </li>
+        <li><strong>KCP:</strong> Using the KCP instance from https://github.com/xtaci/kcptun, this
+            <strong><i>kcptun</i></strong>
+            implement
+            high-efficient
+            reliable transmission over UDP, and it has the Reed-Solomon codes for error correction.
+        </li>
+        <li><strong>BATS:</strong> BATS protocol is running in TCP proxy mode with BRTP (BATS Reliable Transmission
+            Protocol), and all
+            congestion/feed-back mechanism are enabled.</li>
+    </ul>
+
+    <h3>Latency test method</h3>
+
+    <p> We developed a PvP game endpoint to simulate sending messages over TCP at fixed rate, and the receiver will echo
+        the message back to the sender, then sender will calculate the average `RTT` for each consecutive 10 packets.
+    </p>
+
+    <h3>Latency test setup</h3>
+
+    <p>H0 --------> H1 -------> H2 ---------> H2</p>
+    <ul>
+        <li>Link bandwidth: 200Mbps.</li>
+        <li>Link Latency: 5ms.</li>
+        <li>Link Latency jitter: 1ms.</li>
+    </ul>
+    <h3>Latency test result</h3>
+
+    <p>In order to simulate different scenarios, we had tested the latency in three groups with the following changes:
+    </p>
+
+    <ul>
+        <li>
+            <strong>Group 1:</strong> No packet loss on each link; the PvP game endpoint send messages at a rate of
+            100Hz, each
+            message
+            size is 1024 bytes;
+        </li>
+        <li><strong>Group 2:</strong> 2% packet loss on each link; the PvP game endpoint send messages at a rate of
+            100Hz, each
+            message
+            size is 1024 bytes;</li>
+        <li><strong>Group 3:</strong> 2% packet loss on each link; the PvP game endpoint send messages at a rate of
+            100Hz, each
+            message
+            size is 128 bytes;</li>
+    </ul>
+
+    <div>
+        <p><strong>Group 1</strong> shows performance of protocols under perfect network conditions, <strong>Group
+                2</strong>
+            and <strong>Group 3</strong> show
+            performance of protocols in a lossy network.</p>
+        <p>The difference between <strong>Group 2</strong> and <strong>Group 3</strong> is that:</p>
+        <ul>
+            <li><strong>Group 2</strong> simulates the scenario of video streaming at fixed rate.</li>
+            <li><strong>Group 3</strong> simulates the scenario of signaling messages in a real-time communication
+                system.</li>
+        </ul>
+    </div>
+
+    <p>Before latency test, we had measured the end-to-end throughput of each protocol from `H0` to `H2` with link loss
+        rate 2%:</p>
+
+    <div>
+        <table>
+            <caption>End-to-End Throughput (loss rate: 2%)</caption>
+            <thead>
+                <tr>
+                    <th>Protocol</th>
+                    <th>End-to-End Throughput</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BATS</td>
+                    <td>42.4 Mb/s</td>
+                </tr>
+                <tr>
+                    <td>TCP</td>
+                    <td>1.96 Mb/s</td>
+                </tr>
+                <tr>
+                    <td>KCP</td>
+                    <td>1.64 Mb/s</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>The latency test result is shown as follows:</p>
+
+    <div class="image-container">
+        <img src="imgs/latency_evaluation1.svg" alt="Image" style="width: 50%;">
+        <div class="image-title">Figure. Latency test result of Group 1</div>
+    </div>
+
+    <div class="image-container">
+        <img src="imgs/latency_evaluation0.svg" alt="Image" style="width: 50%;">
+        <div class="image-title">Figure. Latency test result of Group 1</div>
+    </div>
+
+    <div class="image-container">
+        <img src="imgs/latency_evaluation2.svg" alt="Image" style="width: 50%;">
+        <div class="image-title">Figure. Latency test result of Group 3</div>
+    </div>
+
+    <h3>Conclusion of latency evaluation</h3>
+    <ul>
+        <li>In no packet loss scenario, BATS protocol has slightly higher latency.</li>
+        <li>In 2% packet loss scenario and large message size, BATS protocol has the lowest latency and stable
+            latency; it can solve network issues of video streaming.</li>
+        <li>In 2% packet loss scenario and small message size, BATS protocol still performs far better than others.
+        </li>
+    </ul>
+
+</body>
+
+</html>
