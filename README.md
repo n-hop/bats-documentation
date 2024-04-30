@@ -4,6 +4,8 @@ BATS Protocol is a network communication protocol based on [BATS codes](https://
 
 To see performance test results directly, please jump to the section [BTP/BRTP throughput performance](#921-multi-hop-throughput-evaluation-with-btp-brtp), [BRTP Latency performance](#922-multi-hop-latency-evaluation-with-brtp-tcp-kcp).
 
+Also, performance test results can be found in the [https://n-hop.github.io/bats-documentation](https://n-hop.github.io/bats-documentation).
+
 For further contact, please visit [n-hop technologies Limited](https://www.n-hop.com/). Or email to **peng.lei@n-hop.com**.
 
 ## Objective
@@ -260,7 +262,7 @@ In order to improve the performance of TCP over BATS protocol, BATS protocol has
 - **Parameters**:
   - Hop number: 6
   - Link latency: < 1ms
-  - Random Link loss rate: 0%, 5%
+  - Random Link loss rate: 0%, 5%, 10%, 15%, 20%
   
 - **Test Method**:
   - Running Iperf3 on the source node and the destination node, and measure the end-to-end throughput of the TCP, BTP and BRTP protocol, respectively. Six seconds after the start of the test, the system begins to simulate packet loss. The entire test lasts for 60 seconds.
@@ -268,7 +270,7 @@ In order to improve the performance of TCP over BATS protocol, BATS protocol has
 In the following diagram, the item `TCP over BATS proxy` is the testing for `BRTP`.
 
 <div align="center" style="text-align:center">
-<img src="imgs/iperf_tcp_throughput_test.svg" alt=""></div>
+<img src="imgs/throughput_random_6-hop.svg" alt=""></div>
 <div align="center">Fig 9.3 TCP/BTP/BRTP throughput evaluation</div>
 
 #### 9.2.2 Multi-hop Latency Evaluation with BRTP, TCP, KCP
