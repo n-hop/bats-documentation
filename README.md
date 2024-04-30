@@ -318,7 +318,7 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
   `Case 3` simulates the scenario of signaling messages in a real-time communication system;
 
 
-- **Basic End-to-End Throughput Measurement**:
+- **End-to-End Throughput Measurement**:
 
   Before latency test, we had measured the end-to-end throughput of each protocol from `H0` to `H3` with link loss rate 2%:
 
