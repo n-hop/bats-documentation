@@ -271,7 +271,14 @@ In the following diagram, the item `TCP over BATS proxy` is the testing for `BRT
 
 <div align="center" style="text-align:center">
 <img src="imgs/throughput_random_6-hop.svg" alt=""></div>
-<div align="center">Fig 9.3 TCP/BTP/BRTP throughput evaluation</div>
+<div align="center">Fig 9.3.1 UDP/TCP/BTP/BRTP throughput evaluation</div>
+
+
+<div align="center" style="text-align:center">
+<img src="imgs/reliability_random_6-hop.svg" alt=""></div>
+<div align="center">Fig 9.3.2 UDP/TCP/BTP/BRTP reliability evaluation</div>
+
+Note: Reliability is calculated as: **Reliability = Average Receive Rate / Average Send Rate**. The theoretical reliability of BATS code is 100%. However, since the BTP does not provide unrestricted feedback and iperf/bperf transmission and reception are not entirely synchronized, the results indicate that the reliability of original BATS is less than 100%.  Due to the near-zero transmission of TCP in a multi-hop environment with packet loss, calculating the reliability of TCP is not meaningful.
 
 #### 9.2.2 Multi-hop Latency Evaluation with BRTP, TCP, KCP
 
