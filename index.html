@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            page-break-inside: avoid;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-size: 12px;
+        }
+
+        td {
+            font-size: 12px;
+        }
+
+        caption {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+
+        .image-container {
+            text-align: center;
+            page-break-inside: avoid
+        }
+
+        .image-container img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .image-title {
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding: 0;
+        }
+
+        @media print {
+            body {
+                font-size: 14px;
+                margin: 1.5cm;
+                line-height: 1.3;
+            }
+
+            @page {
+                size: A4;
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            padding: 50px;
+        }
+
+        nav {
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+    </style>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/contrib/auto-render.min.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body);
+        });</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css" />
+</head>
+
+<body>
+    <center>
+        <h1>BATS Protocol Performance Test</h1>
+    </center>
+    <p>
+        The BATS Protocol is a network communication protocol based on <a
+            href="https://n-hop.com/wp-content/uploads/2022/12/BATS.pdf">BATS
+            codes</a>, designed to provide high throughput and low latency data
+        transmission in lossy networks. In this project, we evaluate and compare the performance of BATS Protocol with
+        other techniques/protocols in terms of various performance metrics such as throughput, latency and reliability.
+    </p>
+
+    <p>To see performance test results directly, please jump to the section <a
+            href="#931-multi-hop-throughput-evaluation-with-btp-brtp">9.3.1 Multi-hop Throughput
+            Evaluation with BTP, BRTP</a> and <a href="#932-multi-hop-latency-evaluation-with-brtp-tcp-kcp">9.3.2
+            Multi-hop
+            Latency Evaluation with BRTP, TCP, KCP</a>.
+    </p>
+
+    <p>For further contact, please visit <a href="https://www.n-hop.com/">n-hop technologies Limited</a>. Or email to
+        <strong>peng.lei@n-hop.com</strong>.
+    </p>
+    <nav>
+        <h2>Content</h2>
+        <ul>
+            <li><a href="#1introduction">1. Introduction</a></li>
+            <li><a href="#2network-topologies">2. Network Topologies</a></li>
+            <li><a href="#3network-tools">3. Network Tools</a></li>
+            <li><a href="#4networking-parameters">4. Networking Parameters</a></li>
+            <li><a href="#5packet-loss-pattern">5. Packet Loss Pattern</a></li>
+            <li><a href="#6protocol-metrics">6. Protocol Metrics</a></li>
+            <li><a href="#7protocols-to-compare-with">7. Protocols to Compare with</a></li>
+            <li><a href="#8bats-protocol">8. BATS Protocol</a>
+                <ul>
+                    <li><a href="#81-bats-transmission-protocol-btp">8.1 BATS Transmission Protocol (BTP)</a></li>
+                    <li><a href="#82-bats-reliable-transmission-protocol-brtp">8.2 BATS Reliable Transmission Protocol
+                            (BRTP)</a></li>
+                    <li><a href="#83-acceleration-for-tcp-over-bats-protocol">8.3 Proxy for TCP over BATS protocol (BATS
+                            Proxy)</a></li>
+                </ul>
+            </li>
+            <li><a href="#9-testing-cases">9. Testing Results</a>
+                <ul>
+                    <li><a href="#91-overall-setup">9.1 Overall Setup</a></li>
+                    <li><a href="#92-one-hop-network-testing">9.2 One-hop Network Testing</a></li>
+                    <li><a href="#93-multi-hop-network-testing">9.3 Multi-hop Network Testing</a>
+                        <ul>
+                            <li><a href="#931-multi-hop-throughput-evaluation-with-btp-brtp">9.3.1 Multi-hop Throughput
+                                    Evaluation with BTP, BRTP</a></li>
+                            <li><a href="#932-multi-hop-latency-evaluation-with-brtp-tcp-kcp">9.3.2 Multi-hop Latency
+                                    Evaluation with BRTP, TCP, KCP</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="section" id="1introduction">
+        <h2>1. Introduction</h2>
+        <p>The BATS Protocol performance evaluation focuses on the capability of the communication logic, such as coding
+            (including feedback), congestion control, routing, etc. Therefore, in the testbed, we try to reduce the
+            effect of the
+            implementation by limiting the network link bandwidth. The performance compared with other techniques is
+            relative, and the gain should be scalable with the network bandwidth.</p>
+        <p>This is NOT a software performance test. In other words, we do not test how fast the BATS Protocol software
+            can run a
+            device. Tough the testbed considers various practical scenarios, we do not test performance for specific
+            applications,
+            like video streaming.</p>
+    </div>
+    <div class="section" id="2network-topologies">
+        <h2>2. Network Topologies</h2>
+        <p>Three kinds of network topologies will be mainly used in the tests:</p>
+        <ul>
+            <li>one-hop network</li>
+            <li>multi-hop networks</li>
+            <li>multi-path networks (in progress)</li>
+        </ul>
+    </div>
+    <div class="section" id="3network-tools">
+        <h2>3. Network Tools</h2>
+        <p>In this section, we will introduce the network tools used in the test framework.</p>
+        <ul>
+            <li><strong><i>Iperf3</i></strong> is an open-source tool used for measuring network performance. It
+                provides a straightforward way to assess
+                the bandwidth, latency, and other parameters of a network link. iPerf operates in client-server mode,
+                where one system
+                acts as the server and another as the client. The client sends a controlled amount of data to the
+                server, and the tool
+                calculates metrics like throughput, packet loss, and jitter. iPerf is commonly used to measure TCP and
+                UDP performance
+                on networks.</li>
+            <li><strong><i>Bperf</i></strong> is a specialized network performance testing tool developed by n-hop
+                technologies Limited. It
+                is designed to
+                measure and assess the performance of the BATS protocol.</li>
+            <li><strong><i>Linux Traffic Control</i></strong> is a powerful framework built into the Linux kernel that
+                offers advanced
+                traffic management
+                and Quality of Service (QoS) capabilities. It allows administrators to shape and control network traffic
+                by configuring
+                various parameters like bandwidth, latency, packet scheduling, and prioritization. With tc, you can
+                implement policies
+                that prioritize certain types of traffic, limit bandwidth for specific applications, and manage
+                congestion to ensure
+                fair allocation of network resources.</li>
+            <li><strong><i>Customized application</i></strong> is used to measure the end-to-end latency by sending
+                messages of any fixed
+                length at a
+                given rate, and the source code is in the file `src/pvp_game_endpoint.cc`. For HOWTO, please refer to
+                <a href="src/README.md#quick-start">pvp_game_endpoint</a>.
+            </li>
+        </ul>
+    </div>
+    <div class="section" id="4networking-parameters">
+        <h2>4. Networking Parameters</h2>
+        <ul>
+            <li><strong><i>Link bandwidth: </i></strong>The bandwidth of the link is the maximum rate at which data can
+                be transmitted over the link. The
+                bandwidth of a link
+                is a critical parameter that determines the maximum data rate that can be achieved between two nodes.
+                The bandwidth of a
+                link is determined by the physical characteristics of the link, such as the cable type, signal strength,
+                and interference.</li>
+            <li><strong><i>Link latency: </i></strong>The latency of a link is the time it takes for a packet to
+                travel from the source node to the
+                destination node. It
+                represents the propagation delay of the signal over the link.</li>
+            <li><strong><i>Link loss rate: </i></strong>The loss rate of a link is the possibility that a packet
+                transmitted over the link will be lost.
+                Packet loss can occur
+                due to various reasons, such as network congestion, buffer overflow, or link errors. In terms of the
+                behavior of the
+                loss, we can classify the loss into two types: independent loss and burst loss. In the section [packet
+                loss
+                pattern](#5packet-loss-pattern), we will introduce the loss pattern in detail.</li>
+            <li><strong><i>Link jitter: </i></strong>In the context of computer networks, packet jitter or packet delay
+                variation
+                (PDV) is the variation in
+                latency as
+                measured in the variability over time of the end-to-end delay across a network. A network with constant
+                delay has no
+                packet jitter. Link jitter is the latency variation of the link.</li>
+        </ul>
+    </div>
+    <div class="section" id="5packet-loss-pattern">
+        <h2>5. Packet Loss Pattern</h2>
+        <p>In assessing the efficacy of network protocols like TCP, UDP, and BATS, it's crucial to scrutinize their
+            performances under varying degrees of packet loss. We will explore 3 principal packet loss models for the
+            evaluation.</p>
+        <ul>
+            <li><strong><i>Random Loss Model: </i></strong>The random loss model involves dropping packets independently
+                based on a given
+                percentage p.
+                Each packet loss event is unrelated to others, making it a simple yet unpredictable scenario. This model
+                reflects
+                scenarios where packet loss occurs randomly and does not follow any specific pattern.</li>
+            <li><strong><i>State Loss Model: </i></strong> The state loss model utilizes a 4-state Markov chain to
+                depict packet loss behaviors.
+                The Markov chain states are as follows:
+                <ul>
+                    <li><i>State 1</i>: good Packet Reception (no loss)</li>
+                    <li><i>State 2</i>: good Reception within a Burst (no loss)</li>
+                    <li><i>State 3</i>: burst Losses (loss probability is 100%)</li>
+                    <li><i>State 4</i>: independent Losses (loss probability is 100%)</li>
+                </ul>
+                <p>Utilizing transition probabilities such as p<sub>13</sub>, p<sub>31</sub>, p<sub>23</sub>,
+                    p<sub>32</sub>,
+                    and p<sub>14</sub> , the Markov chain's transition matrix is described as:
+                </p>
+                <p>
+                    $$
+                    A = \begin{bmatrix}
+                    1-p_{13}-p_{14} & 0 & p_{13} & p_{14} \\
+                    0 & 1-p_{23} & p_{23} & 0 \\
+                    p_{31} & p_{32} & 1-p_{31}-p_{32} & 0 \\
+                    p_{41} & 0 & 0 & 1-p_{41} \\
+                    \end{bmatrix}
+                    $$
+                </p>
+                <p>Furthermore, we derive the probabilities of each state <i>π</i><sub>i</sub>,i=1...4 in terms of the
+                    aforementioned
+                    transition probabilities. Notably, State 4 is associated to isolated packet losses, after that the
+                    system
+                    must come back to State 1, so <i>p<sub>41</sub></i> is assumed to be 1. Solving the system yields:
+                </p>
+                <p>
+                    $$
+                    \left\{
+                    \begin{aligned}
+                    \pi_{1}(p_{13}+p_{14}) & = & \pi_{3}p_{31}+\pi_{4}\\
+                    \pi_{3}(p_{32}) & = & \pi_{2}p_{23}\\
+                    \pi_{1}(p_{14}) & = & \pi_{4}\\
+                    \pi_{1}+\pi_{2}+\pi_{3}+\pi_{4}+ & = & 1\\
+                    \end{aligned}
+                    \right.
+                    \Rightarrow\left\{
+                    \begin{aligned}
+                    \pi_{1} = \frac{p_{23}p_{31}}{p_{13}p_{23} + p_{23}p_{31} + p_{14}p_{23}p_{31} + p_{13}p_{32}} \\
+                    \pi_{2} = \frac{p_{13}p_{32}}{p_{13}p_{23} + p_{23}p_{31} + p_{14}p_{23}p_{31} + p_{13}p_{32}} \\
+                    \pi_{3} = \frac{p_{13}p_{23}}{p_{13}p_{23} + p_{23}p_{31} + p_{14}p_{23}p_{31} + p_{13}p_{32}} \\
+                    \pi_{4} = \frac{p_{14}p_{23}p_{31}}{p_{13}p_{23} + p_{23}p_{31} + p_{14}p_{23}p_{31} + p_{13}p_{32}}
+                    \\
+                    \end{aligned}
+                    \right.
+                    $$
+                </p>
+                <p>Consequently, the theoretical packet loss probability is given by:
+                </p>
+                <p>
+                    $$
+                    P_{E}=\pi_{1}\cdot0\%+\pi_{2}\cdot0\%+\pi_{3}\cdot100\%+\pi_{4}\cdot100\%=\pi_{3}+\pi_{4}
+                    $$
+                </p>
+                <p>This model effectively captures scenarios involving structured packet losses, like bursts or isolated
+                    instances.
+                </p>
+            </li>
+            <li><strong><i>Gilbert-Elliot (GeModel) Loss Model: </i></strong>The Gilbert-Elliot model, synonymous with
+                the burst loss model, is characterized by distinctive states and transition probabilities:
+                <ul>
+                    <li>Probability of transitioning to a bad (lossy) state.</li>
+                    <li>Probability of transitioning from a bad state to a good state.</li>
+                    <li>Loss probability in the bad state.</li>
+                    <li>Loss probability in the good state.</li>
+                </ul>
+                <p>
+                    The Gilbert-Elliott loss model is a Markov chain with two states (G and B, G is in the good state,
+                    and B is
+                    in the bad
+                    state. π<sub>G</sub> is the probability of being in the good state, and π<sub>B</sub> is the
+                    probability of
+                    being in the
+                    bad state.). The transition matrix of the Markov chain is as follows:
+                </p>
+                <p>
+                    $$
+                    A = \begin{bmatrix}
+                    1-p & p \\
+                    r & 1-r \\
+                    \end{bmatrix}
+                    $$
+                </p>
+                <p>
+                    Markov chains can achieve a stationary distribution independent of the initial state. Solving the
+                    system, we
+                    get the
+                    states probabilities:
+                </p>
+                <p>
+                    $$
+                    \left\{
+                    \begin{aligned}
+                    \pi_{G}(1-p)+\pi_{B}r & = & \pi_{G}\\
+                    \pi_{G}p+\pi_{B}(1-r) & = & \pi_{G}\\
+                    \pi_{G}+\pi_{B} & = & 1\\
+                    \end{aligned}
+                    \right.
+                    \Rightarrow\left\{
+                    \begin{aligned}
+                    \pi_{G} = \frac{r}{p+r} \\
+                    \pi_{B} = \frac{p}{p+r} \\
+                    \end{aligned}
+                    \right.
+                    $$
+                </p>
+                <p>
+                    As a result, the theoretical packet loss probability is:
+                </p>
+                <p>
+                    $$
+                    P_{E}=\pi_{G}(1-k)+\pi_{B}(1-h)=\frac{r(1-k)}{p+r}+\frac{p(1-h)}{p+r}
+                    $$
+                </p>
+                <p>
+
+                    The Gilbert-Elliott model is particularly useful for simulating bursty packet loss behaviors, where
+                    packets
+                    are more
+                    likely to be lost during periods of degraded network conditions (bad state) compared to periods of
+                    normal
+                    operation
+                    (good state). This model is suitable for scenarios with intermittent but extended periods of packet
+                    loss.
+                </p>
+            </li>
+        </ul>
+        <p>
+            In conclusion, these loss models provide a structured way to simulate different types of packet loss
+            patterns
+            in network
+            environments. Understanding how network protocols perform under these loss models helps in designing and
+            optimizing
+            protocols for real-world scenarios with varying degrees of packet loss. Please refer to [Definition of a
+            general and
+            intuitive loss model for packet networks and its implementation in the Netem module in the Linux
+            kernel](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=667a752ce7e577a31acf9907a0f133d538330205)
+            for
+            more details.
+        </p>
+        <p>
+            And all the supported loss pattern in the tool tc-netem can be found in
+            <a href="//www.man7.org/linux/man-pages/man8/tc-netem.8.html">tc-netem</a>.
+        </p>
+    </div>
+    <div class="section" id="6protocol-metrics">
+        <h2>6. Protocol Metrics</h2>
+        <p>In terms of performance evaluation, we care about the following metrics:</p>
+        <ul>
+            <li><strong><i>Throughput: </i></strong>The average throughput during the whole transmission. `Throughput`
+                here means how many
+                payload data
+                can be transmitted per second at the application layer. For example, for TCP transmission, the
+                throughput is
+                the number
+                of TCP payload bytes transmitted per second.</li>
+            <li><strong><i>Latency: </i></strong>The average latency during the whole transmission, it is an end-to-end
+                measurement at the
+                application
+                layer.</li>
+            <li><strong><i>Reliability: </i></strong>The reliability of the system which is defined as the ratio of the
+                number of successfully
+                received(or
+                packets after decoding if we use BATS codes) packets to the number of sent(or packets before encoding if
+                we
+                use BATS
+                codes) packets. If we don't have restrictions on the latency of the feedback control, the reliability
+                should
+                be 1.0. If
+                we have restrictions on the latency of the feedback, the reliability is less than 1.0.</li>
+            <li><strong><i>Residual loss rate: </i></strong>The residual loss rate over the BATS protocol transmission.
+                For the BRTP(BATS
+                Reliable
+                Transmission Protocol), the residual loss rate should be 0.0. For the BTP(BATS Transmission Protocol,
+                none
+                reliable
+                version), the residual loss rate may be slightly larger than 0.0.
+                <p>To evaluate the efficiency of the BATS protocol, we need to monitor the following metrics:</p>
+            </li>
+
+            <li><strong><i>Transmission rate of the link: </i></strong> <i>Throughput</i> is not equal
+                to the link bandwidth due
+                to the overhead of
+                the
+                protocol. So in the test, we need to know the Link layer transmit/receive rate. And Link layer
+                transmit/receive rate
+                refers to the real networking load of the link. This can be used to evaluate the redundancy introduced
+                by
+                the BATS
+                protocol.</li>
+            <li><strong><i>Link loss statistics: </i></strong>The Number of packet loss of each batch. Recoding number
+                statistics is used to
+                evaluate the
+                coding efficiency of the BATS protocol in those middle nodes.</li>
+            <li><strong><i>Recoding number statistics: </i></strong> The recoding number of each batch.</li>
+        </ul>
+
+    </div>
+    <div class="section" id="7protocols-to-compare-with">
+        <h2>7. Protocols to Compare with</h2>
+        <p>We will compare with different existing techniques such as <strong><i>TCP</i></strong>,
+            <strong><i>TCP-BBR</i></strong>, <strong><i>UDP</i></strong>, <strong><i>KCP</i></strong>,
+            etc. In future, we will
+            also compare
+            with <strong><i>PEP</i></strong>, <strong><i>QUIC</i></strong> and other protocols.
+        </p>
+        <ul>
+            <li><a href="https://en.wikipedia.org/wiki/Transmission_Control_Protocol">TCP: </a> Implementation version
+                of
+                6.5.0-14-generic.</li>
+            <li><a href="https://github.com/skywind3000/kcp">KCP: </a>A Fast and Reliable ARQ Protocol. We use the KCP
+                instance provided by
+                <a href="//github.com/xtaci/kcptun">kcptun</a>.
+            </li>
+            <li><a href="//en.wikipedia.org/wiki/TCP_congestion_control#TCP_BBR">TCP-BBR: </a>The latest network
+                congestion control
+                algorithm in TCP.</li>
+        </ul>
+    </div>
+    <div class="section" id="8bats-protocol">
+        <h2>8. BATS Protocol</h2>
+        <p>In order to be compatible with the existing network infrastructure, BATS protocol is usually deployed as an
+            overlay
+            network protocol, it runs on top of the existing network protocol stack TCP/IP. The following diagram shows
+            how the BATS
+            protocol works in the network.</p>
+        <div class="image-container">
+            <img src="imgs/bats_new_arch.svg" alt="Image" style="width: 50%;">
+            <div class="image-title">Fig 8.1. BATS protocol.</div>
+        </div>
+        <p>All the nodes in the network which run the BATS protocol are called BATS nodes. All BATS nodes form a BATS
+            network; thefollowing diagram shows the structure of a classic BATS network.</p>
+        <div class="image-container">
+            <img src="imgs/bats-networking.svg" alt="Image" style="width: 50%;">
+            <div class="image-title">Fig 8.2. BATS networking.</div>
+        </div>
+        <p>
+            To see design considerations and the architecture of the BATS protocol, please refer to <a
+                href="https://n-hop.com/wp-content/uploads/2022/09/BATS4IAB_v2.4.3_2-RY.pdf">The BATS
+                Protocol.</a>.
+        </p>
+    </div>
+    <div class="section" id="81-bats-transmission-protocol-btp">
+        <h2>8.1 BATS Transmission Protocol (BTP)</h2>
+        <p>
+            BTP is a none reliable transmission protocol based on <a
+                href="https://n-hop.com/wp-content/uploads/2022/12/BATS.pdf">BATS
+                codes</a>. It is designed to provide high throughput and
+            low latency
+            data transmission in lossy networks. The BTP employed restricted feedback, utilizing link loss rate and
+            coding
+            statistics to adjust the coding redundancy.
+        </p>
+        <p>
+            This enabled acceptable reliability while not relying on exhaustive feedback mechanisms. The BTP is suitable
+            for
+            scenarios where the feedback latency is high, and the reliability is not the primary concern.
+        </p>
+        <p>
+            Even though BTP is not a reliable protocol, but it can still provide a high reliability(99%) in most cases
+            due to our
+            advanced coding technology.
+        </p>
+    </div>
+    <div class="section" id="82-bats-reliable-transmission-protocol-brtp">
+        <h2>8.2 BATS Reliable Transmission Protocol (BRTP)</h2>
+        <p>
+            BRTP is a reliable transmission protocol based on <a
+                href="https://n-hop.com/wp-content/uploads/2022/12/BATS.pdf">BATS
+                codes</a>.
+            As an enhancement of BTP, BRTP ensures 100% reliable data transmission by utilizing feedback to control the
+            retransmission of unsolvable file trunks. Here retransmission is performed in network coding way, which is
+            more
+            efficient than transmitting the original data.
+        </p>
+        <p>
+            BRTP is suitable for scenarios where the reliability is the primary concern, and can endure increased
+            latency.
+        </p>
+        <p>
+            Compared to the traditional TCP protocol, BRTP can be more efficient in lossy networks in terms of
+            throughput and
+            average latency, especially in the case of high loss rate.
+        </p>
+    </div>
+    <div class="section" id="83-acceleration-for-tcp-over-bats-protocol">
+        <h2>8.3 Proxy for TCP over BATS protocol (BATS Proxy)</h2>
+        <p>
+            In order to improve the performance of TCP over BATS protocol, BATS protocol has developed an transparent
+            proxy mode for
+            TCP flows. It takes the idea from [On-board satellite <a
+                href="https://ieeexplore.ieee.org/document/1264081">split TCP
+                proxy</a>.
+        </p>
+    </div>
+    <div class="section" id="9-testing-cases">
+        <h2>9. Testing Results</h2>
+    </div>
+    <div class="section" id="91-overall-setup">
+        <h2>9.1 Overall Setup</h2>
+        <ul>
+            <li><strong><i>bandwidth limit: </i></strong>We set the bandwidth limit of the link to a sufficiently
+                small value that
+                the BATS protocol
+                can easily fullfil, so that we can eliminate the uncertainty brought by software performance.</li>
+            <li><strong><i>Source rate limit: </i></strong>We set the data source rate to be smaller than the bandwidth
+                limit in each test
+                scenario, so
+                that there is no congestion, and we can focus on the specific targets of each test scenario. Then, for
+                each scenario, we
+                can gradually increase the source rate towards the bandwidth limit, until exceeds it, to see how the
+                communication
+                behavior changes. In this case, we need to turn off the BATS protocol's congestion control mechanism.
+            </li>
+            <li><strong><i>Testing Platform: </i></strong>Ubuntu 22.04 LTS, Linux kernel 6.5.0-14-generic.</li>
+            <li><strong><i>Fixed parameters in the test: </i></strong>Link bandwidth: 300Mbps</li>
+        </ul>
+    </div>
+    <div class="section" id="92-one-hop-network-testing">
+        <h2>9.2 One-hop Network Testing</h2>
+        <ul>
+            <li>
+                <strong><i>Purpose: </i></strong> Testing the outer code performance without worry about the inner code
+                and
+                congestion
+                control. We
+                focus on
+                the evaluation of the end-to-end throughput, latency and reliability.</p>
+            </li>
+            <li>
+                <strong><i>Scenery: </i></strong> one-hop network that includes two nodes, connected directly by a
+                network link. The
+                packets
+                transmitted
+                through the network link suffer from both packet loss and delay.</p>
+            </li>
+        </ul>
+
+    </div>
+    <div class="section" id="93-multi-hop-network-testing">
+        <h2>9.3 Multi-hop Network Testing</h2>
+        <ul>
+            <li>
+                <strong><i>Purpose: </i></strong>Testing the inner code performance and the congestion control
+                mechanism. We
+                focus on the
+                evaluation of the
+                throughput, latency and reliability of different BATS protocols/mode in a multi-hop network.
+            </li>
+            <li><strong><i>Scenery: </i></strong> A multi-hop chain network that includes multiple nodes, connected by
+                network links. The
+                packets
+                transmitted through the network links suffer from both packet loss, delay and congestion.</li>
+            <li><strong><i>Accumulated loss rate: </i></strong> When the length of the network path is long, the
+                accumulated loss rate will
+                be high. The
+                following diagram shows the accumulated loss rate of a 6-hop network with different link loss rates.
+                <div class="image-container">
+                    <img src="imgs/6-hops-loss.png" alt="Image" style="width: 40%;">
+                    <div class="image-title">Fig 9.1. Accumulated loss rate of a 6-hop network.</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="section" id="931-multi-hop-throughput-evaluation-with-btp-brtp">
+        <h2>9.3.1 Multi-hop Throughput Evaluation with BTP, BRTP</h2>
+        <ul>
+            <li><strong><i>Topology: </i></strong>
+                <div class="image-container">
+                    <img src="imgs/6-hops.svg" alt="Image" style="width: 50%;">
+                    <div class="image-title">Fig 9.2. Test network topology.</div>
+                </div>
+            </li>
+            <li><strong><i>Parameters: </i></strong>
+                <ul>
+                    <li><strong><i>Hop number: </i></strong>6</li>
+                    <li><strong><i>Link latency: </i></strong>less than 1ms</li>
+                    <li><strong><i>Random Link loss rate: </i></strong>0%, 5%</li>
+                </ul>
+            </li>
+            <li><strong><i>Test Method: </i></strong>Running Iperf3 on the source node and the destination node, and
+                measure the end-to-end throughput
+                of the UDP,TCP, BTP and
+                BRTP protocol, respectively. Six seconds after the start of the test, the system begins to simulate
+                packet loss. The
+                entire test lasts for 60 seconds.</li>
+        </ul>
+        <p>In the following diagram, the item <strong>TCP over BATS proxy</strong> is the testing for
+            <strong>BRTP</strong>.
+        </p>
+        <div class="image-container">
+            <img src="./imgs/throughput_random_6-hop.svg" alt="Image" style="width: 60%;">
+            <div class="image-title">Fig 9.3. UDP/TCP/BTP/BRTP throughput evaluation.</div>
+        </div>
+        <em>Note: We reserved 5 seconds for <strong>iperf</strong> handshake, after that, initiating
+            packet dropping by configuring the packet loss rate for each hop in the link. The average throughput is
+            calculated thereafter.</em>
+        <table>
+            <caption>Table 9.1. Testing methodologies </caption>
+            <colgroup>
+                <col style="width: 17%;">
+                <col style="width: 35%;">
+                <col style="width: 8%;">
+                <col style="width: 40%;">
+            </colgroup>
+            <tr>
+                <th>Testing models</th>
+                <th>Description</th>
+                <th>Tools</th>
+                <th>Specific Parameters</th>
+            </tr>
+            <tr>
+                <td>Original UDP</td>
+                <td>The original UDP flow without BATS.</td>
+                <td>iperf3</td>
+                <td>Default UDP send rate is set as link_capacity * 0.92 since there are ip/udp header consumption.
+                </td>
+            </tr>
+            <tr>
+                <td>Original TCP</td>
+                <td>The original TCP flow without BATS.</td>
+                <td>iperf3</td>
+                <td>TCP congestion algorithm, e.g. cubic, reno and bbr. <strong><i>cubic</i></strong> is chosen as
+                    default
+                    in this report. </td>
+            </tr>
+            <tr>
+                <td>TCP over <strong>BTP</strong><i> (BATS Transmission Protocol)</i></td>
+                <td>The TCP flows are redirected by tun interface and then managed by BATS protocol. In this case, the
+                    IP/TCP header is encoded as part of the payload. </td>
+                <td>iperf3</td>
+                <td>
+                    TCP congestion algorithm: <strong><i>cubic</i></strong>.
+                </td>
+            </tr>
+            <tr>
+                <td>TCP over <strong>BATS Proxy</strong></td>
+                <td>The TCP flow will be redirected by iptables and all TCP sessions will be managed by tcp session hubs
+                    of
+                    BATS protocol. The BATS proxy adds TCP proxy functionality based on BRTP. In this case, the IP/TCP
+                    header is removed, the TCP session is completely taken over by BATS protocol, and only the TCP
+                    payload
+                    is encoded</td>
+                <td>iperf3</td>
+                <td>
+                    TCP congestion algorithm: <strong><i>cubic</i></strong>.
+                </td>
+            </tr>
+        </table>
+        <br>
+        <br>
+
+        <div class="image-container">
+            <img src="./imgs/reliability_random_6-hop.svg" alt="Image" style="width: 60%;">
+            <div class="image-title">Fig 9.4. 6-hop reliability under different loss model (random)</div>
+        </div>
+
+        <em>Note: Reliability is calculated as:<strong><i>Reliability = Average Receive Rate / Average Send
+                    Rate</i></strong>.The theoretical reliability of BATS code is 100%. However, since the BTP does not
+            provide unrestricted feedback and iperf/bperf transmission and reception are not entirely synchronized, the
+            results indicate that the reliability of original BATS is less than 100%.
+            Due to the near-zero transmission of TCP in a multi-hop environment with packet loss, calculating the
+            reliability of TCP is not meaningful.</em>
+        <div>
+            <table>
+                <caption>Table 9.2. Average (6-hop) Throughput of Original UDP under different loss conditions.
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Link Loss Parameters</th>
+                        <th>Throughput</th>
+                        <th>NIC Send Rate</th>
+                        <th>NIC Recv Rate</th>
+                        <th>Reliability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>random 0%</td>
+                        <td>291.96 Mbps</td>
+                        <td>291.79 Mbps</td>
+                        <td>291.78 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>random 5%</td>
+                        <td>214.39 Mbps</td>
+                        <td>291.92 Mbps</td>
+                        <td>225.97 Mbps</td>
+                        <td>73.43%</td>
+                    </tr>
+                    <tr>
+                        <td>random 10%</td>
+                        <td>154.98 Mbps</td>
+                        <td>291.7 Mbps</td>
+                        <td>172.29 Mbps</td>
+                        <td>53.08%</td>
+                    </tr>
+                    <tr>
+                        <td>random 15%</td>
+                        <td>109.76 Mbps</td>
+                        <td>291.97 Mbps</td>
+                        <td>129.39 Mbps</td>
+                        <td>37.59%</td>
+                    </tr>
+                    <tr>
+                        <td>random 20%</td>
+                        <td>76.49 Mbps</td>
+                        <td>291.99 Mbps</td>
+                        <td>95.68 Mbps</td>
+                        <td>26.2%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table>
+                <caption>Table 9.3. Average (6-hop) Throughput of Original TCP under different loss conditions.
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Link Loss Parameters</th>
+                        <th>Congestion</th>
+                        <th>Throughput</th>
+                        <th>NIC Send Rate</th>
+                        <th>NIC Recv Rate</th>
+                        <th>Reliability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>random 0%</td>
+                        <td>cubic</td>
+                        <td>286.43 Mbps</td>
+                        <td>278.64 Mbps</td>
+                        <td>278.69 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>random 5%</td>
+                        <td>cubic</td>
+                        <td>0.05 Mbps</td>
+                        <td>0.07 Mbps</td>
+                        <td>0.05 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>random 10%</td>
+                        <td>cubic</td>
+                        <td>0.0 Mbps</td>
+                        <td>0.02 Mbps</td>
+                        <td>0.01 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>random 15%</td>
+                        <td>cubic</td>
+                        <td>0.0 Mbps</td>
+                        <td>0.0 Mbps</td>
+                        <td>0.0 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>random 20%</td>
+                        <td>cubic</td>
+                        <td>0.0 Mbps</td>
+                        <td>0.0 Mbps</td>
+                        <td>0.0 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table>
+                <caption>Table 9.4. Average (6-hop) Throughput of TCP over BTP under different loss conditions.
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Link Loss Parameters</th>
+                        <th>Congestion</th>
+                        <th>Throughput</th>
+                        <th>NIC Send Rate</th>
+                        <th>NIC Recv Rate</th>
+                        <th>Reliability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>random 0%</td>
+                        <td>cubic</td>
+                        <td>262.89 Mbps</td>
+                        <td>292.84 Mbps</td>
+                        <td>292.83 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>random 5%</td>
+                        <td>cubic</td>
+                        <td>216.81 Mbps</td>
+                        <td>286.84 Mbps</td>
+                        <td>289.19 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>random 10%</td>
+                        <td>cubic</td>
+                        <td>186.3 Mbps</td>
+                        <td>281.17 Mbps</td>
+                        <td>284.53 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>random 15%</td>
+                        <td>cubic</td>
+                        <td>169.94 Mbps</td>
+                        <td>276.49 Mbps</td>
+                        <td>283.32 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>random 20%</td>
+                        <td>cubic</td>
+                        <td>159.17 Mbps</td>
+                        <td>288.61 Mbps</td>
+                        <td>290.38 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table>
+                <caption>Table 9.5. Average (6-hop) Throughput of TCP over BATS Proxy under different loss conditions.
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Link Loss Parameters</th>
+                        <th>Congestion</th>
+                        <th>Throughput</th>
+                        <th>NIC Send Rate</th>
+                        <th>NIC Recv Rate</th>
+                        <th>Reliability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>random 0%</td>
+                        <td>cubic</td>
+                        <td>276.72 Mbps</td>
+                        <td>292.98 Mbps</td>
+                        <td>292.95 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>random 5%</td>
+                        <td>cubic</td>
+                        <td>213.09 Mbps</td>
+                        <td>268.26 Mbps</td>
+                        <td>286.07 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>random 10%</td>
+                        <td>cubic</td>
+                        <td>191.63 Mbps</td>
+                        <td>275.65 Mbps</td>
+                        <td>289.16 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>random 15%</td>
+                        <td>cubic</td>
+                        <td>174.31 Mbps</td>
+                        <td>270.24 Mbps</td>
+                        <td>281.63 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>random 20%</td>
+                        <td>cubic</td>
+                        <td>163.3 Mbps</td>
+                        <td>281.15 Mbps</td>
+                        <td>287.23 Mbps</td>
+                        <td>100%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="section" id="932-multi-hop-latency-evaluation-with-brtp-tcp-kcp">
+        <h2>9.3.2 Multi-hop Latency Evaluation with BRTP, TCP, KCP</h2>
+        <p>We had added transmission latency evaluation on a set of protocols, including <strong><i>BATS</i></strong>,
+            <strong><i>TCP</i></strong>, <strong><i>KCP</i></strong>:
+        </p>
+        <ul>
+            <li><strong>BATS:</strong> BATS protocol is running in TCP proxy mode with BRTP (BATS Reliable Transmission
+                Protocol), and all
+                congestion/feed-back mechanism are enabled.</li>
+            <li><strong>TCP:</strong> TCP with default configurations, and default congestion control algorithm
+                <strong><i>cubic</i></strong>
+            </li>
+            <li><strong>KCP:</strong> Using the KCP instance from https://github.com/xtaci/kcptun, this
+                <strong><i>kcptun</i></strong>
+                implement
+                high-efficient
+                reliable transmission over UDP, and it has the Reed-Solomon codes for error correction.
+            </li>
+        </ul>
+
+        <h3>Latency test method</h3>
+
+        <p> We developed a PvP game endpoint to simulate sending messages over TCP at fixed rate, and the receiver will
+            echo
+            the message back to the sender, then sender will calculate the average `RTT` for each consecutive 10
+            packets.
+        </p>
+
+        <h3>Latency test setup</h3>
+
+        <p>H0 --------- H1 --------- H2 --------- H2</p>
+        <ul>
+            <li>Link bandwidth: 200Mbps.</li>
+            <li>Link Latency: 5ms.</li>
+            <li>Link Latency jitter: 1ms.</li>
+        </ul>
+        <h3>Latency test result</h3>
+        <p>In order to simulate different scenarios, we had tested the latency in three groups with the following
+            changes:
+        </p>
+        <ul>
+            <li>
+                <strong>Group 1:</strong> No packet loss on each link; the PvP game endpoint send messages at a rate of
+                100Hz, each
+                message
+                size is 1024 bytes;
+            </li>
+            <li><strong>Group 2:</strong> 2% packet loss on each link; the PvP game endpoint send messages at a rate of
+                100Hz, each
+                message
+                size is 1024 bytes;</li>
+            <li><strong>Group 3:</strong> 2% packet loss on each link; the PvP game endpoint send messages at a rate of
+                100Hz, each
+                message
+                size is 128 bytes;</li>
+        </ul>
+
+        <div>
+            <p><strong>Group 1</strong> shows performance of protocols under perfect network conditions, <strong>Group
+                    2</strong>
+                and <strong>Group 3</strong> show
+                performance of protocols in a lossy network.</p>
+            <p>The difference between <strong>Group 2</strong> and <strong>Group 3</strong> is that:</p>
+            <ul>
+                <li><strong>Group 2</strong> simulates the scenario of video streaming at fixed rate.</li>
+                <li><strong>Group 3</strong> simulates the scenario of signaling messages in a real-time communication
+                    system.</li>
+            </ul>
+        </div>
+
+        <p>Before latency test, we had measured the end-to-end throughput of each protocol from `H0` to `H2` with link
+            loss
+            rate 2%:</p>
+
+        <div>
+            <table>
+                <caption>Table 9.6. End-to-End Throughput (loss rate: 2%)</caption>
+                <thead>
+                    <tr>
+                        <th>Protocol</th>
+                        <th>End-to-End Throughput</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BATS</td>
+                        <td>42.4 Mb/s</td>
+                    </tr>
+                    <tr>
+                        <td>TCP</td>
+                        <td>1.96 Mb/s</td>
+                    </tr>
+                    <tr>
+                        <td>KCP</td>
+                        <td>1.64 Mb/s</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>The latency test result is shown as follows:</p>
+
+        <div class="image-container">
+            <img src="imgs/latency_evaluation1.svg" alt="Image" style="width: 30%;">
+            <div class="image-title">Fig 9.5. Latency test result of Group 1</div>
+        </div>
+
+        <div class="image-container">
+            <img src="imgs/latency_evaluation0.svg" alt="Image" style="width: 30%;">
+            <div class="image-title">Fig 9.6. Latency test result of Group 1</div>
+        </div>
+
+        <div class="image-container">
+            <img src="imgs/latency_evaluation2.svg" alt="Image" style="width: 30%;">
+            <div class="image-title">Fig 9.7. Latency test result of Group 3</div>
+        </div>
+
+        <h3>Conclusion of latency evaluation</h3>
+        <ul>
+            <li>In no packet loss scenario, BATS protocol has slightly higher latency.</li>
+            <li>In 2% packet loss scenario and large message size, BATS protocol has the lowest latency and stable
+                latency; it can solve network issues of video streaming.</li>
+            <li>In 2% packet loss scenario and small message size, BATS protocol still performs far better than others.
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
