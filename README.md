@@ -293,6 +293,7 @@ Note: Reliability is calculated as: **Reliability = Average Receive Rate / Avera
   - Link latency: = 5ms
   - Link latency jitter: 1ms
   - Random Link loss rate: 0%, 2%
+  - Link bandwidth: 200Mbps
 
 - **Test Method**:
   - We uses a PvP game endpoint to simulate sending messages over TCP at fixed rate, fixed message size. The receiver will echo back the messages it received.
@@ -315,8 +316,8 @@ Note: Reliability is calculated as: **Reliability = Average Receive Rate / Avera
     In order to simulate different scenarios, we had tested the latency in three cases with the following changes:
 
   - **Case 1**: No packet loss on each link; the PvP game endpoint send messages at a rate of 100 packets/s, each message size is 1024 bytes;
-  - **Case 2**: 2% packet loss on each link; the PvP game endpoint send messages at a rate of packets/s, each message size is 1024 bytes;
-  - **Case 3**: 2% packet loss on each link; the PvP game endpoint send messages at a rate of packets/s, each message size is 128 bytes;
+  - **Case 2**: 2% packet loss on each link; the PvP game endpoint send messages at a rate of 100 packets/s, each message size is 1024 bytes;
+  - **Case 3**: 2% packet loss on each link; the PvP game endpoint send messages at a rate of 100 packets/s, each message size is 128 bytes;
 
   `Case 1` shows performance of protocols under perfect network conditions, and `Case 2` and `Case 3` show performance of protocols in a lossy network.
 
@@ -335,7 +336,7 @@ Note: Reliability is calculated as: **Reliability = Average Receive Rate / Avera
     | -------- | --------------------- |
     | BATS     | 42.4 Mb/s             |
     | TCP      | 1.96 Mb/s             |
-    | KCP      | 1.64 Mb/s             |
+    | KCP      | 16.7 Mb/s             |
 
 - **Latency test result**:
 
@@ -356,5 +357,5 @@ Note: Reliability is calculated as: **Reliability = Average Receive Rate / Avera
 - **Conclusion of latency evaluation**:
 
   - 1. In no packet loss scenario, BATS protocol has slightly higher latency than TCP and KCP, this can be optimized in the future version of the BATS protocol;
-  - 2. In 2% packet loss scenario and large message size, BATS protocol has the lowest latency and stable latency; it can improve the quality of the real-time video streaming;
-  - 3. In 2% packet loss scenario and small message size, BATS protocol still performs far better than others, it also can bring a lot of benefits to  real-time signaling system.
+  - 2. In 2% packet loss scenario and large message size, BATS protocol has the lowest latency and stable latency; it can improve the quality of the real-time video streaming greatly;
+  - 3. In 2% packet loss scenario and small message size, BATS protocol still performs far better than TCP, and is close to KCP; but compared to KCP, BATS protocol has a more stable latency or smaller latency jitter. BATS protocol still can bring better benefits to the real-time singling communication system.
