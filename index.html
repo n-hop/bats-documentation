@@ -975,6 +975,7 @@
             <li>Link bandwidth: 200Mbps.</li>
             <li>Link Latency: 5ms.</li>
             <li>Link Latency jitter: 1ms.</li>
+            <li>Link bandwidth: 200Mbps.</li>
         </ul>
         <h3>Latency test result</h3>
         <p>In order to simulate different scenarios, we had tested the latency in three groups with the following
@@ -983,16 +984,16 @@
         <ul>
             <li>
                 <strong>Group 1:</strong> No packet loss on each link; the PvP game endpoint send messages at a rate of
-                100Hz, each
+                100 packets/s, each
                 message
                 size is 1024 bytes;
             </li>
             <li><strong>Group 2:</strong> 2% packet loss on each link; the PvP game endpoint send messages at a rate of
-                100Hz, each
+                100 packets/s, each
                 message
                 size is 1024 bytes;</li>
             <li><strong>Group 3:</strong> 2% packet loss on each link; the PvP game endpoint send messages at a rate of
-                100Hz, each
+                100 packets/s, each
                 message
                 size is 128 bytes;</li>
         </ul>
@@ -1034,7 +1035,7 @@
                     </tr>
                     <tr>
                         <td>KCP</td>
-                        <td>1.64 Mb/s</td>
+                        <td>16.7 Mb/s</td>
                     </tr>
                 </tbody>
             </table>
@@ -1062,7 +1063,7 @@
             <li>In no packet loss scenario, BATS protocol has slightly higher latency.</li>
             <li>In 2% packet loss scenario and large message size, BATS protocol has the lowest latency and stable
                 latency; it can solve network issues of video streaming.</li>
-            <li>In 2% packet loss scenario and small message size, BATS protocol still performs far better than others.
+            <li>In 2% packet loss scenario and small message size, BATS protocol still performs far better than TCP, and is close to KCP; but compared to KCP, BATS protocol has a more stable latency or smaller latency jitter. BATS protocol still can bring better benefits to the real-time singling communication system.
             </li>
         </ul>
     </div>
