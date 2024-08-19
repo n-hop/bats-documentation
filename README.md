@@ -97,22 +97,22 @@ $$
 Furthermore, we derive the probabilities of each state <i>π</i><sub>i</sub>,i=1...4 in terms of the aforementioned transition probabilities. Notably, State 4 is associated to isolated packet losses, after that the system must come back to State 1, so <i>p<sub>41</sub></i> is assumed to be 1. Solving the system yields:
 
 $$
-\left\{ 
+\left( 
 \begin{aligned}
 \pi_{1}(p_{13}+p_{14}) & = & \pi_{3}p_{31}+\pi_{4}\\
 \pi_{3}(p_{32}) & = & \pi_{2}p_{23}\\
 \pi_{1}(p_{14}) & = & \pi_{4}\\
 \pi_{1}+\pi_{2}+\pi_{3}+\pi_{4}+ & = & 1\\
 \end{aligned}
-\right.
-\Rightarrow\left\{ 
+\right)
+\Rightarrow\left( 
 \begin{aligned}
 \pi_{1} = \frac{p_{23}p_{31}}{p_{13}p_{23} + p_{23}p_{31} + p_{14}p_{23}p_{31} + p_{13}p_{32}} \\
 \pi_{2} = \frac{p_{13}p_{32}}{p_{13}p_{23} + p_{23}p_{31} + p_{14}p_{23}p_{31} + p_{13}p_{32}} \\
 \pi_{3} = \frac{p_{13}p_{23}}{p_{13}p_{23} + p_{23}p_{31} + p_{14}p_{23}p_{31} + p_{13}p_{32}} \\
 \pi_{4} = \frac{p_{14}p_{23}p_{31}}{p_{13}p_{23} + p_{23}p_{31} + p_{14}p_{23}p_{31} + p_{13}p_{32}} \\
 \end{aligned}
-\right.
+\right)
 $$
 
 Consequently, the theoretical packet loss probability is given by:
@@ -141,19 +141,19 @@ $$
 Markov chains can achieve a stationary distribution independent of the initial state. Solving the system, we get the states probabilities:
 
 $$
-\left\{ 
+\left( 
 \begin{aligned}
 \pi_{G}(1-p)+\pi_{B}r & = & \pi_{G}\\
 \pi_{G}p+\pi_{B}(1-r) & = & \pi_{G}\\
 \pi_{G}+\pi_{B} & = & 1\\
 \end{aligned}
-\right.
-\Rightarrow\left\{ 
+\right)
+\Rightarrow\\left( 
 \begin{aligned}
 \pi_{G} = \frac{r}{p+r} \\
 \pi_{B} = \frac{p}{p+r} \\
 \end{aligned}
-\right.
+\right)
 $$
 
 As a result, the theoretical packet loss probability is:
