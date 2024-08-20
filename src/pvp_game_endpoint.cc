@@ -315,6 +315,10 @@ bool StartTCPClient(const std::string& ip, int port, double interval,
   auto max_response = max_request;
 
   is_ready.store(true);
+  auto now = std::chrono::system_clock::now();
+  auto seconds = std::chrono::time_point_cast<std::chrono::seconds>(now);
+  auto timestamp = seconds.time_since_epoch().count();
+  std::cout << "Start timestamp: " << timestamp << "\n";
   while (max_response > 0) {
     int n = read(client_fd, buf.data() + buf_offset, packet_size - buf_offset);
     if (n == 0) {
@@ -409,6 +413,14 @@ bool StartTCPClient(const std::string& ip, int port, double interval,
   // sending_thread will finish first.
   std::cout << "Stop to receive the response from the server."
             << "\n";
+  {
+    auto now = std::chrono::system_clock::now();
+    auto seconds = std::chrono::time_point_cast<std::chrono::seconds>(now);
+    auto timestamp = seconds.time_since_epoch().count();
+    std::cout << "Receive thread is done."
+              << "\n";
+    std::cout << "End timestamp: " << timestamp << "\n";
+  }
   shutdown(client_fd, SHUT_RDWR);
   close(client_fd);
   return true;
