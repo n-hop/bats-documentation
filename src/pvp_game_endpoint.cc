@@ -306,10 +306,12 @@ bool StartTCPClient(const std::string& ip, int port, double interval,
   /// https://github.com/libinzhangyuan/udt_patch_for_epoll/blob/master/client_epoll/main.cpp
   std::vector<int> recv_package_interval;
   std::vector<int> recv_package_interval10;
+  std::vector<int> recv_package_jitter10;
   uint64_t static_last_refresh_time = 0;
   double static_received_bytes = 0;
-  uint64_t total_ttl = 0;
+  uint64_t total_rtt = 0;
   uint64_t recv_cnt = 0;
+  int static_last_rtt = 0;
   auto max_response = max_request;
 
   is_ready.store(true);
@@ -336,22 +338,41 @@ bool StartTCPClient(const std::string& ip, int port, double interval,
     uint64_t cur_time = get_time_in_ms();
     auto response_header = reinterpret_cast<PvpGameMessageHeader*>(buf.data());
     auto seq = ntohl(response_header->seq);
-    auto ttl = cur_time - (response_header->timestamp);
+    auto new_rtt = cur_time - (response_header->timestamp);
     if (static_last_refresh_time == 0) {
       static_last_refresh_time = (response_header->timestamp);
     }
-    recv_package_interval.push_back(ttl);
-    recv_package_interval10.push_back(ttl);
+    // calculate the jitter
+    if (recv_cnt > 0) {
+      auto last_rtt = recv_package_interval10.empty()
+                          ? static_last_rtt
+                          : recv_package_interval10.back();
+      int cur_rtt_jitter = std::abs(static_cast<int>(new_rtt - last_rtt));
+      recv_package_jitter10.push_back(cur_rtt_jitter);
+    }
+    if (recv_cnt == 0) {
+      std::cout << "First response from the server, rtt = " << new_rtt << "\n";
+    }
+    recv_package_interval.push_back(new_rtt);
+    recv_package_interval10.push_back(new_rtt);
     recv_cnt++;
+
     if (seq % 10 == 0 && seq > 0) {
       int average10 = 0;
       for (int x : recv_package_interval10) {
         average10 += x;
       }
-      average10 = (average10 / 10);
+      average10 = (average10 / recv_package_interval10.size());
+
+      // calculate the jitter for the last 10 packets
+      int jitter10 = 0;
+      for (int x : recv_package_jitter10) {
+        jitter10 += x;
+      }
+      jitter10 = (jitter10 / recv_package_jitter10.size());
 
       for (int x : recv_package_interval) {
-        total_ttl += x;
+        total_rtt += x;
       }
       std::cout << "max: "
                 << *std::max_element(recv_package_interval10.begin(),
@@ -359,8 +380,8 @@ bool StartTCPClient(const std::string& ip, int port, double interval,
                 << "  min: "
                 << *std::min_element(recv_package_interval10.begin(),
                                      recv_package_interval10.end())
-                << "  average 10: " << average10
-                << "  average total: " << total_ttl / recv_cnt << " ";
+                << "  average 10: " << average10 << " jitter10: " << jitter10
+                << "  average total: " << total_rtt / recv_cnt << " ";
       if (cur_time - static_last_refresh_time > 0) {
         // calculate the throughput
         static_received_bytes = static_received_bytes / 1024;
@@ -373,19 +394,21 @@ bool StartTCPClient(const std::string& ip, int port, double interval,
       } else {
         std::cout << "\n";
       }
+      static_last_rtt = recv_package_interval10.back();
       std::cout.flush();
       recv_package_interval10.clear();
       recv_package_interval.clear();
+      recv_package_jitter10.clear();
       static_last_refresh_time = cur_time;
       static_received_bytes = 0;
     }
     // std::cout << "Received a response from the server. seq = " << seq << "
-    // ttl = " << ttl << std::endl;
+    // new_rtt = " << new_rtt << "\n";
     max_response--;
   }
-
   // sending_thread will finish first.
-  std::cout << "Stop to receive the response from the server." << std::endl;
+  std::cout << "Stop to receive the response from the server."
+            << "\n";
   shutdown(client_fd, SHUT_RDWR);
   close(client_fd);
   return true;
