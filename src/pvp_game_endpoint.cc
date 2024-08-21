@@ -151,6 +151,11 @@ bool StartSimpleEchoServer(int port) {
     std::cerr << "Failed to create a socket." << std::endl;
     return false;
   }
+  struct linger so_linear;
+  so_linear.l_onoff = 1;   // enable the linger option
+  so_linear.l_linger = 1;  // 1 second timeout
+  setsockopt(listen_fd, SOL_SOCKET, SO_LINGER, &so_linear, sizeof(so_linear));
+
   // bind the socket to the port
   struct sockaddr_in serv_addr;
   serv_addr.sin_family = AF_INET;
@@ -161,6 +166,9 @@ bool StartSimpleEchoServer(int port) {
     std::cerr << "Failed to bind the socket to the port." << std::endl;
     return false;
   }
+
+  int opt = 1;
+  setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 
   // listen on the port
   if (listen(listen_fd, 5) < 0) {
@@ -230,6 +238,10 @@ bool StartTCPClient(const std::string& ip, int port, double interval,
     std::cerr << "Failed to create a socket." << std::endl;
     return false;
   }
+  struct linger so_linear;
+  so_linear.l_onoff = 1;   // enable the linger option
+  so_linear.l_linger = 1;  // 1 second timeout
+  setsockopt(client_fd, SOL_SOCKET, SO_LINGER, &so_linear, sizeof(so_linear));
   // connect to the server
   struct sockaddr_in serv_addr;
   serv_addr.sin_family = AF_INET;
