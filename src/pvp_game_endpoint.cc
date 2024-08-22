@@ -156,6 +156,9 @@ bool StartSimpleEchoServer(int port) {
   so_linear.l_linger = 1;  // 1 second timeout
   setsockopt(listen_fd, SOL_SOCKET, SO_LINGER, &so_linear, sizeof(so_linear));
 
+  int opt = 1;
+  setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+
   // bind the socket to the port
   struct sockaddr_in serv_addr;
   serv_addr.sin_family = AF_INET;
@@ -166,9 +169,6 @@ bool StartSimpleEchoServer(int port) {
     std::cerr << "Failed to bind the socket to the port." << std::endl;
     return false;
   }
-
-  int opt = 1;
-  setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 
   // listen on the port
   if (listen(listen_fd, 5) < 0) {
