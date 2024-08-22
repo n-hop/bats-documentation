@@ -115,20 +115,20 @@ int main(int argc, char* argv[]) {
   }
 
   if (FLAGS_i < 0.001 || FLAGS_i > 1 || FLAGS_i == 0) {
-    std::cerr << "Invalid interval value. The valid range is [0.001, 1]."
+    std::cout << "Invalid interval value. The valid range is [0.001, 1]."
               << std::endl;
     return 1;
   }
   if (FLAGS_l <= static_cast<int>(sizeof(PvpGameMessageHeader)) ||
       FLAGS_l > max_message_size) {
-    std::cerr << "Invalid packet size value " << FLAGS_l << std::endl;
-    std::cerr << "The valid range is [" << sizeof(PvpGameMessageHeader) << ", "
+    std::cout << "Invalid packet size value " << FLAGS_l << std::endl;
+    std::cout << "The valid range is [" << sizeof(PvpGameMessageHeader) << ", "
               << max_message_size << "]" << std::endl;
     return 1;
   }
   if (FLAGS_p <= 1024 || FLAGS_p > 65535) {
-    std::cerr << "Invalid port number." << std::endl;
-    std::cerr << "The valid range is [1024, 65535]." << std::endl;
+    std::cout << "Invalid port number." << std::endl;
+    std::cout << "The valid range is [1024, 65535]." << std::endl;
     return 1;
   }
   // dump input parameters
@@ -148,7 +148,7 @@ bool StartSimpleEchoServer(int port) {
   // create a TCP socket
   int listen_fd = 0;
   if ((listen_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-    std::cerr << "Failed to create a socket." << std::endl;
+    std::cout << "Failed to create a socket." << std::endl;
     return false;
   }
   struct linger so_linear;
@@ -166,18 +166,18 @@ bool StartSimpleEchoServer(int port) {
   serv_addr.sin_port = htons(port);
   if (bind(listen_fd, reinterpret_cast<struct sockaddr*>(&serv_addr),
            sizeof(serv_addr)) < 0) {
-    std::cerr << "Failed to bind the socket to the port." << std::endl;
+    std::cout << "Failed to bind the socket to the port." << std::endl;
     return false;
   }
 
   // listen on the port
   if (listen(listen_fd, 5) < 0) {
-    std::cerr << "Failed to listen on the port." << std::endl;
+    std::cout << "Failed to listen on the port." << std::endl;
     return false;
   }
 
   if (!epoll_instance.Register(listen_fd)) {
-    std::cerr << "Failed to register the listener to the epoll instance."
+    std::cout << "Failed to register the listener to the epoll instance."
               << std::endl;
     return false;
   }
@@ -195,7 +195,7 @@ bool StartSimpleEchoServer(int port) {
         int new_fd = accept(
             listen_fd, reinterpret_cast<struct sockaddr*>(&cli_addr), &cli_len);
         if (new_fd < 0) {
-          std::cerr << "Failed to accept the new connection." << std::endl;
+          std::cout << "Failed to accept the new connection." << std::endl;
           continue;
         }
         std::string ip = inet_ntoa(cli_addr.sin_addr);
@@ -235,7 +235,7 @@ bool StartTCPClient(const std::string& ip, int port, double interval,
   // create a TCP socket
   int client_fd = 0;
   if ((client_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-    std::cerr << "Failed to create a socket." << std::endl;
+    std::cout << "Failed to create a socket." << std::endl;
     return false;
   }
   struct linger so_linear;
@@ -247,14 +247,14 @@ bool StartTCPClient(const std::string& ip, int port, double interval,
   serv_addr.sin_family = AF_INET;
   serv_addr.sin_port = htons(port);
   if (inet_pton(AF_INET, ip.c_str(), &serv_addr.sin_addr) <= 0) {
-    std::cerr << "Invalid IP address." << std::endl;
+    std::cout << "Invalid IP address." << std::endl;
     return false;
   }
   int max_retry = 3;
   while (max_retry-- > 0) {
     if (connect(client_fd, reinterpret_cast<struct sockaddr*>(&serv_addr),
                 sizeof(serv_addr)) < 0) {
-      std::cerr << "Failed to connect to the server. Retry in 1 second."
+      std::cout << "Failed to connect to the server. Retry in 1 second."
                 << std::endl;
       std::this_thread::sleep_for(std::chrono::seconds(1));
       is_active = false;
@@ -268,7 +268,7 @@ bool StartTCPClient(const std::string& ip, int port, double interval,
 
   if (!is_active) {
     // sending_thread will finish first.
-    std::cerr << "Failed to connect to the server after 3 retries."
+    std::cout << "Failed to connect to the server after 3 retries."
               << std::endl;
     shutdown(client_fd, SHUT_RDWR);
     close(client_fd);
@@ -297,7 +297,7 @@ bool StartTCPClient(const std::string& ip, int port, double interval,
       message_header->timestamp = get_time_in_ms();
       int n = write(client_fd, buf.data(), buf.size());
       if (n == 0) {
-        std::cerr << "Failed to send the request to the server." << std::endl;
+        std::cout << "Failed to send the request to the server." << std::endl;
         break;
       }
       max_request--;
@@ -334,13 +334,14 @@ bool StartTCPClient(const std::string& ip, int port, double interval,
   while (max_response > 0) {
     int n = read(client_fd, buf.data() + buf_offset, packet_size - buf_offset);
     if (n == 0) {
-      std::cerr << "Remote shutdown the connection." << std::endl;
+      std::string err_msg = strerror(errno);
+      std::cout << "Remote shutdown the connection." << err_msg << std::endl;
       break;
     }
     if (n < 0) {
       // convert errno to string
       std::string err_msg = strerror(errno);
-      std::cerr << "Failed to read the response from the server. " << (err_msg)
+      std::cout << "Failed to read the response from the server. " << (err_msg)
                 << std::endl;
       continue;
     }
@@ -423,7 +424,7 @@ bool StartTCPClient(const std::string& ip, int port, double interval,
     max_response--;
   }
   // sending_thread will finish first.
-  std::cout << "Stop to receive the response from the server."
+  std::cout << "Stop to receive the response from the server." << max_response
             << "\n";
   {
     auto now = std::chrono::system_clock::now();
