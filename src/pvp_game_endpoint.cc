@@ -419,8 +419,8 @@ bool StartTCPClient(const std::string& ip, int port, double interval,
       static_last_refresh_time = cur_time;
       static_received_bytes = 0;
     }
-    // std::cout << "Received a response from the server. seq = " << seq << "
-    // new_rtt = " << new_rtt << "\n";
+    std::cout << "Received a response from the server. seq = " << seq
+              << " new_rtt = " << new_rtt << "\n";
     max_response--;
   }
   // sending_thread will finish first.
